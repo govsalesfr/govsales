@@ -279,26 +279,28 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
   backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,.5);
   border-radius:16px;
-  padding:16px 20px; box-shadow:0 22px 44px -18px rgba(16,24,40,.28);
-  max-width:190px;
+  box-shadow:0 22px 44px -18px rgba(16,24,40,.28);
 }
 .pq-float-accent{width:22px; height:2px; background:var(--rouge); margin-bottom:8px; border-radius:2px;}
 .pq-float-card b{display:block; font-family:var(--font-display); font-size:14.5px; color:var(--gris-texte); line-height:1.3;}
 .pq-float-card span{display:block; font-size:12px; color:var(--gris-mid); margin-top:2px;}
-.pq-float-top{top:-14px; left:-18px;}
+.pq-float-top{
+  top:137px; left:-18px; width:128px; height:128px; padding:14px;
+  display:flex; flex-direction:column; justify-content:center;
+}
 .pq-float-bottom{
-  bottom:-16px; right:-16px; display:flex; align-items:center; gap:12px; max-width:none;
+  bottom:-16px; right:-16px; width:auto; height:auto; max-width:190px; padding:16px 20px;
+  display:flex; flex-direction:row; align-items:center; justify-content:flex-start; text-align:left; gap:12px;
 }
 .pq-float-icon-wrap{
-  width:38px; height:38px; border-radius:50%; background:var(--gris-fond);
+  width:34px; height:34px; background:none;
   display:flex; align-items:center; justify-content:center; flex:none;
 }
-.pq-float-icon{width:18px; height:18px; color:var(--rouge);}
+.pq-float-icon{width:22px; height:22px; color:var(--rouge);}
 @media (max-width:640px){
   .pq-photo-wrap{padding:14px 12px 18px 0;}
-  .pq-float-card{padding:11px 14px; max-width:150px;}
-  .pq-float-top{top:-10px; left:-8px;}
-  .pq-float-bottom{bottom:-10px; right:-8px;}
+  .pq-float-top{top:97px; left:-8px; width:110px; height:110px; padding:12px;}
+  .pq-float-bottom{bottom:-10px; right:-8px; width:auto; height:auto; max-width:150px; padding:11px 14px;}
 }
 .pq-text p{font-size:16.5px; line-height:1.7; color:var(--gris-texte); margin-bottom:18px;}
 .pq-text p.lead{font-size:16.5px; font-weight:400; color:var(--bleu-france); line-height:1.7;}
@@ -893,7 +895,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       </div>
       <div class="pq-float-card pq-float-bottom">
         <div class="pq-float-icon-wrap">
-          <svg class="pq-float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <svg class="pq-float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4"/><path d="M4 4h14l-3 4 3 4H4"/></svg>
         </div>
         <div>
           <div class="pq-float-accent"></div>
