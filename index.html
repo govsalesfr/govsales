@@ -201,6 +201,7 @@ section{position:relative;}
 .eyebrow::before{content:""; width:26px; height:2px; background:var(--rouge); flex:none; display:inline-block;}
 h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(--gris-texte); font-weight:700;}
 .h-xl{font-size:clamp(38px,6.4vw,84px); line-height:1.02; font-weight:700;}
+@media (min-width:481px){ .hero-title-final{white-space:nowrap;} }
 .h-lg{font-size:clamp(30px,4.4vw,52px); line-height:1.06; font-weight:700;}
 .h-md{font-size:clamp(22px,2.6vw,30px); line-height:1.15; font-weight:600;}
 .lede{font-size:clamp(17px,2vw,21px); line-height:1.55; color:var(--gris-mid); font-weight:400; max-width:640px;}
@@ -272,7 +273,7 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
   font-family:'Caveat', cursive; font-weight:600; font-size:20px; line-height:1.3; margin:0;
 }
 .pq-photo-quote-accent{width:30px; height:3px; background:var(--rouge); border-radius:2px; margin-top:10px;}
-.pq-photo img.pq-photo-signature{position:absolute; right:-58px; bottom:-6px; height:76px; width:auto; opacity:.95; object-fit:contain;}
+.pq-photo img.pq-photo-signature{position:absolute; right:8px; bottom:-6px; height:44px; width:auto; opacity:.95; object-fit:contain;}
 .pq-float-card{
   position:absolute; z-index:2; background:rgba(255,255,255,.78);
   backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
@@ -859,7 +860,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
     <h1 class="h-xl" style="max-width:920px; margin-top:24px;">
       <span class="hero-title-line" id="titleLine1">Le service public achète.</span><br>
       <span class="hero-title-line" id="titleLine2">Vous savez vendre.</span><br>
-      <span class="hero-title-line" id="titleLine3" style="color:var(--rouge); white-space:nowrap;">GovSales <span class="hand-underline">ouvre les portes.<svg class="hand-underline-svg" id="titleUnderlineSvg" viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M0,14 C90,3 210,3 300,14"/></svg></span></span>
+      <span class="hero-title-line hero-title-final" id="titleLine3" style="color:var(--rouge);">GovSales <span class="hand-underline">ouvre les portes.<svg class="hand-underline-svg" id="titleUnderlineSvg" viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M0,14 C90,3 210,3 300,14"/></svg></span></span>
     </h1>
     <p class="lede reveal in center">Nous ouvrons les portes du secteur public<br>aux entreprises qui veulent y réussir durablement.</p>
     <div class="reveal in" style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
@@ -1618,7 +1619,7 @@ const introWordsList = [
 function runWordSequence(onDone){
   const wordsWrap = document.getElementById('introWords');
   const wordEl = document.getElementById('introWordText');
-  const stepMs = 260;
+  const stepMs = 340;
   let i = 0;
   function step(){
     if(i >= introWordsList.length){
