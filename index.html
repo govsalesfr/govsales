@@ -283,22 +283,24 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 }
 .pq-float-accent{width:22px; height:2px; background:var(--rouge); margin-bottom:8px; border-radius:2px;}
 .pq-float-card b{display:block; font-family:var(--font-display); font-size:14.5px; color:var(--gris-texte); line-height:1.3;}
-.pq-float-top b{font-size:12.5px; white-space:nowrap;}
+.pq-float-top-num{font-family:var(--font-display); font-weight:800; font-size:19px; color:#282B2B; line-height:1.15; margin-bottom:2px;}
+.pq-float-top b{font-size:12.5px; white-space:nowrap; font-weight:600;}
 .pq-float-card span{display:block; font-size:12px; color:var(--gris-mid); margin-top:2px;}
-.pq-float-bottom span{font-size:11px; white-space:nowrap;}
+.pq-float-bottom b{font-size:19px; font-weight:800; color:#282B2B;}
+.pq-float-bottom span{font-size:12px; white-space:nowrap;}
 .pq-float-top{
-  top:137px; left:-18px; width:128px; height:104px; padding:10px 14px;
+  top:137px; left:-18px; width:128px; height:126px; padding:12px 14px;
   display:flex; flex-direction:column; justify-content:center;
 }
 .pq-float-bottom{
-  bottom:-16px; right:-16px; width:auto; height:auto; max-width:190px; padding:10px 20px;
+  bottom:-16px; right:22px; width:auto; height:auto; max-width:190px; padding:10px 20px;
   display:flex; flex-direction:row; align-items:center; justify-content:flex-start; text-align:left; gap:12px;
 }
 .pq-float-icon-wrap{
   width:34px; height:34px; background:none;
   display:flex; align-items:center; justify-content:center; flex:none;
 }
-.pq-float-icon{width:22px; height:22px; color:var(--rouge);}
+.pq-float-icon{width:22px; height:22px; color:#282B2B;}
 @media (max-width:640px){
   .pq-photo-wrap{padding:14px 12px 18px 0;}
   .pq-float-top{top:97px; left:-8px; width:110px; height:110px; padding:12px;}
@@ -306,9 +308,9 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 }
 .pq-text p{font-size:16.5px; line-height:1.7; color:var(--gris-texte); margin-bottom:18px;}
 .pq-text p.lead{font-size:16.5px; font-weight:400; color:var(--bleu-france); line-height:1.7;}
-.pq-quote{font-style:italic; font-size:16.5px; line-height:1.7; display:flex; align-items:center; gap:16px; margin-top:22px;}
+.pq-quote{font-style:italic; font-size:16.5px; line-height:1.7; display:flex; align-items:center; gap:19px; margin-top:22px;}
 .pq-quote-icon{width:28px; height:auto; color:var(--rouge); flex:none; align-self:flex-start;}
-.pq-quote-icon-end{width:28px; height:auto; color:var(--rouge); flex:none; transform:rotate(180deg); align-self:flex-end;}
+.pq-quote-icon-end{width:28px; height:auto; color:var(--rouge); transform:rotate(180deg); display:inline-block; vertical-align:middle; margin-left:19px;}
 .pq-sign{margin-top:28px; display:flex; flex-direction:column; align-items:flex-start; gap:10px;}
 .pq-sign-name{font-size:13px; color:var(--gris-mid); line-height:1.4;}
 .pq-sign-name b{display:block; color:var(--gris-texte); font-size:14.5px; font-family:var(--font-display);}
@@ -378,7 +380,7 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
   stroke-dasharray:175.9; stroke-dashoffset:175.9;
   transition:stroke-dashoffset 1s cubic-bezier(.16,1,.3,1);
 }
-.rc-score-num{position:absolute; inset:0; display:flex; align-items:baseline; justify-content:center; gap:1px; font-family:var(--font-display); font-weight:700;}
+.rc-score-num{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:1px; font-family:var(--font-display); font-weight:700;}
 .rc-score-num span{font-size:17px; color:var(--gris-texte);}
 .rc-score-num small{font-size:9px; color:var(--gris-mid);}
 .rc-stats{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px;}
@@ -518,25 +520,62 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 }
 #chrono .eyebrow{color:rgba(255,255,255,.55);}
 #chrono .h-lg{color:#fff;}
-.timeline{position:relative; max-width:640px; margin:60px auto 0; padding-left:56px; z-index:1;}
-.t-item{position:relative; padding-bottom:52px; opacity:0; transform:translateX(-16px); transition:opacity .6s var(--ease), transform .6s var(--ease);}
+#chrono .lede{color:rgba(255,255,255,.6);}
+.chrono-header{display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap;}
+.chrono-quote{max-width:280px; padding-top:6px;}
+.chrono-quote p{font-family:'Caveat', cursive; font-weight:600; font-size:22px; line-height:1.35; color:rgba(255,255,255,.85);}
+.chrono-quote-sign{margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,.15);}
+.chrono-quote-sign b{display:block; color:#fff; font-family:var(--font-display); font-size:14px;}
+.chrono-quote-sign span{font-size:12.5px; color:rgba(255,255,255,.5);}
+
+.timeline{position:relative; max-width:100%; margin:64px auto 0; padding-left:64px; z-index:1;}
+.t-item{
+  position:relative; padding-bottom:36px; opacity:0; transform:translateX(-16px);
+  transition:opacity .6s var(--ease), transform .6s var(--ease);
+  display:grid; grid-template-columns:52px 1fr 200px 190px; align-items:center; gap:24px;
+}
 .t-item.in{opacity:1; transform:translateX(0);}
 .t-item:last-child{padding-bottom:0;}
-.t-item-icon{
-  position:absolute; left:-56px; top:-2px; width:40px; height:40px; border-radius:50%; z-index:2;
-  background:#fff; border:3px solid var(--bleu-france); display:flex; align-items:center; justify-content:center;
-  color:var(--bleu-france); box-shadow:0 4px 14px -4px rgba(0,0,0,.4);
+.t-item-num{
+  position:absolute; left:-64px; top:0; width:36px; height:36px; border-radius:50%;
+  background:var(--bleu-deep); border:2px solid rgba(255,255,255,.25); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:12.5px;
+  z-index:2;
 }
-.t-item-icon svg{width:18px; height:18px;}
-.t-item.final .t-item-icon{background:var(--rouge); border-color:var(--rouge); color:#fff;}
+.t-item.final .t-item-num{background:var(--rouge); border-color:var(--rouge);}
 .t-item:not(:last-child)::after{
-  content:""; position:absolute; left:-37px; top:38px; bottom:-14px; width:2px;
-  background:linear-gradient(180deg, rgba(255,255,255,.3), var(--rouge));
+  content:""; position:absolute; left:-46px; top:36px; bottom:-14px; width:2px;
+  background:linear-gradient(180deg, rgba(255,255,255,.25), var(--rouge));
   transform:scaleY(0); transform-origin:top; transition:transform .6s .25s var(--ease);
 }
 .t-item.in:not(:last-child)::after{transform:scaleY(1);}
-.t-item h4{font-size:18px; margin-bottom:4px; color:#fff;}
-.t-item p{font-size:14px; color:rgba(255,255,255,.6); line-height:1.5;}
+.t-item-icon{
+  width:52px; height:52px; border-radius:14px; flex:none;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.15);
+  display:flex; align-items:center; justify-content:center; color:#fff;
+}
+.t-item-icon svg{width:22px; height:22px;}
+.t-item.final .t-item-icon{background:rgba(255,104,53,.12); border-color:var(--rouge); color:var(--rouge);}
+.t-item-text h4{font-size:17px; margin-bottom:4px; color:#fff;}
+.t-item-text p{font-size:13.5px; color:rgba(255,255,255,.55); line-height:1.5;}
+.t-item-stat{
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:12px;
+  padding:14px 16px; font-family:var(--font-display); font-weight:600; font-size:13px; color:#fff; line-height:1.35;
+}
+.t-item-photo{
+  position:relative; height:64px; border-radius:12px; overflow:hidden;
+  display:flex; align-items:flex-end; padding:10px 12px;
+}
+.t-item-photo span{position:relative; font-size:10.5px; font-weight:700; letter-spacing:.03em; color:#fff; text-transform:uppercase; line-height:1.3;}
+.t-photo-0{background:linear-gradient(140deg,#1c2942,#3a4a68);}
+.t-photo-1{background:linear-gradient(140deg,var(--rouge),#c94a1f);}
+.t-photo-2{background:linear-gradient(140deg,#2a3a58,var(--bleu-deep));}
+.t-photo-3{background:linear-gradient(140deg,#3d4f70,#1c2942);}
+@media (max-width:960px){
+  .t-item{grid-template-columns:52px 1fr; grid-template-areas:"icon text" "icon stat" "icon photo";}
+  .t-item-icon{grid-area:icon;} .t-item-text{grid-area:text;} .t-item-stat{grid-area:stat; margin-top:8px;} .t-item-photo{grid-area:photo; margin-top:8px;}
+  .chrono-quote{max-width:100%;}
+}
 
 /* ================= BIBLIOTHEQUE ================= */
 .lib-doodle{
@@ -892,12 +931,13 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       </div>
       <div class="pq-float-card pq-float-top">
         <div class="pq-float-accent"></div>
-        <b>10 ans d'expérience</b>
+        <div class="pq-float-top-num">10 ans</div>
+        <b>d'expérience</b>
         <span>au service du secteur public</span>
       </div>
       <div class="pq-float-card pq-float-bottom">
         <div class="pq-float-icon-wrap">
-          <svg class="pq-float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4"/><path d="M4 4h14l-3 4 3 4H4"/></svg>
+          <svg class="pq-float-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="19" y1="5" x2="12" y2="12"/><polyline points="14.5 5 19 5 19 9.5"/></svg>
         </div>
         <div>
           <div class="pq-float-accent"></div>
@@ -911,7 +951,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
         <p>Durant cette période, j'ai également aidé des dizaines d'entreprises privées à réussir leur développement sur ce marché exigeant mais plein d'opportunités.</p>
         <p>Aujourd'hui, j'ai décidé de franchir une nouvelle étape en fondant <b>GovSales</b>.</p>
         <p>Ma mission est simple : <b>aider les entreprises privées à accéder au marché public</b>, un marché souvent perçu comme complexe, à en comprendre les codes et à développer durablement leur activité auprès des acteurs du service public.</p>
-        <p class="pq-quote"><svg class="pq-quote-icon" viewBox="0 0 44 34" fill="currentColor"><path d="M0 34V20.4C0 9.2 6.8 1.6 18 0L19.6 5.6C12.4 7.2 8.8 11.6 8.4 17.6H18V34H0Z"/><path d="M24.4 34V20.4C24.4 9.2 31.2 1.6 42.4 0L44 5.6C36.8 7.2 33.2 11.6 32.8 17.6H42.4V34H24.4Z"/></svg>Parce que je sais à quel point ce marché peut sembler complexe lorsqu'on ne le connaît pas. Avec GovSales, je vous aide à gagner du temps, à éviter les pièges et à ouvrir les portes du service public avec une stratégie claire et efficace.<svg class="pq-quote-icon pq-quote-icon-end" viewBox="0 0 44 34" fill="currentColor"><path d="M0 34V20.4C0 9.2 6.8 1.6 18 0L19.6 5.6C12.4 7.2 8.8 11.6 8.4 17.6H18V34H0Z"/><path d="M24.4 34V20.4C24.4 9.2 31.2 1.6 42.4 0L44 5.6C36.8 7.2 33.2 11.6 32.8 17.6H42.4V34H24.4Z"/></svg></p>
+        <p class="pq-quote"><svg class="pq-quote-icon" viewBox="0 0 44 34" fill="currentColor"><path d="M0 34V20.4C0 9.2 6.8 1.6 18 0L19.6 5.6C12.4 7.2 8.8 11.6 8.4 17.6H18V34H0Z"/><path d="M24.4 34V20.4C24.4 9.2 31.2 1.6 42.4 0L44 5.6C36.8 7.2 33.2 11.6 32.8 17.6H42.4V34H24.4Z"/></svg><span class="pq-quote-text">Parce que je sais à quel point ce marché peut sembler complexe lorsqu'on ne le connaît pas. Avec GovSales, je vous aide à gagner du temps, à éviter les pièges et à ouvrir les portes du service public avec une stratégie claire et efficace.<svg class="pq-quote-icon pq-quote-icon-end" viewBox="0 0 44 34" fill="currentColor"><path d="M0 34V20.4C0 9.2 6.8 1.6 18 0L19.6 5.6C12.4 7.2 8.8 11.6 8.4 17.6H18V34H0Z"/><path d="M24.4 34V20.4C24.4 9.2 31.2 1.6 42.4 0L44 5.6C36.8 7.2 33.2 11.6 32.8 17.6H42.4V34H24.4Z"/></svg></span></p>
         <div class="pq-sign">
           <div class="pq-sign-name"><b>Yoann Perez</b>Fondateur de GovSales</div>
         </div>
@@ -1074,8 +1114,6 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
 
     <div class="carte-ctas reveal">
       <a href="#diagnostic" class="btn btn-primary">Obtenir un diagnostic gratuit</a>
-      <a href="#diagnostic" class="carte-cta-ghost">Réserver un rendez-vous →</a>
-      <a href="#diagnostic" class="carte-cta-ghost">Recevoir la cartographie détaillée →</a>
     </div>
   </div>
 </section>
@@ -1095,11 +1133,20 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
 <!-- ============ CHRONOLOGIE ============ -->
 <section id="chrono" class="section-pad">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow" style="color:var(--rouge);">La méthode GovSales</span>
-      <h2 class="h-lg">De l'entreprise privée à la fidélisation</h2>
+    <div class="chrono-header reveal">
+      <div class="section-head" style="margin-bottom:0; max-width:600px;">
+        <span class="eyebrow">La méthode GovSales</span>
+        <h2 class="h-lg">De l'entreprise privée à la fidélisation <span style="color:var(--rouge);">durable.</span></h2>
+        <p class="lede">Une méthode claire, concrète et éprouvée pour transformer un marché réputé complexe en véritable levier de croissance.</p>
+      </div>
+      <div class="chrono-quote">
+        <p>"Des opportunités concrètes pour les entreprises d'aujourd'hui."</p>
+        <div class="chrono-quote-sign"><b>Yoann Perez</b><span>Fondateur de GovSales</span></div>
+      </div>
     </div>
+
     <div class="timeline" id="timelineList"></div>
+
   </div>
 </section>
 
@@ -2120,7 +2167,6 @@ document.getElementById('diagBtn').addEventListener('click', ()=>{
       <h6>Recommandation GovSales</h6>
       <p>${reco}</p>
     </div>
-    <a href="#diagnostic" class="btn btn-primary" style="margin-top:20px; width:100%; justify-content:center;">Recevoir cette stratégie détaillée par email →</a>
   `;
   document.getElementById('diagResult').classList.add('show');
 });
@@ -2162,18 +2208,21 @@ const tIcons = {
   loop:'<path d="M8.5 8.5a3.5 3.5 0 1 0 0 7c2 0 3-1.5 3.5-3.5.5 2 1.5 3.5 3.5 3.5a3.5 3.5 0 1 0 0-7c-2 0-3 1.5-3.5 3.5-.5-2-1.5-3.5-3.5-3.5z"></path>'
 };
 const steps = [
-  {t:"Entreprise privée", d:"Vous maîtrisez votre métier, mais pas encore les codes de l'achat public.", icon:"briefcase"},
-  {t:"Identification du besoin", d:"Repérage des acheteurs et des marchés correspondant réellement à votre activité.", icon:"target"},
-  {t:"Veille", d:"Suivi actif des publications pour ne manquer aucune opportunité pertinente.", icon:"eye"},
-  {t:"Prise de contact", d:"Approche des acheteurs en amont, dans le respect strict des règles de la commande publique.", icon:"phone"},
-  {t:"Réponse", d:"Constitution d'un dossier structuré : mémoire technique, prix, pièces administratives.", icon:"doc"},
-  {t:"Attribution", d:"Le marché est remporté — ou analysé pour progresser sur le suivant.", icon:"award"},
-  {t:"Fidélisation", d:"Construction d'une relation durable avec l'acheteur pour les marchés suivants.", final:true, icon:"loop"}
+  {t:"Entreprise privée", d:"Vous maîtrisez votre métier, mais pas encore les codes de l'achat public.", icon:"briefcase", stat:"Des centaines d'entreprises accompagnées", photo:"VOTRE ENTREPRISE"},
+  {t:"Identification du besoin", d:"Repérage des acheteurs et des marchés correspondant réellement à votre activité.", icon:"target", stat:"+ 10 000 acheteurs publics identifiés", photo:"CARTOGRAPHIE DES OPPORTUNITÉS"},
+  {t:"Veille", d:"Suivi actif des publications pour ne manquer aucune opportunité pertinente.", icon:"eye", stat:"300 000+ consultations publiées chaque année", photo:"UNE VEILLE SUR-MESURE"},
+  {t:"Prise de contact", d:"Approche des acheteurs en amont, dans le respect strict des règles de la commande publique.", icon:"phone", stat:"Des échanges qualifiés avec les bons interlocuteurs", photo:"CRÉER LE DIALOGUE"},
+  {t:"Réponse", d:"Constitution d'un dossier structuré : mémoire technique, prix, pièces administratives.", icon:"doc", stat:"Un dossier solide et différenciant", photo:"VALORISER VOS ATOUTS"},
+  {t:"Attribution", d:"Le marché est remporté — ou analysé pour progresser sur le suivant.", icon:"award", stat:"Un retour d'expérience systématique", photo:"TRANSFORMER L'OPPORTUNITÉ"},
+  {t:"Fidélisation", d:"Construction d'une relation durable avec l'acheteur pour les marchés suivants.", final:true, icon:"loop", stat:"Des partenariats sur le long terme", photo:"BÂTIR DURABLEMENT"}
 ];
-document.getElementById('timelineList').innerHTML = steps.map(s=>`
+document.getElementById('timelineList').innerHTML = steps.map((s,i)=>`
   <div class="t-item${s.final?' final':''}">
+    <div class="t-item-num">${String(i+1).padStart(2,'0')}</div>
     <div class="t-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${tIcons[s.icon]}</svg></div>
-    <h4>${s.t}</h4><p>${s.d}</p>
+    <div class="t-item-text"><h4>${s.t}</h4><p>${s.d}</p></div>
+    <div class="t-item-stat">${s.stat}</div>
+    <div class="t-item-photo t-photo-${i%4}"><span>${s.photo}</span></div>
   </div>`).join('');
 document.querySelectorAll('.t-item').forEach(el=>io.observe(el));
 
