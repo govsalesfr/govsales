@@ -271,6 +271,7 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .pq-photo-quote-text{max-width:300px; position:relative;}
 .pq-photo-quote-text p{
   font-family:'Caveat', cursive; font-weight:600; font-size:17px; line-height:1.25; margin:0;
+  transform:translateY(-19px);
 }
 .pq-photo-quote-accent{width:30px; height:3px; background:var(--rouge); border-radius:2px; margin-top:10px;}
 .pq-photo img.pq-photo-signature{position:absolute; right:16px; bottom:-14px; height:48px; width:auto; opacity:.95; object-fit:contain;}
@@ -764,6 +765,10 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .lib-modal-cat{font-size:11px; font-weight:700; color:var(--rouge); text-transform:uppercase; letter-spacing:.05em; margin-bottom:12px;}
 .lib-modal-title{font-size:24px; line-height:1.25; margin-bottom:22px; padding-right:30px; padding-bottom:20px; border-bottom:1px solid var(--gris-bordure);}
 .lib-modal-body{font-size:15px; line-height:1.75; color:var(--gris-texte);}
+.lib-modal-body h4{font-family:var(--font-display); font-size:15.5px; color:var(--gris-texte); margin:24px 0 8px;}
+.lib-modal-body h4:first-child{margin-top:0;}
+.lib-modal-body p{margin-bottom:4px;}
+.lib-modal-body a{color:var(--bleu-france); text-decoration:underline;}
 
 /* ================= TARIFS ================= */
 #tarifs{background:var(--gris-fond);}
@@ -872,19 +877,175 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .diag-packs{list-style:none; padding:0; margin:16px auto 28px; display:inline-flex; flex-direction:column; gap:10px; text-align:left; max-width:340px;}
 .diag-packs li{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:10px; padding:11px 16px; font-size:14px; color:#fff;}
 
+.diag-result-label{font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--rouge); margin-bottom:10px;}
+.diag-result-title-row{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:20px;}
+.diag-result-dot{width:14px; height:14px; border-radius:50%; flex:none;}
+.diag-score{position:relative; width:120px; height:120px; margin:0 auto 20px;}
+.diag-score-ring{width:120px; height:120px; transform:rotate(-90deg);}
+.diag-score-bg{fill:none; stroke:rgba(255,255,255,.12); stroke-width:8;}
+.diag-score-fill{
+  fill:none; stroke:var(--rouge); stroke-width:8; stroke-linecap:round;
+  stroke-dasharray:276.5; stroke-dashoffset:276.5;
+  transition:stroke-dashoffset 1.1s cubic-bezier(.16,1,.3,1);
+}
+.diag-score-num{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:2px; font-family:var(--font-display); font-weight:800;}
+.diag-score-num span{font-size:30px; color:#fff;}
+.diag-score-num small{font-size:13px; color:rgba(255,255,255,.5);}
+.diag-priorities{max-width:400px; margin:0 auto 26px; text-align:left;}
+.diag-priorities-label{font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:10px; text-align:center;}
+.diag-priorities ul{list-style:none; padding:0; display:flex; flex-direction:column; gap:9px;}
+.diag-priorities li{display:flex; align-items:flex-start; gap:10px; font-size:14px; color:rgba(255,255,255,.88); line-height:1.4;}
+.diag-priorities li b{color:#4ade80; flex:none; font-size:15px;}
+.diag-packs-label{font-size:13px; letter-spacing:.03em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:4px;}
+
 /* ================= FOOTER ================= */
 footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; border-top:1px solid var(--gris-bordure); overflow:hidden; position:relative; z-index:10;}
-.footer-top{display:flex; justify-content:flex-end; gap:60px; flex-wrap:wrap; padding-bottom:56px; border-bottom:1px solid var(--gris-bordure);}
-.footer-cols{display:flex; gap:64px; flex-wrap:wrap;}
-.footer-col h5{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--gris-texte); font-weight:700; margin-bottom:16px;}
-.footer-col a{display:block; font-size:14px; margin-bottom:11px; color:var(--gris-mid); transition:.2s;}
-.footer-col a:hover{color:var(--rouge);}
+.footer-top{display:flex; justify-content:center; gap:60px; flex-wrap:wrap; padding-bottom:56px; border-bottom:1px solid var(--gris-bordure);}
+.footer-cols{display:flex; gap:64px; flex-wrap:wrap; text-align:center;}
+.footer-col h5{font-size:22px; text-transform:uppercase; letter-spacing:.06em; color:#282B2B; font-weight:800; margin-bottom:10px;}
+.footer-col a{display:block; font-size:19px; font-weight:700; margin-bottom:11px; color:var(--rouge); transition:.2s;}
+.footer-col a:hover{color:var(--rouge-dark);}
 .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; font-size:12.5px; color:var(--gris-mid); flex-wrap:wrap; gap:10px;}
 .footer-bottom a{color:var(--gris-mid); transition:.2s;}
 .footer-bottom a:hover{color:var(--rouge);}
 
 /* ================= SECTION HEAD ================= */
 .section-head{max-width:680px;}
+.contact-float{
+  position:fixed; bottom:20px; right:20px; z-index:1000;
+  opacity:0; transform:translateY(16px); pointer-events:none;
+  transition:opacity .7s var(--ease), transform .7s var(--ease);
+}
+.contact-float.show{opacity:1; transform:translateY(0); pointer-events:auto;}
+
+.contact-float-avatar{
+  position:relative; width:56px; height:56px; border-radius:50%; cursor:pointer;
+  box-shadow:0 0 0 3px rgba(255,104,53,.4), 0 0 16px 2px rgba(255,104,53,.35), 0 10px 26px -8px rgba(0,0,0,.6);
+  transition:transform .25s var(--ease);
+}
+.contact-float-avatar img{width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; border:1.25px solid #fff;}
+.contact-float-avatar-lg{width:78px; height:78px; flex:none; cursor:default;}
+.contact-float-avatar-lg .contact-float-dot{display:none;}
+.contact-float-dot{
+  position:absolute; bottom:1px; right:1px; width:14px; height:14px; border-radius:50%;
+  background:#22c55e; border:2.5px solid #0f1420; box-shadow:0 0 0 2px rgba(34,197,94,.4);
+}
+.contact-float:hover .contact-float-avatar:not(.contact-float-avatar-lg),
+.contact-float.hovered .contact-float-avatar:not(.contact-float-avatar-lg){transform:scale(1.06);}
+
+.contact-float-popup{
+  position:absolute; bottom:0; right:58px; width:600px;
+  background:#12161f;
+  border-radius:20px; padding:26px 28px; display:flex; align-items:center; gap:20px;
+  box-shadow:0 0 0 1.5px rgba(255,104,53,.55), 0 0 40px 6px rgba(255,104,53,.28), 0 25px 55px -15px rgba(0,0,0,.65);
+  opacity:0; transform:translateX(8px) scale(.96); transform-origin:bottom right;
+  pointer-events:none; transition:opacity .22s var(--ease), transform .22s var(--ease);
+}
+.contact-float.hovered .contact-float-popup{
+  opacity:1; transform:translateX(0) scale(1); pointer-events:auto;
+}
+.contact-float-close{
+  position:absolute; top:14px; right:16px; background:none; border:none; color:rgba(255,255,255,.4);
+  font-size:20px; line-height:1; cursor:pointer; padding:4px; transition:color .2s;
+}
+.contact-float-close:hover{color:#fff;}
+.contact-float-popup-left{display:flex; align-items:center; gap:14px; flex:1; min-width:0;}
+.contact-float-info{display:flex; flex-direction:column; min-width:270px;}
+.contact-float-info b{color:#fff; font-family:var(--font-display); font-size:16.5px; line-height:1.2;}
+.contact-float-role{color:rgba(255,255,255,.6); font-size:12.5px; line-height:1.35; margin:3px 0 8px;}
+.contact-float-status{display:flex; align-items:center; gap:6px; font-size:12px; color:#4ade80; font-weight:700; margin-bottom:8px; white-space:nowrap;}
+.contact-float-status i{width:7px; height:7px; border-radius:50%; background:#22c55e; display:inline-block; flex:none; box-shadow:0 0 0 3px rgba(34,197,94,.25);}
+.contact-float-link{display:block; color:rgba(255,255,255,.85); font-size:12.5px; font-weight:500; text-decoration:none; margin-top:4px; white-space:nowrap;}
+.contact-float-link:hover{color:#fff;}
+.contact-float-divider{width:1px; align-self:stretch; background:rgba(255,255,255,.12); flex:none;}
+.contact-float-popup-right{display:flex; flex-direction:column; gap:10px; flex:none;}
+.contact-float-cta{white-space:nowrap; font-size:12.5px; padding:10px 16px;}
+.contact-float-call{
+  display:flex; align-items:center; gap:6px; color:rgba(255,255,255,.65); font-size:12px; font-weight:600;
+  text-decoration:none; white-space:nowrap; justify-content:center;
+}
+.contact-float-call:hover{color:#fff;}
+@media (max-width:640px){
+  .contact-float-popup{right:0; bottom:66px; width:calc(100vw - 40px); max-width:400px; flex-direction:column; align-items:stretch;}
+  .contact-float-divider{width:100%; height:1px; align-self:auto; margin:14px 0;}
+  .contact-float-popup-right{flex-direction:row;}
+}
+.quicknav{
+  position:fixed; top:48%; right:20px; transform:translateY(-50%); z-index:999;
+  display:flex; align-items:center; gap:10px;
+  opacity:0; pointer-events:none;
+  transition:opacity .6s var(--ease);
+}
+.quicknav.show{opacity:1; pointer-events:auto;}
+
+.quicknav-rail{
+  display:flex; flex-direction:column; gap:8px; background:#fff; border-radius:100px;
+  padding:10px 6px; box-shadow:0 14px 34px -14px rgba(16,24,40,.28); border:1px solid var(--gris-bordure);
+}
+.quicknav-rail-icon{
+  width:46px; height:46px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:1px; color:var(--gris-texte); position:relative; transition:.2s var(--ease);
+}
+.quicknav-rail-icon svg{width:18px; height:18px;}
+.quicknav-rail-icon span{
+  position:absolute; right:calc(100% + 10px); top:50%; transform:translateY(-50%);
+  background:#101828; color:#fff; font-size:11.5px; font-weight:600; padding:6px 11px; border-radius:8px;
+  white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .18s, transform .18s;
+}
+.quicknav-rail-icon:hover{background:var(--gris-fond); color:var(--rouge);}
+.quicknav-rail-icon:hover span{opacity:1; transform:translateY(-50%) translateX(-4px);}
+.quicknav-rail-cta{background:var(--rouge); color:#fff;}
+.quicknav-rail-cta:hover{background:var(--rouge-dark); color:#fff;}
+
+.quicknav-toggle{
+  width:46px; height:46px; border-radius:50%; background:#101828; color:#fff; flex:none;
+  display:flex; align-items:center; justify-content:center; box-shadow:0 14px 34px -14px rgba(16,24,40,.4);
+  order:-1; position:relative; transition:background .2s;
+}
+.quicknav-toggle:hover{background:var(--rouge);}
+.quicknav-toggle svg{width:19px; height:19px; position:absolute; transition:opacity .2s, transform .2s;}
+.quicknav-toggle-close{opacity:0; transform:rotate(-45deg);}
+.quicknav.open .quicknav-toggle-open{opacity:0; transform:rotate(45deg);}
+.quicknav.open .quicknav-toggle-close{opacity:1; transform:rotate(0);}
+
+.quicknav-panel{
+  order:-2; width:300px; background:#fff; border-radius:22px; padding:22px;
+  box-shadow:0 30px 70px -20px rgba(16,24,40,.35); border:1px solid var(--gris-bordure);
+  opacity:0; transform:translateX(10px) scale(.97); transform-origin:right center; pointer-events:none;
+  transition:opacity .25s var(--ease), transform .25s var(--ease);
+}
+.quicknav.open .quicknav-panel{opacity:1; transform:translateX(0) scale(1); pointer-events:auto;}
+.quicknav-panel-header{margin-bottom:16px;}
+.quicknav-panel-header b{display:block; font-family:var(--font-display); font-size:16.5px; color:var(--gris-texte);}
+.quicknav-panel-header span{font-size:12.5px; color:var(--gris-mid);}
+.quicknav-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;}
+.quicknav-card{
+  border:1px solid var(--gris-bordure); border-radius:14px; padding:14px 12px; transition:.2s var(--ease);
+}
+.quicknav-card:hover{border-color:var(--rouge); box-shadow:0 12px 26px -14px rgba(16,24,40,.2); transform:translateY(-2px);}
+.quicknav-card-icon{width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; margin-bottom:9px;}
+.quicknav-card-icon svg{width:16px; height:16px;}
+.quicknav-ic-home{background:#fde9e0; color:var(--rouge);}
+.quicknav-ic-target{background:#e0e9fd; color:#3b5bdb;}
+.quicknav-ic-packs{background:#e3f5ea; color:#1a9e5a;}
+.quicknav-ic-ressources{background:#fdf0d5; color:#b8860b;}
+.quicknav-ic-apropos{background:#f1e3fd; color:#8b3bdb;}
+.quicknav-ic-contact{background:#fde0ec; color:#db3b8b;}
+.quicknav-card b{display:block; font-family:var(--font-display); font-size:13.5px; color:var(--gris-texte); margin-bottom:2px;}
+.quicknav-card span{font-size:11.5px; color:var(--gris-mid); line-height:1.3;}
+.quicknav-cta-row{
+  display:flex; align-items:center; gap:12px; background:var(--gris-fond); border:1px solid var(--gris-bordure);
+  border-radius:14px; padding:13px 14px; transition:.2s;
+}
+.quicknav-cta-row:hover{border-color:var(--rouge); background:#fff;}
+.quicknav-cta-icon{width:34px; height:34px; border-radius:9px; background:var(--rouge); color:#fff; flex:none; display:flex; align-items:center; justify-content:center;}
+.quicknav-cta-icon svg{width:16px; height:16px;}
+.quicknav-cta-text{flex:1;}
+.quicknav-cta-text b{display:block; font-family:var(--font-display); font-size:13px; color:var(--gris-texte);}
+.quicknav-cta-text span{font-size:11px; color:var(--gris-mid);}
+.quicknav-cta-arrow{width:16px; height:16px; color:var(--gris-mid); flex:none;}
+
+@media (max-width:900px){ .quicknav{display:none;} }
 </style>
 </head>
 <body>
@@ -1346,7 +1507,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       </div>
       <div class="pq-float-card pq-float-top">
         <div class="pq-float-accent"></div>
-        <div class="pq-float-top-num">10 ans</div>
+        <div class="pq-float-top-num">15 ans</div>
         <b>d'expérience</b>
         <span>au service du secteur public</span>
       </div>
@@ -1362,7 +1523,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       </div>
     </div>
       <div class="pq-text">
-        <p class="lead"><b>Depuis plus de dix ans, j'évolue au cœur du secteur public.</b> J'ai accompagné des centaines de décideurs et d'équipes dans des mairies, départements, régions, préfectures, ambassades, consulats, hôpitaux, missions locales et bien d'autres organismes publics. Cette immersion m'a permis de travailler au quotidien avec des DSI, DGS, DGA, DRH, élus et agents, et de comprendre précisément leurs attentes, leurs contraintes et leur manière de prendre leurs décisions.</p>
+        <p class="lead"><b>Depuis plus de quinze ans, j'évolue au cœur du secteur public.</b> J'ai accompagné des centaines de décideurs et d'équipes dans des mairies, départements, régions, préfectures, ambassades, consulats, hôpitaux, missions locales et bien d'autres organismes publics. Cette immersion m'a permis de travailler au quotidien avec des DSI, DGS, DGA, DRH, élus et agents, et de comprendre précisément leurs attentes, leurs contraintes et leur manière de prendre leurs décisions.</p>
         <p>Durant cette période, j'ai également aidé des dizaines d'entreprises privées à réussir leur développement sur ce marché exigeant mais plein d'opportunités.</p>
         <p>Aujourd'hui, j'ai décidé de franchir une nouvelle étape en fondant <b>GovSales</b>.</p>
         <p>Ma mission est simple : <b>aider les entreprises privées à accéder au marché public</b>, un marché souvent perçu comme complexe, à en comprendre les codes et à développer durablement leur activité auprès des acteurs du service public.</p>
@@ -1385,7 +1546,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       <div class="pq-stat">
         <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         <div class="pq-stat-text">
-          <div class="pq-stat-number"><span class="pq-stat-count" data-target="10" data-duration="1000" data-suffix=" ans">0</span></div>
+          <div class="pq-stat-number"><span class="pq-stat-count" data-target="15" data-duration="1000" data-suffix=" ans">0</span></div>
           <div class="pq-stat-label">Au cœur du secteur public</div>
         </div>
       </div>
@@ -1407,122 +1568,119 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
     <div class="section-head reveal">
       <span class="eyebrow" style="color:var(--rouge);">Dernière étape</span>
       <h2 class="h-lg" style="color:#fff;">Réservez votre diagnostic</h2>
-      <p class="lede">Huit questions avant de fixer un créneau, nous arrivons déjà préparés.</p>
+      <p class="lede">Cinq questions pour cerner votre profil, avant de fixer un créneau.</p>
     </div>
     <div class="diag-box reveal">
       <div class="diag-progress">
-        <span id="dp1"><i></i></span><span id="dp2"><i></i></span><span id="dp3"><i></i></span><span id="dp4"><i></i></span><span id="dp5"><i></i></span><span id="dp6"><i></i></span><span id="dp7"><i></i></span><span id="dp8"><i></i></span>
+        <span id="dp1"><i></i></span><span id="dp2"><i></i></span><span id="dp3"><i></i></span><span id="dp4"><i></i></span><span id="dp5"><i></i></span>
       </div>
 
       <div class="diag-step active" id="dstep1">
         <div class="diag-q">1. Où en est votre entreprise avec le secteur public ?</div>
         <div class="diag-options">
           <button class="diag-opt" data-step="1" data-idx="0">Nous n'avons jamais vendu au secteur public</button>
-          <button class="diag-opt" data-step="1" data-idx="1">Nous avons essayé sans succès</button>
-          <button class="diag-opt" data-step="1" data-idx="2">Nous avons déjà quelques clients publics</button>
-          <button class="diag-opt" data-step="1" data-idx="3">Le secteur public représente déjà une part importante de notre activité</button>
+          <button class="diag-opt" data-step="1" data-idx="1">Nous avons déjà essayé</button>
+          <button class="diag-opt" data-step="1" data-idx="2">Nous avons remporté quelques marchés</button>
+          <button class="diag-opt" data-step="1" data-idx="3">Le secteur public représente déjà une activité importante</button>
         </div>
       </div>
 
       <div class="diag-step" id="dstep2">
         <div class="diag-q">2. Quel est votre objectif principal ?</div>
         <div class="diag-options">
-          <button class="diag-opt" data-step="2" data-idx="0">Décrocher nos premiers clients publics</button>
-          <button class="diag-opt" data-step="2" data-idx="1">Accélérer notre développement</button>
-          <button class="diag-opt" data-step="2" data-idx="2">Répondre à davantage d'appels d'offres</button>
-          <button class="diag-opt" data-step="2" data-idx="3">Structurer une véritable stratégie secteur public</button>
+          <button class="diag-opt" data-step="2" data-idx="0">Trouver mes premiers clients publics</button>
+          <button class="diag-opt" data-step="2" data-idx="1">Répondre à davantage d'appels d'offres</button>
+          <button class="diag-opt" data-step="2" data-idx="2">Structurer ma stratégie secteur public</button>
+          <button class="diag-opt" data-step="2" data-idx="3">Développer mon réseau d'acheteurs publics</button>
+          <button class="diag-opt" data-step="2" data-idx="4">Accélérer ma croissance</button>
         </div>
       </div>
 
       <div class="diag-step" id="dstep3">
-        <div class="diag-q">3. Qui s'occupe aujourd'hui du développement commercial public ?</div>
+        <div class="diag-q">3. Quelle est votre principale difficulté ?</div>
         <div class="diag-options">
-          <button class="diag-opt" data-step="3" data-idx="0">Personne</button>
-          <button class="diag-opt" data-step="3" data-idx="1">Le dirigeant</button>
-          <button class="diag-opt" data-step="3" data-idx="2">Un commercial</button>
-          <button class="diag-opt" data-step="3" data-idx="3">Une équipe dédiée</button>
+          <button class="diag-opt" data-step="3" data-idx="0">Je ne sais pas où trouver les opportunités</button>
+          <button class="diag-opt" data-step="3" data-idx="1">Les appels d'offres me semblent complexes</button>
+          <button class="diag-opt" data-step="3" data-idx="2">Je manque de temps</button>
+          <button class="diag-opt" data-step="3" data-idx="3">Je ne connais pas les acheteurs publics</button>
+          <button class="diag-opt" data-step="3" data-idx="4">Je manque de méthode commerciale</button>
         </div>
       </div>
 
       <div class="diag-step" id="dstep4">
-        <div class="diag-q">4. Quelle est votre principale difficulté ?</div>
+        <div class="diag-q">4. Avez-vous déjà remporté un marché public ?</div>
         <div class="diag-options">
-          <button class="diag-opt" data-step="4" data-idx="0">Identifier les bonnes opportunités</button>
-          <button class="diag-opt" data-step="4" data-idx="1">Trouver les bons interlocuteurs</button>
-          <button class="diag-opt" data-step="4" data-idx="2">Convaincre les décideurs publics</button>
-          <button class="diag-opt" data-step="4" data-idx="3">Répondre aux appels d'offres</button>
-          <button class="diag-opt" data-step="4" data-idx="4">Manque de temps</button>
-          <button class="diag-opt" data-step="4" data-idx="5">Nous ne savons pas par où commencer</button>
+          <button class="diag-opt" data-step="4" data-idx="0">Oui régulièrement</button>
+          <button class="diag-opt" data-step="4" data-idx="1">Oui occasionnellement</button>
+          <button class="diag-opt" data-step="4" data-idx="2">Une seule fois</button>
+          <button class="diag-opt" data-step="4" data-idx="3">Non jamais</button>
         </div>
       </div>
 
       <div class="diag-step" id="dstep5">
-        <div class="diag-q">5. Avez-vous déjà remporté un marché public ?</div>
+        <div class="diag-q">5. Combien de personnes composent votre entreprise ?</div>
         <div class="diag-options">
-          <button class="diag-opt" data-step="5" data-idx="0">Jamais</button>
-          <button class="diag-opt" data-step="5" data-idx="1">1 à 5</button>
-          <button class="diag-opt" data-step="5" data-idx="2">Plus de 5</button>
-          <button class="diag-opt" data-step="5" data-idx="3">Régulièrement</button>
+          <button class="diag-opt" data-step="5" data-idx="0">1 à 5 salariés</button>
+          <button class="diag-opt" data-step="5" data-idx="1">6 à 20 salariés</button>
+          <button class="diag-opt" data-step="5" data-idx="2">21 à 50 salariés</button>
+          <button class="diag-opt" data-step="5" data-idx="3">51 à 250 salariés</button>
+          <button class="diag-opt" data-step="5" data-idx="4">Plus de 250 salariés</button>
         </div>
-      </div>
-
-      <div class="diag-step" id="dstep6">
-        <div class="diag-q">6. Quel est votre chiffre d'affaires annuel ?</div>
-        <div class="diag-options">
-          <button class="diag-opt" data-step="6" data-idx="0">&lt; 500 k€</button>
-          <button class="diag-opt" data-step="6" data-idx="1">500 k€ à 2 M€</button>
-          <button class="diag-opt" data-step="6" data-idx="2">2 à 10 M€</button>
-          <button class="diag-opt" data-step="6" data-idx="3">+10 M€</button>
-        </div>
-      </div>
-
-      <div class="diag-step" id="dstep7">
-        <div class="diag-q">7. Combien de temps êtes-vous prêt à consacrer au développement du secteur public ?</div>
-        <div class="diag-options">
-          <button class="diag-opt" data-step="7" data-idx="0">Quelques heures par mois</button>
-          <button class="diag-opt" data-step="7" data-idx="1">1 jour par semaine</button>
-          <button class="diag-opt" data-step="7" data-idx="2">Plusieurs jours par semaine</button>
-          <button class="diag-opt" data-step="7" data-idx="3">Nous voulons externaliser</button>
-        </div>
-      </div>
-
-      <div class="diag-step" id="dstep8">
-        <div class="diag-q">8. Quelle est votre priorité dans les 12 prochains mois ?</div>
-        <div class="diag-options">
-          <button class="diag-opt" data-step="8" data-idx="0">Gagner mes premiers marchés</button>
-          <button class="diag-opt" data-step="8" data-idx="1">Doubler mon activité publique</button>
-          <button class="diag-opt" data-step="8" data-idx="2">Structurer une équipe</button>
-          <button class="diag-opt" data-step="8" data-idx="3">Devenir un acteur incontournable</button>
-        </div>
-      </div>
-
-      <div class="diag-step" id="dstepContact">
-        <div class="diag-q">Vos coordonnées</div>
-        <form id="diagContactForm">
-          <div class="diag-form-grid">
-            <div class="diag-field"><label for="dcNom">Nom</label><input type="text" id="dcNom" required></div>
-            <div class="diag-field"><label for="dcEntreprise">Entreprise</label><input type="text" id="dcEntreprise" required></div>
-            <div class="diag-field"><label for="dcFonction">Fonction</label><input type="text" id="dcFonction" required></div>
-            <div class="diag-field"><label for="dcEmail">Email</label><input type="email" id="dcEmail" required></div>
-            <div class="diag-field" style="grid-column:1/-1;"><label for="dcTel">Téléphone</label><input type="tel" id="dcTel" required></div>
-          </div>
-          <button type="submit" class="btn btn-primary" style="background:#fff; color:var(--bleu-france); width:100%; justify-content:center; margin-top:8px;">Découvrir mon profil</button>
-        </form>
       </div>
 
       <div class="diag-step" id="dstepFinal">
         <div class="diag-final">
-          <div class="diag-result-emoji" id="diagResultEmoji">🌱</div>
-          <h3 id="diagResultTitle">Explorateur</h3>
+          <div class="diag-result-label">Votre profil</div>
+          <div class="diag-result-title-row">
+            <span class="diag-result-dot" id="diagResultDot"></span>
+            <h3 id="diagResultTitle">Explorateur Public</h3>
+          </div>
+          <div class="diag-score">
+            <svg viewBox="0 0 100 100" class="diag-score-ring">
+              <circle cx="50" cy="50" r="44" class="diag-score-bg"></circle>
+              <circle cx="50" cy="50" r="44" class="diag-score-fill" id="diagScoreFill"></circle>
+            </svg>
+            <div class="diag-score-num"><span id="diagScoreNum">0</span><small>/100</small></div>
+          </div>
           <p id="diagResultDesc">—</p>
-          <div class="diag-packs-label" style="font-size:13px; letter-spacing:.03em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:4px;">➡️ Packs recommandés</div>
+
+          <div class="diag-priorities">
+            <div class="diag-priorities-label">Vos priorités</div>
+            <ul id="diagResultPriorities"></ul>
+          </div>
+
+          <div class="diag-packs-label">Accompagnements recommandés</div>
           <ul class="diag-packs" id="diagResultPacks"></ul>
+
           <div>
-            <a href="#" class="btn btn-primary">Choisir un créneau</a>
+            <button type="button" class="btn btn-primary" id="diagOpenContact">Réserver mon diagnostic stratégique →</button>
           </div>
           <div class="diag-back" id="diagRestart" style="display:block; margin-top:18px; cursor:pointer;">↺ Refaire le diagnostic</div>
         </div>
       </div>
+
+      <div class="diag-step" id="dstepContact">
+        <div class="diag-q" style="text-align:center;">Réservez votre diagnostic stratégique de 30 minutes avec Yoann Perez.</div>
+        <form id="diagContactForm">
+          <div class="diag-form-grid">
+            <div class="diag-field"><label for="dcNom">Nom</label><input type="text" id="dcNom" required></div>
+            <div class="diag-field"><label for="dcEntreprise">Entreprise</label><input type="text" id="dcEntreprise" required></div>
+            <div class="diag-field"><label for="dcTel">Téléphone</label><input type="tel" id="dcTel" required></div>
+            <div class="diag-field"><label for="dcEmail">Email</label><input type="email" id="dcEmail" required></div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="background:#fff; color:var(--bleu-france); width:100%; justify-content:center; margin-top:8px;">Confirmer ma demande</button>
+        </form>
+        <div class="diag-back" id="diagBackToResult" style="display:block; margin-top:18px; cursor:pointer; text-align:center;">← Revenir à mon profil</div>
+      </div>
+
+      <div class="diag-step" id="dstepThanks">
+        <div class="diag-final">
+          <div class="diag-result-emoji">✅</div>
+          <h3>Demande bien reçue</h3>
+          <p>Merci ! Yoann vous recontacte sous 24h ouvrées pour fixer votre créneau de 30 minutes.</p>
+        </div>
+      </div>
+
       <div class="diag-back" id="diagBack" style="display:none; cursor:pointer;">← Revenir à la question précédente</div>
     </div>
   </div>
@@ -1537,7 +1695,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       <p class="lede">Des lectures de quelques minutes, classées par thème, pour mieux comprendre le secteur public et passer à l'action.</p>
     </div>
     <div class="lib-doodle">
-      <svg viewBox="0 0 60 54" class="lib-doodle-arrow"><path d="M52,6 C40,10 22,22 11,40 M11,40 L20,35 M11,40 L16,48" fill="none" stroke="var(--rouge)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 60 54" class="lib-doodle-arrow"><path d="M56,8 C46,11 27,21 15,41 M15,41 L25,37 M15,41 L19,50" fill="none" stroke="var(--rouge)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span class="lib-doodle-text">Des contenus concrets,<br>pour avancer plus vite.</span>
     </div>
     <div class="filters" id="libFilters"></div>
@@ -1630,6 +1788,66 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
 
 
 
+<div class="lib-modal" id="legalModal">
+  <div class="lib-modal-box">
+    <button class="lib-modal-close" id="legalModalClose" aria-label="Fermer">×</button>
+    <h3 class="lib-modal-title">Mentions légales</h3>
+    <div class="lib-modal-body">
+      <h4>Éditeur du site</h4>
+      <p>Le présent site est édité par :<br><b>GovSales</b></p>
+      <p>
+        Forme juridique : [EURL / SASU]<br>
+        Capital social : [Montant du capital]<br>
+        Siège social : [Adresse complète]<br>
+        SIREN : [Numéro SIREN]<br>
+        RCS : [Ville d'immatriculation]<br>
+        Numéro de TVA intracommunautaire : [Numéro TVA]<br>
+        Email : <a href="mailto:relations@govsales.fr">relations@govsales.fr</a><br>
+        Téléphone : [Numéro de téléphone]<br>
+        Directeur de la publication : Yoann Perez, Fondateur &amp; Consultant en stratégie commerciale publique.
+      </p>
+
+      <h4>Activité</h4>
+      <p>GovSales accompagne les entreprises privées dans le développement de leur activité auprès des acteurs du secteur public (collectivités territoriales, établissements publics, administrations, hôpitaux, organismes parapublics, etc.).<br>
+      Les informations diffusées sur ce site sont fournies à titre indicatif et n'ont pas de valeur contractuelle.</p>
+
+      <h4>Hébergement</h4>
+      <p>Le site est hébergé par :<br>
+      <b>OVHcloud</b><br>
+      SAS au capital de 50 000 000 €<br>
+      2 rue Kellermann<br>
+      59100 Roubaix – France<br>
+      Téléphone : 1007<br>
+      Site web : <a href="https://www.ovhcloud.com" target="_blank" rel="noopener">www.ovhcloud.com</a></p>
+
+      <h4>Propriété intellectuelle</h4>
+      <p>L'ensemble des contenus présents sur ce site, incluant notamment les textes, images, illustrations, photographies, logos, icônes, graphismes, vidéos, documents téléchargeables et éléments visuels, est protégé par les dispositions du Code de la propriété intellectuelle.<br>
+      Toute reproduction, représentation, diffusion, modification, adaptation ou exploitation, totale ou partielle, sans autorisation écrite préalable de GovSales est strictement interdite.<br>
+      La marque GovSales ainsi que son identité visuelle sont la propriété exclusive de leur titulaire.</p>
+
+      <h4>Responsabilité</h4>
+      <p>GovSales s'efforce d'assurer l'exactitude et la mise à jour des informations publiées sur le site. Toutefois, aucune garantie n'est donnée quant à l'exhaustivité, l'exactitude ou l'actualité des informations mises à disposition.<br>
+      L'utilisateur reconnaît utiliser les informations du site sous sa responsabilité exclusive.<br>
+      GovSales ne pourra être tenu responsable des dommages directs ou indirects résultant de l'utilisation du site ou de l'impossibilité d'y accéder.</p>
+
+      <h4>Liens hypertextes</h4>
+      <p>Le site peut contenir des liens vers des sites tiers.<br>
+      GovSales n'exerce aucun contrôle sur ces sites et décline toute responsabilité concernant leur contenu, leur disponibilité ou leurs pratiques.</p>
+
+      <h4>Données personnelles</h4>
+      <p>Les modalités de collecte et de traitement des données personnelles sont détaillées dans la Politique de confidentialité accessible depuis le site.</p>
+
+      <h4>Cookies</h4>
+      <p>Le site est susceptible d'utiliser des cookies afin d'améliorer l'expérience utilisateur, réaliser des statistiques de fréquentation et mesurer la performance des actions de communication.<br>
+      L'utilisateur peut accepter, refuser ou personnaliser l'utilisation des cookies via le bandeau de gestion prévu à cet effet.</p>
+
+      <h4>Droit applicable</h4>
+      <p>Les présentes mentions légales sont soumises au droit français.<br>
+      En cas de litige, et après recherche d'une solution amiable, les tribunaux français seront seuls compétents.</p>
+    </div>
+  </div>
+</div>
+
 <div class="lib-modal" id="libModal">
   <div class="lib-modal-box">
     <button class="lib-modal-close" id="libModalClose" aria-label="Fermer">×</button>
@@ -1640,16 +1858,11 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
 </div>
 
 <!-- ============ FOOTER ============ -->
-<footer>
+<footer id="contact">
   <div class="wrap">
     <div class="footer-top">
       
       <div class="footer-cols">
-        <div class="footer-col">
-          <h5>GovSales</h5>
-          <a href="#">À propos</a>
-          <a href="#diagnostic">Diagnostic gratuit</a>
-        </div>
         <div class="footer-col">
           <h5>Contact</h5>
           <a href="mailto:relations@govsales.fr">relations@govsales.fr</a>
@@ -1658,8 +1871,8 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 GovSales — Accompagnement aux marchés publics</span>
-      <span>Mentions légales · Politique de confidentialité</span>
+      <span>© 2026 GovSales — Conseil en stratégie secteur public</span>
+      <span><a href="#" id="legalLink" style="color:inherit; text-decoration:underline; text-underline-offset:2px;">Mentions légales</a> · Politique de confidentialité</span>
     </div>
   </div>
 </footer>
@@ -2384,6 +2597,16 @@ document.getElementById('libModal').addEventListener('click', e=>{
 });
 document.getElementById('libMoreBtn').addEventListener('click', ()=>{ libExpanded = true; renderLib(document.querySelector('.filter-btn.active').dataset.cat); });
 renderLib("Tous");
+
+function closeLegalModal(){ document.getElementById('legalModal').classList.remove('show'); }
+document.getElementById('legalLink').addEventListener('click', e=>{
+  e.preventDefault();
+  document.getElementById('legalModal').classList.add('show');
+});
+document.getElementById('legalModalClose').addEventListener('click', closeLegalModal);
+document.getElementById('legalModal').addEventListener('click', e=>{
+  if(e.target.id === 'legalModal') closeLegalModal();
+});
 document.getElementById('libFilters').addEventListener('click', e=>{
   const btn = e.target.closest('.filter-btn');
   if(btn){
@@ -2397,20 +2620,22 @@ document.getElementById('libFilters').addEventListener('click', e=>{
 /* ============ DIAGNOSTIC ============ */
 let diagStep = 1;
 const diagAnswers = {};
+const TOTAL_Q = 5;
 
 function diagStepEl(n){
   if(n==='contact') return document.getElementById('dstepContact');
   if(n==='final') return document.getElementById('dstepFinal');
+  if(n==='thanks') return document.getElementById('dstepThanks');
   return document.getElementById('dstep'+n);
 }
 function goDiagStep(n){
   document.querySelectorAll('.diag-step').forEach(s=>s.classList.remove('active'));
   diagStepEl(n).classList.add('active');
-  const progressN = (n==='contact'||n==='final') ? 8 : n-1;
-  for(let i=1;i<=8;i++){
+  const progressN = (typeof n==='number') ? n-1 : TOTAL_Q;
+  for(let i=1;i<=TOTAL_Q;i++){
     document.getElementById('dp'+i).classList.toggle('done', i<=progressN);
   }
-  document.getElementById('diagBack').style.display = (n!==1 && n!=='final') ? 'block' : 'none';
+  document.getElementById('diagBack').style.display = (n!==1 && typeof n==='number') ? 'block' : 'none';
   diagStep = n;
 }
 document.querySelectorAll('.diag-opt').forEach(btn=>{
@@ -2419,71 +2644,100 @@ document.querySelectorAll('.diag-opt').forEach(btn=>{
     document.querySelectorAll(`.diag-opt[data-step="${step}"]`).forEach(b=>b.classList.remove('sel'));
     btn.classList.add('sel');
     diagAnswers[step] = parseInt(btn.dataset.idx);
-    setTimeout(()=> goDiagStep(step<8 ? step+1 : 'contact'), 280);
+    setTimeout(()=>{
+      if(step < TOTAL_Q){ goDiagStep(step+1); }
+      else { computeDiagResult(); goDiagStep('final'); }
+    }, 280);
   });
 });
 document.getElementById('diagBack').addEventListener('click', ()=>{
-  if(diagStep==='contact') goDiagStep(8);
-  else if(typeof diagStep==='number' && diagStep>1) goDiagStep(diagStep-1);
+  if(typeof diagStep==='number' && diagStep>1) goDiagStep(diagStep-1);
 });
 
-const diagProfiles = {
-  explorateur:{
-    emoji:'🌱', title:'Explorateur',
-    desc:"Vous découvrez le marché public. Votre priorité est de construire une stratégie claire avant d'investir du temps.",
-    packs:["Intelligence Marché","Positionnement Public"]
-  },
-  accelerateur:{
-    emoji:'🚀', title:'Accélérateur',
-    desc:"Vous avez déjà des références mais votre développement manque de méthode.",
-    packs:["Réseau","Influence","Stratégie commerciale"]
-  },
-  leader:{
-    emoji:'🏛', title:'Leader Public',
-    desc:"Le secteur public est déjà un levier de croissance. L'objectif est maintenant de changer d'échelle.",
-    packs:["Accompagnement Premium","Partenariats","Pilotage stratégique"]
+// Barèmes de score (question 1, 4 et 5 uniquement — questions 2 et 3 orientent le contenu, pas le score)
+const scoreQ1 = [0, 11, 22, 34];
+const scoreQ4 = [33, 22, 11, 0];
+const scoreQ5 = [7, 14, 20, 27, 33];
+
+const diagProfiles = [
+  {key:'explorateur', min:0, max:19, color:'#3b82f6', title:'Explorateur Public',
+    desc:"Votre entreprise découvre les opportunités du secteur public. Une stratégie claire vous fera gagner un temps précieux avant d'investir davantage.",
+    priorities:["Identifier les bons acteurs publics à cibler","Comprendre les codes des marchés publics","Structurer une première approche commerciale"],
+    packs:["Intelligence Marché","Positionnement Public"]},
+  {key:'batisseur', min:20, max:39, color:'#22c55e', title:'Bâtisseur Public',
+    desc:"Vous avez déjà initié une démarche vers le secteur public, mais elle reste à structurer pour porter pleinement ses fruits.",
+    priorities:["Structurer votre approche commerciale","Construire votre crédibilité auprès des acheteurs","Professionnaliser vos réponses aux appels d'offres"],
+    packs:["Positionnement Public","Réponse aux Appels d'Offres"]},
+  {key:'developpeur', min:40, max:59, color:'#f97316', title:'Développeur Public',
+    desc:"Votre entreprise remporte déjà des marchés publics et souhaite maintenant accélérer son développement sur ce secteur.",
+    priorities:["Accélérer votre développement commercial","Diversifier vos acheteurs publics","Optimiser votre taux de réussite aux AO"],
+    packs:["Réponse aux Appels d'Offres","Pilotage Commercial"]},
+  {key:'accelerateur', min:60, max:79, color:'#ef4444', title:'Accélérateur Public',
+    desc:"Le secteur public est devenu un axe de croissance pour votre entreprise. L'enjeu est désormais d'industrialiser votre approche.",
+    priorities:["Industrialiser votre prospection publique","Renforcer votre réseau d'acheteurs","Répondre à davantage d'appels d'offres"],
+    packs:["Pilotage Commercial","Pack Réseau"]},
+  {key:'partenaire', min:80, max:100, color:'#a78bfa', title:'Partenaire Public',
+    desc:"Le secteur public est déjà un levier stratégique de croissance pour votre entreprise. Consolidez cette position et développez de nouveaux territoires.",
+    priorities:["Consolider vos positions acquises","Développer de nouveaux territoires publics","Fidéliser vos acheteurs clés"],
+    packs:["Pack Réseau","Pack Influence"]}
+];
+
+let diagScoreTotal = 0;
+let diagCurrentProfile = null;
+
+function computeDiagResult(){
+  const total = (scoreQ1[diagAnswers[1]]||0) + (scoreQ4[diagAnswers[4]]||0) + (scoreQ5[diagAnswers[5]]||0);
+  diagScoreTotal = Math.round(total);
+  const profile = diagProfiles.find(p=> diagScoreTotal>=p.min && diagScoreTotal<=p.max) || diagProfiles[0];
+  diagCurrentProfile = profile;
+
+  document.getElementById('diagResultDot').style.background = profile.color;
+  document.getElementById('diagResultTitle').textContent = profile.title;
+  document.getElementById('diagResultDesc').textContent = profile.desc;
+  document.getElementById('diagResultPriorities').innerHTML = profile.priorities.map(x=>`<li><b>✓</b>${x}</li>`).join('');
+  document.getElementById('diagResultPacks').innerHTML = profile.packs.map(x=>`<li>${x}</li>`).join('');
+
+  const scoreNum = document.getElementById('diagScoreNum');
+  const scoreFill = document.getElementById('diagScoreFill');
+  const circumference = 276.5;
+  scoreFill.style.transition = 'none';
+  scoreFill.style.strokeDashoffset = circumference;
+  void scoreFill.offsetWidth;
+  scoreFill.style.transition = 'stroke-dashoffset 1.1s cubic-bezier(.16,1,.3,1)';
+  requestAnimationFrame(()=>{ scoreFill.style.strokeDashoffset = circumference * (1 - diagScoreTotal/100); });
+
+  const dur = 1100; let start = null;
+  function frame(ts){
+    if(start===null) start = ts;
+    const p = Math.min((ts-start)/dur, 1);
+    scoreNum.textContent = Math.round(diagScoreTotal * (1-Math.pow(1-p,3)));
+    if(p<1) requestAnimationFrame(frame);
   }
-};
-function showDiagResult(key){
-  const p = diagProfiles[key];
-  document.getElementById('diagResultEmoji').textContent = p.emoji;
-  document.getElementById('diagResultTitle').textContent = p.title;
-  document.getElementById('diagResultDesc').textContent = p.desc;
-  document.getElementById('diagResultPacks').innerHTML = p.packs.map(x=>`<li>${x}</li>`).join('');
+  requestAnimationFrame(frame);
 }
+
+document.getElementById('diagOpenContact').addEventListener('click', ()=> goDiagStep('contact'));
+document.getElementById('diagBackToResult').addEventListener('click', ()=> goDiagStep('final'));
+
 // Textes complets des questions/réponses, utilisés pour construire le récapitulatif envoyé par e-mail
 const diagQuestionsText = {
-  1: {q:"Où en est votre entreprise avec le secteur public ?", opts:["Nous n'avons jamais vendu au secteur public","Nous avons essayé sans succès","Nous avons déjà quelques clients publics","Le secteur public représente déjà une part importante de notre activité"]},
-  2: {q:"Quel est votre objectif principal ?", opts:["Décrocher nos premiers clients publics","Accélérer notre développement","Répondre à davantage d'appels d'offres","Structurer une véritable stratégie secteur public"]},
-  3: {q:"Qui s'occupe aujourd'hui du développement commercial public ?", opts:["Personne","Le dirigeant","Un commercial","Une équipe dédiée"]},
-  4: {q:"Quelle est votre principale difficulté ?", opts:["Identifier les bonnes opportunités","Trouver les bons interlocuteurs","Convaincre les décideurs publics","Répondre aux appels d'offres","Manque de temps","Nous ne savons pas par où commencer"]},
-  5: {q:"Avez-vous déjà remporté un marché public ?", opts:["Jamais","1 à 5","Plus de 5","Régulièrement"]},
-  6: {q:"Quel est votre chiffre d'affaires annuel ?", opts:["< 500 k€","500 k€ à 2 M€","2 à 10 M€","+10 M€"]},
-  7: {q:"Combien de temps êtes-vous prêt à consacrer au développement du secteur public ?", opts:["Quelques heures par mois","1 jour par semaine","Plusieurs jours par semaine","Nous voulons externaliser"]},
-  8: {q:"Quelle est votre priorité dans les 12 prochains mois ?", opts:["Gagner mes premiers marchés","Doubler mon activité publique","Structurer une équipe","Devenir un acteur incontournable"]}
+  1: {q:"Où en est votre entreprise avec le secteur public ?", opts:["Nous n'avons jamais vendu au secteur public","Nous avons déjà essayé","Nous avons remporté quelques marchés","Le secteur public représente déjà une activité importante"]},
+  2: {q:"Quel est votre objectif principal ?", opts:["Trouver mes premiers clients publics","Répondre à davantage d'appels d'offres","Structurer ma stratégie secteur public","Développer mon réseau d'acheteurs publics","Accélérer ma croissance"]},
+  3: {q:"Quelle est votre principale difficulté ?", opts:["Je ne sais pas où trouver les opportunités","Les appels d'offres me semblent complexes","Je manque de temps","Je ne connais pas les acheteurs publics","Je manque de méthode commerciale"]},
+  4: {q:"Avez-vous déjà remporté un marché public ?", opts:["Oui régulièrement","Oui occasionnellement","Une seule fois","Non jamais"]},
+  5: {q:"Combien de personnes composent votre entreprise ?", opts:["1 à 5 salariés","6 à 20 salariés","21 à 50 salariés","51 à 250 salariés","Plus de 250 salariés"]}
 };
 
 document.getElementById('diagContactForm').addEventListener('submit', (e)=>{
   e.preventDefault();
-  const scored = [1,2,3,5,6,7,8];
-  let total = 0;
-  scored.forEach(q=>{ total += (diagAnswers[q]||0); });
-  let profile;
-  if(total<=7) profile='explorateur';
-  else if(total<=14) profile='accelerateur';
-  else profile='leader';
-  showDiagResult(profile);
-  goDiagStep('final');
 
-  // --- Envoi automatique du récapitulatif du diagnostic par e-mail (via Web3Forms) ---
   const nom = document.getElementById('dcNom').value;
   const entreprise = document.getElementById('dcEntreprise').value;
-  const fonction = document.getElementById('dcFonction').value;
   const emailContact = document.getElementById('dcEmail').value;
   const tel = document.getElementById('dcTel').value;
 
   let recap = '';
-  for(let i=1; i<=8; i++){
+  for(let i=1; i<=TOTAL_Q; i++){
     const qData = diagQuestionsText[i];
     const idx = diagAnswers[i];
     const reponse = (idx !== undefined && qData.opts[idx] !== undefined) ? qData.opts[idx] : 'Non renseigné';
@@ -2491,15 +2745,15 @@ document.getElementById('diagContactForm').addEventListener('submit', (e)=>{
   }
 
   const payload = {
-    access_key: "COLLEZ_ICI_VOTRE_CLE_WEB3FORMS",
+    access_key: "4c430b41-d884-4a8e-b69e-f3ea4c4fb64c",
     subject: `Nouveau diagnostic GovSales — ${nom} (${entreprise})`,
     from_name: "Formulaire diagnostic — site GovSales",
     Nom: nom,
     Entreprise: entreprise,
-    Fonction: fonction,
     Email: emailContact,
     "Téléphone": tel,
-    "Profil déterminé": diagProfiles[profile].title,
+    "Score": diagScoreTotal + "/100",
+    "Profil déterminé": diagCurrentProfile ? diagCurrentProfile.title : '',
     "Récapitulatif des réponses": recap
   };
 
@@ -2508,6 +2762,8 @@ document.getElementById('diagContactForm').addEventListener('submit', (e)=>{
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(payload)
   }).catch(()=>{ /* l'expérience utilisateur n'est jamais bloquée même si l'envoi échoue */ });
+
+  goDiagStep('thanks');
 });
 document.getElementById('diagRestart').addEventListener('click', ()=>{
   Object.keys(diagAnswers).forEach(k=>delete diagAnswers[k]);
@@ -2515,6 +2771,170 @@ document.getElementById('diagRestart').addEventListener('click', ()=>{
   document.getElementById('diagContactForm').reset();
   goDiagStep(1);
 });
+</script>
+
+<div class="quicknav" id="quicknav">
+  <div class="quicknav-panel" id="quicknavPanel">
+    <div class="quicknav-panel-header"><b>Accès rapide</b><span>Découvrez GovSales en un clic</span></div>
+    <div class="quicknav-grid">
+        <a href="#hero" class="quicknav-card">
+          <span class="quicknav-card-icon quicknav-ic-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg></span>
+          <b>Accueil</b><span>Vue d'ensemble</span>
+        </a>
+        <a href="#chrono" class="quicknav-card">
+          <span class="quicknav-card-icon quicknav-ic-target"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
+          <b>Approche</b><span>Notre méthode</span>
+        </a>
+        <a href="#tarifs" class="quicknav-card">
+          <span class="quicknav-card-icon quicknav-ic-packs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+          <b>Packs</b><span>Les packs</span>
+        </a>
+        <a href="#bibliotheque" class="quicknav-card">
+          <span class="quicknav-card-icon quicknav-ic-ressources"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
+          <b>Ressources</b><span>Guides, articles, cas clients</span>
+        </a>
+        <a href="#pourquoi" class="quicknav-card">
+          <span class="quicknav-card-icon quicknav-ic-apropos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <b>À propos</b><span>Notre mission, notre histoire</span>
+        </a>
+        <a href="#contact" class="quicknav-card">
+          <span class="quicknav-card-icon quicknav-ic-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <b>Contact</b><span>Échangeons</span>
+        </a>
+    </div>
+    <a href="#diagnostic" class="quicknav-cta-row">
+      <span class="quicknav-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+      <span class="quicknav-cta-text"><b>Réserver un diagnostic</b><span>30 minutes avec Yoann Perez</span></span>
+      <svg class="quicknav-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+  <button class="quicknav-toggle" id="quicknavToggle" aria-label="Ouvrir le menu de raccourcis">
+    <svg class="quicknav-toggle-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>
+    <svg class="quicknav-toggle-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="quicknav-rail">
+      <a href="#hero" class="quicknav-rail-icon" aria-label="Accueil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>
+        <span>Accueil</span>
+      </a>
+      <a href="#chrono" class="quicknav-rail-icon" aria-label="Approche">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        <span>Approche</span>
+      </a>
+      <a href="#tarifs" class="quicknav-rail-icon" aria-label="Packs">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span>Packs</span>
+      </a>
+      <a href="#bibliotheque" class="quicknav-rail-icon" aria-label="Ressources">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        <span>Ressources</span>
+      </a>
+      <a href="#pourquoi" class="quicknav-rail-icon" aria-label="À propos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>À propos</span>
+      </a>
+      <a href="#contact" class="quicknav-rail-icon" aria-label="Contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span>Contact</span>
+      </a>
+      <a href="#diagnostic" class="quicknav-rail-icon quicknav-rail-cta" aria-label="Rdv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Rdv</span>
+      </a>
+  </div>
+</div>
+<div class="contact-float" id="contactFloat" tabindex="0">
+  <div class="contact-float-avatar">
+    <img src="data:image/jpeg;base64,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" alt="Yoann Perez">
+    <span class="contact-float-dot"></span>
+  </div>
+  <div class="contact-float-popup">
+    <button class="contact-float-close" id="contactFloatClose" aria-label="Fermer">&times;</button>
+    <div class="contact-float-popup-left">
+      <div class="contact-float-avatar contact-float-avatar-lg">
+        <img src="data:image/jpeg;base64,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" alt="Yoann Perez">
+        <span class="contact-float-dot"></span>
+      </div>
+      <div class="contact-float-info">
+        <b>Yoann Perez</b>
+        <span class="contact-float-role">Fondateur &amp; Consultant en stratégie commerciale publique</span>
+        <span class="contact-float-status"><i></i>Disponible pour échanger</span>
+        <a href="tel:0661643944" class="contact-float-link">📞 06 61 64 39 44</a>
+        <a href="mailto:relations@govsales.fr" class="contact-float-link">✉️ relations@govsales.fr</a>
+      </div>
+    </div>
+    <div class="contact-float-divider"></div>
+    <div class="contact-float-popup-right">
+      <a href="#diagnostic" class="btn btn-primary contact-float-cta">Parlons de votre projet →</a>
+      <a href="#diagnostic" class="contact-float-call">📅 Ou réservez un call</a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const card = document.getElementById('contactFloat');
+  let shown = false;
+  function checkScroll(){
+    if(shown) return;
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+    if(progress >= 0.25){
+      card.classList.add('show');
+      shown = true;
+      window.removeEventListener('scroll', checkScroll);
+    }
+  }
+  window.addEventListener('scroll', checkScroll, {passive:true});
+  checkScroll();
+
+  let hideTimer = null;
+  let manuallyClosed = false;
+  function openPopup(){
+    if(manuallyClosed) return;
+    clearTimeout(hideTimer);
+    card.classList.add('hovered');
+  }
+  function scheduleClose(){
+    hideTimer = setTimeout(()=>{ card.classList.remove('hovered'); manuallyClosed = false; }, 250);
+  }
+  card.addEventListener('mouseenter', openPopup);
+  card.addEventListener('mouseleave', scheduleClose);
+  card.addEventListener('focusin', openPopup);
+  card.addEventListener('focusout', scheduleClose);
+
+  document.getElementById('contactFloatClose').addEventListener('click', e=>{
+    e.stopPropagation();
+    clearTimeout(hideTimer);
+    card.classList.remove('hovered');
+    manuallyClosed = true;
+  });
+})();
+
+(function(){
+  const nav = document.getElementById('quicknav');
+  const toggle = document.getElementById('quicknavToggle');
+  let shown = false;
+  function checkScroll(){
+    if(shown) return;
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+    if(progress >= 0.12){
+      nav.classList.add('show');
+      shown = true;
+      window.removeEventListener('scroll', checkScroll);
+    }
+  }
+  window.addEventListener('scroll', checkScroll, {passive:true});
+  checkScroll();
+
+  toggle.addEventListener('click', ()=> nav.classList.toggle('open'));
+  document.addEventListener('click', e=>{
+    if(nav.classList.contains('open') && !nav.contains(e.target)) nav.classList.remove('open');
+  });
+  nav.querySelectorAll('.quicknav-card, .quicknav-cta-row').forEach(el=>{
+    el.addEventListener('click', ()=> nav.classList.remove('open'));
+  });
+})();
 </script>
 </body>
 </html>
