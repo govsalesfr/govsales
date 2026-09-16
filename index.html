@@ -777,7 +777,7 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 @media (max-width:640px){ .price-grid{grid-template-columns:1fr;} }
 .price-card{
   background:#fff; border:1px solid var(--gris-bordure); border-radius:16px; padding:18px 15px;
-  display:flex; flex-direction:column; transition:.3s var(--ease);
+  display:flex; flex-direction:column; transition:.3s var(--ease); flex:1; width:100%;
   position:relative; overflow:hidden;
 }
 .price-card::before{
@@ -787,10 +787,11 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-card:hover::before{transform:scaleX(1);}
 .price-card:hover{transform:translateY(-5px); box-shadow:0 24px 50px -22px rgba(16,24,40,.18);}
 .price-icon{font-size:19px; margin-bottom:9px; text-align:center;}
-.price-card h4{font-size:13.5px; margin-bottom:4px; line-height:1.3; min-height:38px;}
-.price-tag{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--bleu-france); margin-bottom:5px;}
-.price-sub{font-size:11px; color:var(--rouge); margin-bottom:12px; line-height:1.4; min-height:44px;}
-.price-list{list-style:none; font-size:11px; color:var(--gris-texte); line-height:1.7; margin-top:auto; padding-top:11px; border-top:1px solid var(--gris-bordure);}
+.price-card-top{min-height:169px;}
+.price-card h4{font-size:13.5px; margin-bottom:4px; line-height:1.3; text-align:center;}
+.price-tag{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--bleu-france); margin-bottom:5px; text-align:center;}
+.price-sub{font-size:11px; color:var(--rouge); margin-bottom:12px; line-height:1.4; text-align:center;}
+.price-list{list-style:none; font-size:11px; color:var(--gris-texte); line-height:1.7; padding-top:11px; border-top:1px solid var(--gris-bordure);}
 .price-list li{padding-left:18px; position:relative;}
 .price-list li::before{content:"✔️"; position:absolute; left:0; top:0; font-size:9px; line-height:1.7;}
 
@@ -822,7 +823,7 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-detail-link:hover{color:var(--rouge);}
 .price-note{font-size:12.5px; color:var(--gris-mid); margin-top:20px; text-align:center;}
 
-.price-track-wrap{display:flex; align-items:flex-start; gap:0; margin:24px 0 20px;}
+.price-track-wrap{display:flex; align-items:stretch; gap:0; margin:24px 0 20px;}
 .price-track{display:flex; flex-direction:column; align-items:center; gap:8px; flex:1; min-width:0;}
 .price-track-num{
   width:38px; height:38px; border-radius:50%; background:#1e3a8a; color:#fff; flex:none;
@@ -830,9 +831,9 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 }
 .price-track-num-light{background:#60a5fa;}
 .price-track-num-final{background:var(--rouge);}
-.price-track-label{font-family:var(--font-display); font-size:11px; font-weight:700; color:var(--gris-texte); text-align:center; line-height:1.35; margin-bottom:6px;}
+.price-track-label{font-family:var(--font-display); font-size:14px; font-weight:700; color:var(--gris-texte); text-align:center; line-height:1.35; margin-bottom:6px;}
 .price-track-arrow{
-  flex:none; width:26px; padding-top:8px; text-align:center; color:var(--gris-bordure); font-size:17px; font-weight:700;
+  flex:none; width:26px; padding-top:8px; text-align:center; color:var(--bleu-france); font-size:17px; font-weight:700;
 }
 @media (max-width:960px){
   .price-track-wrap{flex-wrap:wrap;}
@@ -1125,6 +1126,159 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
 .quicknav-cta-arrow{width:16px; height:16px; color:var(--gris-mid); flex:none;}
 
 @media (max-width:900px){ .quicknav{display:none;} }
+/* ============ BOOKING MODAL ============ */
+.booking-modal{
+  position:fixed; inset:0; z-index:2000; background:rgba(8,10,18,.7); backdrop-filter:blur(4px);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  opacity:0; pointer-events:none; transition:opacity .3s var(--ease);
+}
+.booking-modal.show{opacity:1; pointer-events:auto;}
+.booking-box{
+  background:#fff; border-radius:22px; width:100%; max-width:1240px; max-height:92vh;
+  overflow-y:auto; position:relative; box-shadow:0 40px 90px -20px rgba(0,0,0,.5);
+  transform:scale(.96) translateY(10px); transition:transform .3s var(--ease);
+}
+.booking-modal.show .booking-box{transform:scale(1) translateY(0);}
+.booking-close{
+  position:absolute; top:16px; right:20px; z-index:5; width:34px; height:34px; border-radius:50%;
+  background:rgba(255,255,255,.15); color:#fff; border:none; font-size:20px; cursor:pointer; transition:.2s;
+}
+.booking-close:hover{background:rgba(255,255,255,.28);}
+.booking-topbar{
+  display:flex; align-items:center; justify-content:flex-end; gap:8px; padding:14px 24px;
+  background:var(--bleu-france); color:rgba(255,255,255,.6); font-size:12px;
+}
+.booking-topbar svg{width:14px; height:14px;}
+.booking-body{display:flex; align-items:stretch;}
+
+.booking-side{
+  width:320px; flex:none; background:var(--bleu-france); color:#fff; padding:32px 28px;
+  display:flex; flex-direction:column; justify-content:space-between; gap:30px;
+}
+.booking-logo{width:38px; height:38px; border-radius:11px; background:rgba(255,104,53,.18); display:flex; align-items:center; justify-content:center; margin-bottom:20px;}
+.booking-logo svg{width:19px; height:19px;}
+.booking-side-tag{font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:rgba(255,255,255,.5); line-height:1.5; margin-bottom:18px;}
+.booking-side-title{font-family:var(--font-display); font-size:26px; font-weight:700; line-height:1.2; margin-bottom:16px;}
+.booking-side-title span{color:var(--rouge);}
+.booking-side-desc{font-size:13.5px; color:rgba(255,255,255,.65); line-height:1.6; margin-bottom:22px;}
+.booking-side-list{list-style:none; display:flex; flex-direction:column; gap:13px;}
+.booking-side-list li{display:flex; align-items:center; gap:11px; font-size:13px; font-weight:600; color:rgba(255,255,255,.9);}
+.booking-side-list li svg{width:17px; height:17px; color:var(--rouge); flex:none;}
+.booking-side-photo{display:flex; align-items:center; gap:12px; margin-bottom:18px;}
+.booking-side-photo img{width:56px; height:56px; border-radius:50%; object-fit:cover; flex:none;}
+.booking-side-photo-info b{display:block; font-family:var(--font-display); font-size:13.5px;}
+.booking-side-photo-info span{font-size:11px; color:rgba(255,255,255,.55); line-height:1.3; display:block;}
+.booking-side-quote{border-top:1px solid rgba(255,255,255,.15); padding-top:16px;}
+.booking-side-quote p{font-family:'Caveat', cursive; font-size:17px; font-weight:600; line-height:1.4; color:rgba(255,255,255,.85);}
+
+.booking-main{flex:1; padding:32px 40px 28px; min-width:0;}
+.booking-steps{display:flex; align-items:center; gap:8px; margin-bottom:26px; flex-wrap:wrap;}
+.booking-step-tab{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--gris-mid); white-space:nowrap;}
+.booking-step-tab.active{color:var(--rouge);}
+.booking-step-tab.done{color:var(--bleu-france);}
+.booking-step-num{
+  width:22px; height:22px; border-radius:50%; background:var(--gris-fond); color:var(--gris-mid);
+  display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex:none;
+}
+.booking-step-tab.active .booking-step-num{background:var(--rouge); color:#fff;}
+.booking-step-tab.done .booking-step-num{background:var(--bleu-france); color:#fff;}
+.booking-step-sep{width:14px; height:14px; color:var(--gris-bordure); flex:none;}
+
+.booking-panel{display:none;}
+.booking-panel.active{display:block;}
+.booking-main h2{font-family:var(--font-display); font-size:24px; font-weight:700; color:var(--gris-texte); margin-bottom:6px;}
+.booking-panel-sub{font-size:13.5px; color:var(--gris-mid); margin-bottom:24px;}
+
+.booking-qgrid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:24px;}
+.booking-q-title{font-size:14px; font-weight:700; color:var(--gris-texte); margin-bottom:10px;}
+.booking-qcol .booking-q-title:not(:first-child){margin-top:20px;}
+.booking-opts{display:flex; flex-direction:column; gap:10px;}
+.booking-opts-4, .booking-opts-2col, .booking-opts-2x2{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.booking-opt{
+  position:relative; display:flex; align-items:center; gap:11px; text-align:left;
+  border:1.5px solid var(--gris-bordure); border-radius:12px; padding:14px 16px; background:#fff;
+  transition:.2s var(--ease); cursor:pointer;
+}
+.booking-opt:hover{border-color:var(--rouge);}
+.booking-opt.selected{border-color:var(--rouge); background:#fff5f0;}
+.booking-opt svg{width:19px; height:19px; color:var(--gris-mid); flex:none;}
+.booking-opt.selected svg{color:var(--rouge);}
+.booking-opt b{display:block; font-size:12.5px; font-weight:700; color:var(--gris-texte); line-height:1.3;}
+.booking-opt small{font-size:10.5px; color:var(--gris-mid); font-weight:500;}
+.booking-opt-check{
+  position:absolute; top:8px; right:8px; width:17px; height:17px; border-radius:50%; background:var(--rouge); color:#fff;
+  font-size:10px; display:flex; align-items:center; justify-content:center; opacity:0; transform:scale(.5); transition:.2s var(--ease); font-style:normal;
+}
+.booking-opt.selected .booking-opt-check{opacity:1; transform:scale(1);}
+.booking-opt-sm{padding:12px 12px;}
+.booking-opt-wide{grid-column:1 / -1;}
+
+.booking-continue{width:100%; justify-content:center; margin-top:6px;}
+.booking-continue:disabled{opacity:.4; cursor:not-allowed;}
+.booking-back-link{text-align:center; font-size:13px; color:var(--gris-mid); margin-top:14px; cursor:pointer;}
+.booking-back-link:hover{color:var(--rouge);}
+
+.booking-cal-wrap{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:22px;}
+.booking-cal-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; font-family:var(--font-display); font-weight:700; font-size:14px; color:var(--gris-texte); text-transform:capitalize;}
+.booking-cal-nav{width:28px; height:28px; border-radius:8px; border:1px solid var(--gris-bordure); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+.booking-cal-nav:hover{border-color:var(--rouge);}
+.booking-cal-nav svg{width:15px; height:15px;}
+.booking-cal-dow{display:grid; grid-template-columns:repeat(7,1fr); text-align:center; font-size:11px; font-weight:700; color:var(--gris-mid); margin-bottom:6px;}
+.booking-cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:3px;}
+.booking-cal-day{
+  aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:9px;
+  font-size:12.5px; font-weight:600; color:var(--gris-texte); cursor:pointer; transition:.15s;
+}
+.booking-cal-day:hover{background:var(--gris-fond);}
+.booking-cal-day.disabled{color:var(--gris-bordure); cursor:default; pointer-events:none;}
+.booking-cal-day.selected{background:var(--rouge); color:#fff;}
+.booking-cal-day.empty{visibility:hidden;}
+.booking-slots-date{font-family:var(--font-display); font-weight:700; font-size:14px; color:var(--gris-texte); margin-bottom:12px;}
+.booking-slots-priority-label{display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--rouge); background:#fff3ea; border-radius:10px; padding:8px 12px; margin-bottom:8px;}
+.booking-slots-priority-label svg{width:14px; height:14px;}
+.booking-slots-priority-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:16px;}
+.booking-slot-priority{background:#fff3ea; border:1.5px solid #ffb388; color:var(--rouge);}
+.booking-slots-label{font-size:11.5px; font-weight:700; color:var(--gris-mid); text-transform:uppercase; letter-spacing:.03em; margin-bottom:8px;}
+.booking-slots-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:16px;}
+.booking-slot{
+  border:1.5px solid var(--gris-bordure); border-radius:10px; padding:10px 8px; text-align:center;
+  font-size:13px; font-weight:600; color:var(--gris-texte); cursor:pointer; transition:.15s;
+}
+.booking-slot:hover{border-color:var(--rouge);}
+.booking-slot.selected{background:var(--rouge); border-color:var(--rouge); color:#fff;}
+.booking-tz{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--gris-mid);}
+.booking-tz svg{width:14px; height:14px; flex:none;}
+
+.booking-form-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px 18px; margin-bottom:8px;}
+.booking-field{margin-bottom:16px; text-align:left;}
+.booking-field label{display:block; font-size:12.5px; font-weight:600; color:var(--gris-mid); margin-bottom:7px;}
+.booking-field input{
+  width:100%; padding:13px 15px; border-radius:10px; border:1.5px solid var(--gris-bordure);
+  font-size:15px; font-family:inherit; background:#fff; color:var(--gris-texte); transition:.2s;
+}
+.booking-field input:focus{outline:none; border-color:var(--rouge);}
+.booking-confirm{text-align:center; padding:40px 0;}
+.booking-confirm-icon{font-size:44px; margin-bottom:12px;}
+.booking-confirm h2{margin-bottom:8px;}
+.booking-confirm p{font-size:14px; color:var(--gris-mid); max-width:380px; margin:0 auto;}
+
+.booking-footnote{display:flex; align-items:center; justify-content:center; gap:8px; font-size:12.5px; color:var(--gris-mid); margin-top:22px; padding-top:18px; border-top:1px solid var(--gris-bordure);}
+.booking-footnote svg{width:15px; height:15px; flex:none;}
+.booking-footnote a{color:var(--rouge); font-weight:600;}
+.booking-trust{display:flex; justify-content:center; gap:28px; margin-top:14px; flex-wrap:wrap;}
+.booking-trust span{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--gris-mid);}
+.booking-trust svg{width:14px; height:14px; flex:none;}
+
+@media (max-width:900px){
+  .booking-side{display:none;}
+  .booking-qgrid, .booking-cal-wrap{grid-template-columns:1fr;}
+  .booking-main{padding:26px 20px 22px;}
+  .booking-trust{flex-direction:column; align-items:flex-start; gap:8px;}
+}
+@media (max-width:560px){
+  .booking-opts-4, .booking-opts-2col, .booking-opts-2x2, .booking-slots-priority-grid, .booking-slots-grid, .booking-form-grid{grid-template-columns:1fr;}
+  .booking-opt-wide{grid-column:auto;}
+}
 </style>
 </head>
 <body>
@@ -1401,10 +1555,12 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
         <div class="price-track-num price-track-num-light">1</div>
         <span class="price-track-label">Je découvre<br>le marché public</span>
         <div class="price-card">
+          <div class="price-card-top">
           <div class="price-icon">🚀</div>
-          <h4>Pack Intelligence Marché</h4>
+          <h4>Pack<br>Intelligence Marché</h4>
           <div class="price-tag">2 490 € HT</div>
           <div class="price-sub">Comprendre qui achète, quoi et quand.</div>
+          </div>
           <ul class="price-list">
             <li>Cartographie des acheteurs publics</li>
             <li>Identification des projets à venir</li>
@@ -1419,10 +1575,12 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
         <div class="price-track-num price-track-num-light">2</div>
         <span class="price-track-label">Je deviens<br>crédible</span>
         <div class="price-card">
+          <div class="price-card-top">
           <div class="price-icon">🎯</div>
-          <h4>Pack Positionnement Public</h4>
+          <h4>Pack<br>Positionnement Public</h4>
           <div class="price-tag">3 490 € HT</div>
           <div class="price-sub">Adapter son discours aux attentes des collectivités.</div>
+          </div>
           <ul class="price-list">
             <li>Proposition de valeur adaptée au public</li>
             <li>Argumentaire spécifique</li>
@@ -1438,10 +1596,12 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
         <div class="price-track-num">3</div>
         <span class="price-track-label">Je gagne<br>en visibilité</span>
         <div class="price-card">
+          <div class="price-card-top">
           <div class="price-icon">📣</div>
-          <h4>Pack Influence</h4>
+          <h4>Pack<br>Influence</h4>
           <div class="price-tag">2 990 € HT</div>
           <div class="price-sub">Être identifié avant même la première prise de contact.</div>
+          </div>
           <ul class="price-list">
             <li>LinkedIn</li>
             <li>Relations presse</li>
@@ -1457,10 +1617,12 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
         <div class="price-track-num">4</div>
         <span class="price-track-label">J'accède<br>aux décideurs</span>
         <div class="price-card">
+          <div class="price-card-top">
           <div class="price-icon">🤝</div>
-          <h4>Pack Réseau</h4>
+          <h4>Pack<br>Réseau</h4>
           <div class="price-tag">3 990 € HT</div>
           <div class="price-sub">Développer les bons partenariats et ouvrir les bonnes portes.</div>
+          </div>
           <ul class="price-list">
             <li>Mise en relation</li>
             <li>Intégrateurs</li>
@@ -1476,10 +1638,12 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
         <div class="price-track-num price-track-num-final">5</div>
         <span class="price-track-label">Je remporte<br>des marchés</span>
         <div class="price-card">
+          <div class="price-card-top">
           <div class="price-icon">📑</div>
-          <h4>Pack Réponse aux Appels d'Offres</h4>
+          <h4>Pack<br>Réponse aux Appels d'Offres</h4>
           <div class="price-tag">Dès 2 990 € HT</div>
           <div class="price-sub">Transformer les opportunités en contrats.</div>
+          </div>
           <ul class="price-list">
             <li>Go / No Go</li>
             <li>Relecture</li>
@@ -1494,10 +1658,12 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
         <div class="price-track-num price-track-num-final">6</div>
         <span class="price-track-label">Je structure<br>ma croissance</span>
         <div class="price-card">
+          <div class="price-card-top">
           <div class="price-icon">📈</div>
-          <h4>Pack Pilotage Commercial</h4>
+          <h4>Pack<br>Pilotage Commercial</h4>
           <div class="price-tag">2 990 € HT</div>
           <div class="price-sub">Mettre en place une organisation performante.</div>
+          </div>
           <ul class="price-list">
             <li>KPI</li>
             <li>CRM</li>
@@ -1521,7 +1687,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       <div class="price-card featured">
         <span class="featured-badge featured-badge-light">Idéal pour démarrer</span>
         <div class="price-icon">⚡</div>
-        <h4>Pack Lancement Express</h4>
+        <h4>Pack<br>Lancement Express</h4>
         <div class="price-tag">7 990 € HT</div>
         <div class="price-sub">Pour les PME qui veulent entrer rapidement sur le marché public — en 30 jours.</div>
         <ul class="price-list">
@@ -1828,7 +1994,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
       <p class="lede">Des lectures de quelques minutes, classées par thème, pour mieux comprendre le secteur public et passer à l'action.</p>
     </div>
     <div class="lib-doodle">
-      <svg viewBox="0 0 60 54" class="lib-doodle-arrow"><path d="M56,8 C46,11 27,21 15,41 M15,41 L25,37 M15,41 L19,50" fill="none" stroke="var(--rouge)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 60 54" class="lib-doodle-arrow"><path d="M56,8 C46,11 27,21 18.1,35.9" fill="none" stroke="var(--rouge)" stroke-width="2.5" stroke-linecap="round"/><polygon points="15,41 16,31.1 23.2,35.4" fill="var(--rouge)"/></svg>
       <span class="lib-doodle-text">Des contenus concrets,<br>pour avancer plus vite.</span>
     </div>
     <div class="filters" id="libFilters"></div>
@@ -2922,8 +3088,8 @@ document.getElementById('diagRestart').addEventListener('click', ()=>{
           <b>Approche</b><span>Notre méthode</span>
         </a>
         <a href="#tarifs" class="quicknav-card">
-          <span class="quicknav-card-icon quicknav-ic-packs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
-          <b>Packs</b><span>Les packs</span>
+          <span class="quicknav-card-icon quicknav-ic-packs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5,5 L9.5,5 A2.3,2.3 0 1 1 14.5,5 L19,5 L19,9.5 A2.3,2.3 0 1 1 19,14.5 L19,19 L14.5,19 A2.3,2.3 0 1 0 9.5,19 L5,19 L5,14.5 A2.3,2.3 0 1 0 5,9.5 Z"/></svg></span>
+          <b>Solutions</b><span>Les solutions</span>
         </a>
         <a href="#bibliotheque" class="quicknav-card">
           <span class="quicknav-card-icon quicknav-ic-ressources"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
@@ -2957,9 +3123,9 @@ document.getElementById('diagRestart').addEventListener('click', ()=>{
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
         <span>Approche</span>
       </a>
-      <a href="#tarifs" class="quicknav-rail-icon" aria-label="Packs">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        <span>Packs</span>
+      <a href="#tarifs" class="quicknav-rail-icon" aria-label="Solutions">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5,5 L9.5,5 A2.3,2.3 0 1 1 14.5,5 L19,5 L19,9.5 A2.3,2.3 0 1 1 19,14.5 L19,19 L14.5,19 A2.3,2.3 0 1 0 9.5,19 L5,19 L5,14.5 A2.3,2.3 0 1 0 5,9.5 Z"/></svg>
+        <span>Solutions</span>
       </a>
       <a href="#bibliotheque" class="quicknav-rail-icon" aria-label="Ressources">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
@@ -2979,6 +3145,212 @@ document.getElementById('diagRestart').addEventListener('click', ()=>{
       </a>
   </div>
 </div>
+<div class="booking-modal" id="bookingModal">
+  <div class="booking-box">
+    <button class="booking-close" id="bookingClose" aria-label="Fermer">&times;</button>
+    <div class="booking-topbar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Vos informations sont confidentielles</div>
+    <div class="booking-body">
+      <div class="booking-side">
+        <div class="booking-side-top">
+          <div class="booking-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7c0-1.7-1.8-3-4-3S8 5.3 8 7s1.8 2.6 4 3 4 1.3 4 3-1.8 3-4 3-4-1.3-4-3"/></svg></div>
+          <div class="booking-side-tag">Le raccourci vers un marché<br>réputé complexe.</div>
+          <h3 class="booking-side-title">Réservez votre<br><span>diagnostic stratégique</span></h3>
+          <p class="booking-side-desc">Un échange de 30 minutes avec Yoann Perez pour faire le point sur votre projet et identifier vos premières opportunités dans le secteur public.</p>
+          <ul class="booking-side-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>30 minutes d'échange</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Des conseils concrets et actionnables</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Une approche 100% secteur public</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>Sans engagement</li>
+          </ul>
+        </div>
+        <div class="booking-side-bottom">
+          <div class="booking-side-photo">
+            <img src="data:image/jpeg;base64,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" alt="Yoann Perez">
+            <div class="booking-side-photo-info"><b>Yoann Perez</b><span>Fondateur &amp; Consultant en stratégie commerciale publique</span></div>
+          </div>
+          <div class="booking-side-quote">
+            <p>Le secteur public représente des opportunités considérables pour les entreprises privées. Mon rôle est de vous aider à les saisir.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-main">
+        <div class="booking-steps">
+          <div class="booking-step-tab active" data-step="1"><span class="booking-step-num">1</span>Votre projet</div>
+          <svg class="booking-step-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <div class="booking-step-tab" data-step="2"><span class="booking-step-num">2</span>Créneau</div>
+          <svg class="booking-step-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <div class="booking-step-tab" data-step="3"><span class="booking-step-num">3</span>Vos coordonnées</div>
+          <svg class="booking-step-sep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <div class="booking-step-tab" data-step="4"><span class="booking-step-num">4</span>Confirmation</div>
+        </div>
+
+        <div class="booking-panel active" id="bookingPanel1">
+          <h2>Parlons de votre projet</h2>
+          <p class="booking-panel-sub">Répondez à quelques questions pour que je puisse préparer au mieux notre échange.</p>
+
+          <div class="booking-qgrid">
+            <div class="booking-qcol">
+              <div class="booking-q-title">1. Quel format préférez-vous ?</div>
+              <div class="booking-opts">
+                <button class="booking-opt" data-q="format" data-v="Visioconférence">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+                  <span><b>Visioconférence</b><small>(30 minutes)</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt" data-q="format" data-v="Appel téléphonique">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span><b>Appel téléphonique</b><small>(30 minutes)</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+              </div>
+
+              <div class="booking-q-title">3. Quel est votre objectif principal ?</div>
+              <div class="booking-opts booking-opts-2x2">
+                <button class="booking-opt" data-q="objectif" data-v="Trouver mes premiers clients publics">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+                  <span><b>Trouver mes premiers clients publics</b></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt" data-q="objectif" data-v="Répondre à davantage d'appels d'offres">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
+                  <span><b>Répondre à davantage d'appels d'offres</b></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt" data-q="objectif" data-v="Structurer ma stratégie secteur public">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  <span><b>Structurer ma stratégie secteur public</b></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt" data-q="objectif" data-v="Développer mon réseau d'acheteurs publics">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span><b>Développer mon réseau d'acheteurs publics</b></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+              </div>
+            </div>
+
+            <div class="booking-qcol">
+              <div class="booking-q-title">2. Quel est votre horizon de projet ?</div>
+              <div class="booking-opts booking-opts-4">
+                <button class="booking-opt booking-opt-sm" data-q="horizon" data-v="Lancement immédiat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span><b>Lancement immédiat</b><small>(moins d'un mois)</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt booking-opt-sm" data-q="horizon" data-v="Dans 3 mois">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span><b>Dans 3 mois</b></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt booking-opt-sm" data-q="horizon" data-v="Dans 6 mois">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span><b>Dans 6 mois</b></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt booking-opt-sm" data-q="horizon" data-v="En réflexion">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  <span><b>En réflexion</b><small>plus tard</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+              </div>
+
+              <div class="booking-q-title">4. Combien de personnes composent votre entreprise ?</div>
+              <div class="booking-opts booking-opts-2col">
+                <button class="booking-opt booking-opt-sm" data-q="taille" data-v="1 à 5 salariés">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <span><b>1 à 5</b><small>salariés</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt booking-opt-sm" data-q="taille" data-v="6 à 20 salariés">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span><b>6 à 20</b><small>salariés</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt booking-opt-sm" data-q="taille" data-v="21 à 50 salariés">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span><b>21 à 50</b><small>salariés</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt booking-opt-sm" data-q="taille" data-v="51 à 250 salariés">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span><b>51 à 250</b><small>salariés</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+                <button class="booking-opt booking-opt-sm booking-opt-wide" data-q="taille" data-v="Plus de 250 salariés">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
+                  <span><b>Plus de 250</b><small>salariés</small></span>
+                  <i class="booking-opt-check">✓</i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary booking-continue" id="bookingToStep2" disabled>Continuer →</button>
+        </div>
+
+        <div class="booking-panel" id="bookingPanel2">
+          <h2>Sélectionnez votre créneau</h2>
+          <p class="booking-panel-sub">Choisissez une date et une heure qui vous conviennent.</p>
+          <div class="booking-cal-wrap">
+            <div class="booking-cal">
+              <div class="booking-cal-head">
+                <button type="button" class="booking-cal-nav" id="calPrev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+                <span id="calMonthLabel"></span>
+                <button type="button" class="booking-cal-nav" id="calNext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+              </div>
+              <div class="booking-cal-dow"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+              <div class="booking-cal-grid" id="calGrid"></div>
+            </div>
+            <div class="booking-slots">
+              <div class="booking-slots-date" id="slotsDateLabel">Choisissez une date</div>
+              <div id="slotsPriority"></div>
+              <div class="booking-slots-label">Autres créneaux disponibles</div>
+              <div class="booking-slots-grid" id="slotsGrid"></div>
+              <div class="booking-tz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Tous les créneaux sont affichés en heure de Paris (UTC+2)</div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary booking-continue" id="bookingToStep3" disabled>Continuer →</button>
+          <div class="booking-back-link" data-back="1">← Revenir aux questions</div>
+        </div>
+
+        <div class="booking-panel" id="bookingPanel3">
+          <h2>Vos coordonnées</h2>
+          <p class="booking-panel-sub">Dernière étape avant de valider votre créneau.</p>
+          <form id="bookingForm">
+            <div class="booking-form-grid">
+              <div class="booking-field"><label for="bkNom">Nom</label><input type="text" id="bkNom" required></div>
+              <div class="booking-field"><label for="bkEntreprise">Entreprise</label><input type="text" id="bkEntreprise" required></div>
+              <div class="booking-field"><label for="bkTel">Téléphone</label><input type="tel" id="bkTel" required></div>
+              <div class="booking-field"><label for="bkEmail">Email</label><input type="email" id="bkEmail" required></div>
+            </div>
+            <button type="submit" class="btn btn-primary booking-continue">Confirmer ma réservation →</button>
+          </form>
+          <div class="booking-back-link" data-back="2">← Revenir au créneau</div>
+        </div>
+
+        <div class="booking-panel" id="bookingPanel4">
+          <div class="booking-confirm">
+            <div class="booking-confirm-icon">✅</div>
+            <h2>Rendez-vous confirmé</h2>
+            <p id="bookingConfirmText">Merci ! Yoann vous recontacte pour confirmer votre créneau.</p>
+          </div>
+        </div>
+
+        <div class="booking-footnote">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Besoin d'un créneau spécifique ? Contactez-moi à <a href="mailto:relations@govsales.fr">relations@govsales.fr</a>
+        </div>
+        <div class="booking-trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Vos données sont sécurisées et confidentielles</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Modification ou annulation possible à tout moment</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Vous recevez une confirmation par email immédiatement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="contact-float" id="contactFloat" tabindex="0">
   <div class="contact-float-avatar" id="contactFloatAvatarSmall">
     <span class="contact-float-halo"></span>
@@ -3086,6 +3458,156 @@ document.getElementById('diagRestart').addEventListener('click', ()=>{
   });
   nav.querySelectorAll('.quicknav-card, .quicknav-cta-row').forEach(el=>{
     el.addEventListener('click', ()=> nav.classList.remove('open'));
+  });
+})();
+
+(function(){
+  const modal = document.getElementById('bookingModal');
+  const closeBtn = document.getElementById('bookingClose');
+
+  function openModal(e){
+    if(e) e.preventDefault();
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+  document.getElementById('bookingClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target === modal) closeModal(); });
+  document.querySelector('.nav-cta').addEventListener('click', openModal);
+  document.querySelector('.contact-float-cta').addEventListener('click', openModal);
+
+  const bookingAnswers = {};
+  let currentStep = 1;
+
+  function goToStep(n){
+    document.querySelectorAll('.booking-panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('bookingPanel'+n).classList.add('active');
+    document.querySelectorAll('.booking-step-tab').forEach(t=>{
+      const s = parseInt(t.dataset.step);
+      t.classList.toggle('active', s===n);
+      t.classList.toggle('done', s<n);
+    });
+    currentStep = n;
+  }
+
+  document.querySelectorAll('.booking-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const q = btn.dataset.q;
+      document.querySelectorAll(`.booking-opt[data-q="${q}"]`).forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      bookingAnswers[q] = btn.dataset.v;
+      const allAnswered = ['format','horizon','objectif','taille'].every(k=>bookingAnswers[k]);
+      document.getElementById('bookingToStep2').disabled = !allAnswered;
+    });
+  });
+
+  document.getElementById('bookingToStep2').addEventListener('click', ()=> goToStep(2));
+  document.getElementById('bookingToStep3').addEventListener('click', ()=> goToStep(3));
+  document.querySelectorAll('.booking-back-link').forEach(el=>{
+    el.addEventListener('click', ()=> goToStep(parseInt(el.dataset.back)));
+  });
+
+  // Calendrier
+  const moisNoms = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  const jourNoms = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  let calDate = new Date();
+  calDate.setDate(1);
+  let selectedDate = null;
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  function renderCal(){
+    document.getElementById('calMonthLabel').textContent = moisNoms[calDate.getMonth()] + ' ' + calDate.getFullYear();
+    const grid = document.getElementById('calGrid');
+    grid.innerHTML = '';
+    const firstDay = new Date(calDate.getFullYear(), calDate.getMonth(), 1);
+    const startOffset = (firstDay.getDay() + 6) % 7; // lundi = 0
+    const daysInMonth = new Date(calDate.getFullYear(), calDate.getMonth()+1, 0).getDate();
+
+    for(let i=0; i<startOffset; i++){
+      grid.insertAdjacentHTML('beforeend', '<div class="booking-cal-day empty"></div>');
+    }
+    for(let d=1; d<=daysInMonth; d++){
+      const thisDate = new Date(calDate.getFullYear(), calDate.getMonth(), d);
+      const isPast = thisDate < today;
+      const isSelected = selectedDate && thisDate.getTime() === selectedDate.getTime();
+      const cls = ['booking-cal-day'];
+      if(isPast) cls.push('disabled');
+      if(isSelected) cls.push('selected');
+      grid.insertAdjacentHTML('beforeend', `<div class="${cls.join(' ')}" data-day="${d}">${d}</div>`);
+    }
+    grid.querySelectorAll('.booking-cal-day:not(.disabled):not(.empty)').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        selectedDate = new Date(calDate.getFullYear(), calDate.getMonth(), parseInt(el.dataset.day));
+        renderCal();
+        renderSlots();
+      });
+    });
+  }
+  document.getElementById('calPrev').addEventListener('click', ()=>{ calDate.setMonth(calDate.getMonth()-1); renderCal(); });
+  document.getElementById('calNext').addEventListener('click', ()=>{ calDate.setMonth(calDate.getMonth()+1); renderCal(); });
+
+  const prioritySlots = ['09:00','10:30','14:00'];
+  const otherSlots = ['11:30','15:30','16:00','16:30','17:00'];
+  let selectedSlot = null;
+
+  function renderSlots(){
+    if(!selectedDate){
+      document.getElementById('slotsDateLabel').textContent = 'Choisissez une date';
+      document.getElementById('slotsPriority').innerHTML = '';
+      document.getElementById('slotsGrid').innerHTML = '';
+      return;
+    }
+    document.getElementById('slotsDateLabel').textContent = jourNoms[selectedDate.getDay()].charAt(0).toUpperCase()+jourNoms[selectedDate.getDay()].slice(1) + ' ' + selectedDate.getDate() + ' ' + moisNoms[selectedDate.getMonth()].toLowerCase() + ' ' + selectedDate.getFullYear();
+
+    const isImmediat = bookingAnswers.horizon === 'Lancement immédiat';
+    const priorityEl = document.getElementById('slotsPriority');
+    if(isImmediat){
+      priorityEl.innerHTML = `
+        <div class="booking-slots-priority-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Créneaux prioritaires (projet immédiat)</div>
+        <div class="booking-slots-priority-grid">${prioritySlots.map(s=>`<div class="booking-slot booking-slot-priority" data-slot="${s}">${s}</div>`).join('')}</div>`;
+    } else {
+      priorityEl.innerHTML = '';
+    }
+    const allOther = isImmediat ? otherSlots : [...prioritySlots, ...otherSlots].sort();
+    document.getElementById('slotsGrid').innerHTML = allOther.map(s=>`<div class="booking-slot" data-slot="${s}">${s}</div>`).join('');
+
+    document.querySelectorAll('.booking-slot').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        document.querySelectorAll('.booking-slot').forEach(s=>s.classList.remove('selected'));
+        el.classList.add('selected');
+        selectedSlot = el.dataset.slot;
+        document.getElementById('bookingToStep3').disabled = false;
+      });
+    });
+  }
+  renderCal();
+
+  document.getElementById('bookingForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    const nom = document.getElementById('bkNom').value;
+    const entreprise = document.getElementById('bkEntreprise').value;
+    const email = document.getElementById('bkEmail').value;
+    const tel = document.getElementById('bkTel').value;
+    const dateLabel = selectedDate ? (selectedDate.getDate()+' '+moisNoms[selectedDate.getMonth()]+' '+selectedDate.getFullYear()) : '';
+
+    const payload = {
+      access_key: "4c430b41-d884-4a8e-b69e-f3ea4c4fb64c",
+      subject: `Nouvelle réservation GovSales — ${nom} (${entreprise})`,
+      from_name: "Formulaire de réservation — site GovSales",
+      Nom: nom, Entreprise: entreprise, Email: email, "Téléphone": tel,
+      "Format": bookingAnswers.format, "Horizon": bookingAnswers.horizon,
+      "Objectif": bookingAnswers.objectif, "Taille entreprise": bookingAnswers.taille,
+      "Créneau demandé": `${dateLabel} à ${selectedSlot}`
+    };
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(payload)
+    }).catch(()=>{});
+
+    document.getElementById('bookingConfirmText').textContent = `Merci ${nom} ! Votre créneau du ${dateLabel} à ${selectedSlot} est enregistré. Yoann vous recontacte pour confirmer définitivement ce rendez-vous.`;
+    goToStep(4);
   });
 })();
 </script>
