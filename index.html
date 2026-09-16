@@ -772,11 +772,11 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 
 /* ================= TARIFS ================= */
 #tarifs{background:var(--gris-fond);}
-.price-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:50px;}
-@media (max-width:960px){ .price-grid{grid-template-columns:repeat(2,1fr);} }
+.price-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-top:24px;}
+@media (max-width:960px){ .price-grid{grid-template-columns:repeat(3,1fr);} }
 @media (max-width:640px){ .price-grid{grid-template-columns:1fr;} }
 .price-card{
-  background:#fff; border:1px solid var(--gris-bordure); border-radius:20px; padding:30px 26px;
+  background:#fff; border:1px solid var(--gris-bordure); border-radius:16px; padding:18px 15px;
   display:flex; flex-direction:column; transition:.3s var(--ease);
   position:relative; overflow:hidden;
 }
@@ -786,13 +786,13 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 }
 .price-card:hover::before{transform:scaleX(1);}
 .price-card:hover{transform:translateY(-5px); box-shadow:0 24px 50px -22px rgba(16,24,40,.18);}
-.price-icon{font-size:26px; margin-bottom:14px;}
-.price-card h4{font-size:17.5px; margin-bottom:4px; line-height:1.3; min-height:46px;}
-.price-tag{font-family:var(--font-display); font-weight:700; font-size:22px; color:var(--bleu-france); margin-bottom:6px;}
-.price-sub{font-size:13px; color:var(--rouge); margin-bottom:16px; line-height:1.45; min-height:36px;}
-.price-list{list-style:none; font-size:13.5px; color:var(--gris-texte); line-height:1.85; margin-top:auto; padding-top:14px; border-top:1px solid var(--gris-bordure);}
+.price-icon{font-size:19px; margin-bottom:9px; text-align:center;}
+.price-card h4{font-size:13.5px; margin-bottom:4px; line-height:1.3; min-height:38px;}
+.price-tag{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--bleu-france); margin-bottom:5px;}
+.price-sub{font-size:11px; color:var(--rouge); margin-bottom:12px; line-height:1.4; min-height:44px;}
+.price-list{list-style:none; font-size:11px; color:var(--gris-texte); line-height:1.7; margin-top:auto; padding-top:11px; border-top:1px solid var(--gris-bordure);}
 .price-list li{padding-left:18px; position:relative;}
-.price-list li::before{content:"—"; position:absolute; left:0; color:var(--accent2); font-weight:700;}
+.price-list li::before{content:"✔️"; position:absolute; left:0; top:0; font-size:9px; line-height:1.7;}
 
 .price-featured-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;}
 .price-featured-grid-3{grid-template-columns:1fr 1fr 1fr;}
@@ -822,23 +822,25 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-detail-link:hover{color:var(--rouge);}
 .price-note{font-size:12.5px; color:var(--gris-mid); margin-top:20px; text-align:center;}
 
-.journey-stepper{display:flex; align-items:flex-start; justify-content:space-between; gap:6px; margin:44px 0 40px; position:relative;}
-.journey-stepper::before{
-  content:""; position:absolute; top:20px; left:36px; right:36px; height:2px;
-  background:repeating-linear-gradient(90deg, var(--gris-bordure) 0 6px, transparent 6px 12px); z-index:0;
+.price-track-wrap{display:flex; align-items:flex-start; gap:0; margin:24px 0 20px;}
+.price-track{display:flex; flex-direction:column; align-items:center; gap:8px; flex:1; min-width:0;}
+.price-track-num{
+  width:38px; height:38px; border-radius:50%; background:#1e3a8a; color:#fff; flex:none;
+  display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:800; font-size:14px;
 }
-.journey-step{display:flex; flex-direction:column; align-items:center; gap:10px; position:relative; z-index:1; flex:1;}
-.journey-num{
-  width:40px; height:40px; border-radius:50%; background:var(--bleu-france); color:#fff;
-  display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:800; font-size:15px;
-  box-shadow:0 0 0 5px #fff;
+.price-track-num-light{background:#60a5fa;}
+.price-track-num-final{background:var(--rouge);}
+.price-track-label{font-family:var(--font-display); font-size:11px; font-weight:700; color:var(--gris-texte); text-align:center; line-height:1.35; margin-bottom:6px;}
+.price-track-arrow{
+  flex:none; width:26px; padding-top:8px; text-align:center; color:var(--gris-bordure); font-size:17px; font-weight:700;
 }
-.journey-num-final{background:var(--rouge);}
-.journey-step span{font-size:12.5px; font-weight:600; color:var(--gris-texte); text-align:center; line-height:1.4;}
-@media (max-width:860px){
-  .journey-stepper{flex-wrap:wrap; row-gap:24px;}
-  .journey-stepper::before{display:none;}
-  .journey-step{flex:0 0 30%;}
+@media (max-width:960px){
+  .price-track-wrap{flex-wrap:wrap;}
+  .price-track{flex:0 0 30%;}
+  .price-track-arrow{display:none;}
+}
+@media (max-width:640px){
+  .price-track{flex:0 0 100%;}
 }
 
 .price-final-cta{
@@ -1390,119 +1392,129 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Notre méthode</span>
-      <h2 class="h-lg">Un parcours complet pour faire du secteur public <span style="color:var(--rouge);">un moteur de croissance.</span></h2>
+      <h2 class="h-lg">Un parcours complet pour faire du secteur public un <span style="color:var(--rouge);">moteur de croissance.</span></h2>
       <p class="lede">Chaque entreprise a un point de départ différent. Nos packs s'adaptent à vos enjeux pour vous accompagner, étape par étape, de la stratégie à la signature.</p>
     </div>
 
-    <div class="journey-stepper reveal">
-      <div class="journey-step"><div class="journey-num">1</div><span>Je découvre<br>le marché public</span></div>
-      <div class="journey-step"><div class="journey-num">2</div><span>Je deviens<br>crédible</span></div>
-      <div class="journey-step"><div class="journey-num">3</div><span>Je gagne<br>en visibilité</span></div>
-      <div class="journey-step"><div class="journey-num">4</div><span>J'accède<br>aux décideurs</span></div>
-      <div class="journey-step"><div class="journey-num journey-num-final">5</div><span>Je remporte<br>des marchés</span></div>
-      <div class="journey-step"><div class="journey-num journey-num-final">6</div><span>Je structure<br>ma croissance</span></div>
+    <div class="price-track-wrap reveal">
+      <div class="price-track">
+        <div class="price-track-num price-track-num-light">1</div>
+        <span class="price-track-label">Je découvre<br>le marché public</span>
+        <div class="price-card">
+          <div class="price-icon">🚀</div>
+          <h4>Pack Intelligence Marché</h4>
+          <div class="price-tag">2 490 € HT</div>
+          <div class="price-sub">Comprendre qui achète, quoi et quand.</div>
+          <ul class="price-list">
+            <li>Cartographie des acheteurs publics</li>
+            <li>Identification des projets à venir</li>
+            <li>Veille appels d'offres</li>
+            <li>Analyse de la concurrence</li>
+            <li>Priorisation des comptes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-track-arrow">→</div>
+      <div class="price-track">
+        <div class="price-track-num price-track-num-light">2</div>
+        <span class="price-track-label">Je deviens<br>crédible</span>
+        <div class="price-card">
+          <div class="price-icon">🎯</div>
+          <h4>Pack Positionnement Public</h4>
+          <div class="price-tag">3 490 € HT</div>
+          <div class="price-sub">Adapter son discours aux attentes des collectivités.</div>
+          <ul class="price-list">
+            <li>Proposition de valeur adaptée au public</li>
+            <li>Argumentaire spécifique</li>
+            <li>Cas clients</li>
+            <li>Site web orienté secteur public</li>
+            <li>Présentations commerciales</li>
+            <li>Références et preuves sociales</li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-track-arrow">→</div>
+      <div class="price-track">
+        <div class="price-track-num">3</div>
+        <span class="price-track-label">Je gagne<br>en visibilité</span>
+        <div class="price-card">
+          <div class="price-icon">📣</div>
+          <h4>Pack Influence</h4>
+          <div class="price-tag">2 990 € HT</div>
+          <div class="price-sub">Être identifié avant même la première prise de contact.</div>
+          <ul class="price-list">
+            <li>LinkedIn</li>
+            <li>Relations presse</li>
+            <li>Webinaires</li>
+            <li>Livres blancs</li>
+            <li>Témoignages clients</li>
+            <li>Participation aux salons</li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-track-arrow">→</div>
+      <div class="price-track">
+        <div class="price-track-num">4</div>
+        <span class="price-track-label">J'accède<br>aux décideurs</span>
+        <div class="price-card">
+          <div class="price-icon">🤝</div>
+          <h4>Pack Réseau</h4>
+          <div class="price-tag">3 990 € HT</div>
+          <div class="price-sub">Développer les bons partenariats et ouvrir les bonnes portes.</div>
+          <ul class="price-list">
+            <li>Mise en relation</li>
+            <li>Intégrateurs</li>
+            <li>Éditeurs</li>
+            <li>Revendeurs</li>
+            <li>Sous-traitance / co-traitance</li>
+            <li>Recherche de partenaires locaux</li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-track-arrow price-track-arrow-final">→</div>
+      <div class="price-track">
+        <div class="price-track-num price-track-num-final">5</div>
+        <span class="price-track-label">Je remporte<br>des marchés</span>
+        <div class="price-card">
+          <div class="price-icon">📑</div>
+          <h4>Pack Réponse aux Appels d'Offres</h4>
+          <div class="price-tag">Dès 2 990 € HT</div>
+          <div class="price-sub">Transformer les opportunités en contrats.</div>
+          <ul class="price-list">
+            <li>Go / No Go</li>
+            <li>Relecture</li>
+            <li>Optimisation mémoire technique</li>
+            <li>Valorisation de l'innovation</li>
+            <li>Soutenance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-track-arrow price-track-arrow-final">→</div>
+      <div class="price-track">
+        <div class="price-track-num price-track-num-final">6</div>
+        <span class="price-track-label">Je structure<br>ma croissance</span>
+        <div class="price-card">
+          <div class="price-icon">📈</div>
+          <h4>Pack Pilotage Commercial</h4>
+          <div class="price-tag">2 990 € HT</div>
+          <div class="price-sub">Mettre en place une organisation performante.</div>
+          <ul class="price-list">
+            <li>KPI</li>
+            <li>CRM</li>
+            <li>Pipeline</li>
+            <li>Prévisions</li>
+            <li>Reporting</li>
+            <li>Plan d'action</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="price-grid reveal">
-      <div class="price-card">
-        <div class="price-icon">🚀</div>
-        <h4>Pack Intelligence Marché</h4>
-        <div class="price-tag">2 490 € HT</div>
-        <div class="price-sub">En amont de la prospection.</div>
-        <ul class="price-list">
-          <li>Cartographie des acheteurs publics</li>
-          <li>Identification des projets à venir</li>
-          <li>Veille appels d'offres</li>
-          <li>Analyse de la concurrence</li>
-          <li>Priorisation des comptes</li>
-        </ul>
-        <a href="#diagnostic" class="price-detail-link">Voir le détail →</a>
-      </div>
 
-      <div class="price-card">
-        <div class="price-icon">🎯</div>
-        <h4>Pack Positionnement Public</h4>
-        <div class="price-tag">3 490 € HT</div>
-        <div class="price-sub">Paraître crédible auprès des collectivités.</div>
-        <ul class="price-list">
-          <li>Proposition de valeur adaptée au public</li>
-          <li>Argumentaire spécifique</li>
-          <li>Cas clients</li>
-          <li>Site web orienté secteur public</li>
-          <li>Présentations commerciales</li>
-          <li>Références et preuves sociales</li>
-        </ul>
-        <a href="#diagnostic" class="price-detail-link">Voir le détail →</a>
-      </div>
-
-      <div class="price-card">
-        <div class="price-icon">📣</div>
-        <h4>Pack Influence</h4>
-        <div class="price-tag">2 990 € HT</div>
-        <div class="price-sub">Créer de la visibilité sans faire de prospection.</div>
-        <ul class="price-list">
-          <li>LinkedIn</li>
-          <li>Relations presse</li>
-          <li>Webinaires</li>
-          <li>Livres blancs</li>
-          <li>Témoignages clients</li>
-          <li>Participation aux salons</li>
-        </ul>
-        <a href="#diagnostic" class="price-detail-link">Voir le détail →</a>
-      </div>
-
-      <div class="price-card">
-        <div class="price-icon">🤝</div>
-        <h4>Pack Réseau</h4>
-        <div class="price-tag">3 990 € HT</div>
-        <div class="price-sub">Accélérer grâce aux bons partenaires.</div>
-        <ul class="price-list">
-          <li>Mise en relation</li>
-          <li>Intégrateurs</li>
-          <li>Éditeurs</li>
-          <li>Revendeurs</li>
-          <li>Sous-traitance / co-traitance</li>
-          <li>Recherche de partenaires locaux</li>
-        </ul>
-        <a href="#diagnostic" class="price-detail-link">Voir le détail →</a>
-      </div>
-
-      <div class="price-card">
-        <div class="price-icon">📈</div>
-        <h4>Pack Pilotage Commercial</h4>
-        <div class="price-tag">2 990 € HT</div>
-        <div class="price-sub">Structurer le suivi de votre activité.</div>
-        <ul class="price-list">
-          <li>KPI</li>
-          <li>CRM</li>
-          <li>Pipeline</li>
-          <li>Prévisions</li>
-          <li>Reporting</li>
-          <li>Plan d'action</li>
-        </ul>
-        <a href="#diagnostic" class="price-detail-link">Voir le détail →</a>
-      </div>
-
-      <div class="price-card">
-        <div class="price-icon">📑</div>
-        <h4>Pack Réponse aux Appels d'Offres</h4>
-        <div class="price-tag">Dès 2 990 € HT</div>
-        <div class="price-sub">Jusqu'à 7 500 € HT selon la complexité du dossier.</div>
-        <ul class="price-list">
-          <li>Go / No Go</li>
-          <li>Relecture</li>
-          <li>Optimisation mémoire technique</li>
-          <li>Valorisation de l'innovation</li>
-          <li>Soutenance</li>
-        </ul>
-        <a href="#diagnostic" class="price-detail-link">Voir le détail →</a>
-      </div>
-    </div>
-
-    <div class="section-head reveal" style="margin-top:70px;">
+    <div class="section-head reveal" style="margin-top:70px; max-width:none;">
       <span class="eyebrow" style="color:var(--rouge);">Nos offres phares</span>
-      <h2 class="h-lg">Des accompagnements pour <span style="color:var(--rouge);">aller plus loin</span></h2>
-      <p class="lede">Des solutions clés en main ou sur mesure, pour accélérer votre développement sur le secteur public.</p>
+      <h2 class="h-lg" style="white-space:nowrap;">Des accompagnements pour <span style="color:var(--rouge);">aller plus loin</span></h2>
+      <p class="lede" style="max-width:none; white-space:nowrap;">Des solutions clés en main ou sur mesure, pour accélérer votre développement sur le secteur public.</p>
     </div>
 
     <div class="price-featured-grid price-featured-grid-3 reveal">
