@@ -274,7 +274,7 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
   transform:translateY(-19px);
 }
 .pq-photo-quote-accent{width:30px; height:3px; background:var(--rouge); border-radius:2px; margin-top:10px;}
-.pq-photo img.pq-photo-signature{position:absolute; right:16px; bottom:-52px; height:48px; width:auto; opacity:.95; object-fit:contain;}
+.pq-photo img.pq-photo-signature{position:absolute; right:16px; bottom:-33px; height:48px; width:auto; opacity:.95; object-fit:contain;}
 .pq-float-card{
   position:absolute; z-index:2; background:rgba(255,255,255,.78);
   backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
@@ -798,6 +798,18 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-tag{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--bleu-france); margin-bottom:5px; text-align:center;}
 .price-sub{font-size:11px; color:var(--rouge); margin-bottom:12px; line-height:1.4; text-align:center;}
 .price-list{list-style:none; font-size:11px; color:var(--gris-texte); line-height:1.7; padding-top:11px; border-top:1px solid var(--gris-bordure);}
+.price-detail-toggle{
+  display:flex; align-items:center; justify-content:center; gap:5px; width:100%; background:none; border:none;
+  font-size:11.5px; font-weight:700; color:var(--bleu-france); cursor:pointer; padding:4px 0; margin-top:auto;
+}
+.price-detail-toggle:hover{color:var(--rouge);}
+.price-detail-toggle svg{width:13px; height:13px; transition:transform .25s var(--ease);}
+.price-detail-toggle.open svg{transform:rotate(180deg);}
+.price-list-collapsed{
+  max-height:0; overflow:hidden; padding-top:0; border-top:none; margin-top:9px; opacity:0;
+  transition:max-height .35s var(--ease), opacity .25s var(--ease), padding-top .3s var(--ease), border-color .3s var(--ease);
+}
+.price-list-collapsed.open{max-height:300px; padding-top:11px; border-top:1px solid var(--gris-bordure); opacity:1;}
 .price-list li{padding-left:18px; position:relative;}
 .price-list li::before{content:"✔️"; position:absolute; left:0; top:0; font-size:9px; line-height:1.7;}
 
@@ -1610,10 +1622,11 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
           <div class="price-card-top">
           <div class="price-icon">🚀</div>
           <h4>Pack<br>Intelligence Marché</h4>
-          <div class="price-tag">2 490 € HT</div>
           <div class="price-sub">Comprendre qui achète, quoi et quand.</div>
+          <div class="price-tag">2 490 € HT</div>
           </div>
-          <ul class="price-list">
+          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="price-list price-list-collapsed">
             <li>Cartographie des acheteurs publics</li>
             <li>Identification des projets à venir</li>
             <li>Veille appels d'offres</li>
@@ -1630,10 +1643,11 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
           <div class="price-card-top">
           <div class="price-icon">🎯</div>
           <h4>Pack<br>Positionnement Public</h4>
-          <div class="price-tag">3 490 € HT</div>
           <div class="price-sub">Adapter son discours aux attentes des collectivités.</div>
+          <div class="price-tag">3 490 € HT</div>
           </div>
-          <ul class="price-list">
+          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="price-list price-list-collapsed">
             <li>Proposition de valeur adaptée au public</li>
             <li>Argumentaire spécifique</li>
             <li>Cas clients</li>
@@ -1651,10 +1665,11 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
           <div class="price-card-top">
           <div class="price-icon">📣</div>
           <h4>Pack<br>Influence</h4>
-          <div class="price-tag">2 990 € HT</div>
           <div class="price-sub">Être identifié avant même la première prise de contact.</div>
+          <div class="price-tag">2 990 € HT</div>
           </div>
-          <ul class="price-list">
+          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="price-list price-list-collapsed">
             <li>LinkedIn</li>
             <li>Relations presse</li>
             <li>Webinaires</li>
@@ -1672,10 +1687,11 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
           <div class="price-card-top">
           <div class="price-icon">🤝</div>
           <h4>Pack<br>Réseau</h4>
-          <div class="price-tag">3 990 € HT</div>
           <div class="price-sub">Développer les bons partenariats et ouvrir les bonnes portes.</div>
+          <div class="price-tag">3 990 € HT</div>
           </div>
-          <ul class="price-list">
+          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="price-list price-list-collapsed">
             <li>Mise en relation</li>
             <li>Intégrateurs</li>
             <li>Éditeurs</li>
@@ -1693,10 +1709,11 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
           <div class="price-card-top">
           <div class="price-icon">📑</div>
           <h4>Pack<br>Réponse aux Appels d'Offres</h4>
-          <div class="price-tag">Dès 2 990 € HT</div>
           <div class="price-sub">Transformer les opportunités en contrats.</div>
+          <div class="price-tag">Dès 2 990 € HT</div>
           </div>
-          <ul class="price-list">
+          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="price-list price-list-collapsed">
             <li>Go / No Go</li>
             <li>Relecture</li>
             <li>Optimisation mémoire technique</li>
@@ -1713,10 +1730,11 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
           <div class="price-card-top">
           <div class="price-icon">📈</div>
           <h4>Pack<br>Pilotage Commercial</h4>
-          <div class="price-tag">2 990 € HT</div>
           <div class="price-sub">Mettre en place une organisation performante.</div>
+          <div class="price-tag">2 990 € HT</div>
           </div>
-          <ul class="price-list">
+          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="price-list price-list-collapsed">
             <li>KPI</li>
             <li>CRM</li>
             <li>Pipeline</li>
@@ -3861,6 +3879,15 @@ goDiagStep(1);
     document.getElementById('calOptions').classList.toggle('show');
   });
 })();
+
+document.querySelectorAll('.price-detail-toggle').forEach(btn=>{
+  const list = btn.nextElementSibling;
+  btn.addEventListener('click', ()=>{
+    const isOpen = list.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.firstChild.textContent = isOpen ? 'Masquer le détail ' : 'Voir le détail ';
+  });
+});
 </script>
 </body>
 </html>
