@@ -1182,6 +1182,39 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
 .quicknav-cta-arrow{width:16px; height:16px; color:var(--gris-mid); flex:none;}
 
 @media (max-width:900px){ .quicknav{display:none;} }
+/* ============ AVIS MODAL ============ */
+.avis-modal{
+  position:fixed; inset:0; z-index:2000; background:rgba(8,10,18,.7); backdrop-filter:blur(4px);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  opacity:0; pointer-events:none; transition:opacity .3s var(--ease);
+}
+.avis-modal.show{opacity:1; pointer-events:auto;}
+.avis-box{
+  background:#fff; border-radius:22px; width:100%; max-width:640px; max-height:92vh;
+  overflow-y:auto; position:relative; box-shadow:0 40px 90px -20px rgba(0,0,0,.5);
+  transform:scale(.96) translateY(10px); transition:transform .3s var(--ease);
+  padding:36px 40px 32px;
+}
+.avis-modal.show .avis-box{transform:scale(1) translateY(0);}
+.avis-close{
+  position:absolute; top:16px; right:20px; z-index:5; width:34px; height:34px; border-radius:50%;
+  background:var(--gris-fond); color:var(--gris-mid); border:none; font-size:20px; cursor:pointer; transition:.2s;
+}
+.avis-close:hover{background:var(--gris-bordure);}
+.avis-step{display:none;}
+.avis-step.active{display:block;}
+.avis-header h2{font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--gris-texte); margin-bottom:8px;}
+.avis-header p{font-size:13.5px; color:var(--gris-mid); line-height:1.6; margin-bottom:22px;}
+.avis-packs-recap{
+  background:var(--gris-fond); border-radius:12px; padding:12px 16px; margin-bottom:20px; font-size:12.5px; color:var(--gris-texte);
+}
+.avis-packs-recap b{color:var(--bleu-france);}
+.avis-form-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px 18px;}
+@media (max-width:560px){ .avis-form-grid{grid-template-columns:1fr;} }
+.avis-thanks{text-align:center; padding:30px 0;}
+.avis-thanks-icon{font-size:44px; margin-bottom:12px;}
+.avis-thanks p{font-size:14px; color:var(--gris-mid); max-width:380px; margin:0 auto;}
+
 /* ============ BOOKING MODAL ============ */
 .booking-modal{
   position:fixed; inset:0; z-index:2000; background:rgba(8,10,18,.7); backdrop-filter:blur(4px);
@@ -1849,7 +1882,7 @@ footer{background:var(--gris-fond); color:var(--gris-mid); padding:0 0 30px; bor
         <span class="price-final-cta-icon">💡</span>
         <div><b>Un doute sur l'offre la plus adaptée ?</b><span>Profitez d'un échange gratuit de 30 minutes avec un expert GovSales.</span></div>
       </div>
-      <a href="#diagnostic" class="btn btn-primary">Réserver un échange →</a>
+      <a href="#diagnostic" class="btn btn-primary price-final-cta-btn">Réserver un échange →</a>
     </div>
     <p class="price-note">Tarifs HT, hors frais annexes éventuels. Un diagnostic gratuit permet de définir le pack le plus adapté à votre situation.</p>
   </div>
@@ -2454,6 +2487,18 @@ document.getElementById('introEnterBtn').addEventListener('click', closeIntro);
   }
   checks.forEach(c=> c.addEventListener('change', update));
   update();
+
+  cta.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const selected = [];
+    checks.forEach(c=>{ if(c.checked) selected.push(c.closest('.pack-check').querySelector('span').textContent); });
+    const recapEl = document.getElementById('avisPacksRecap');
+    recapEl.innerHTML = selected.length
+      ? `<b>Packs sélectionnés :</b> ${selected.join(', ')} — <b>${totalEl.textContent}</b>`
+      : '';
+    document.getElementById('avisModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  });
 })();
 
 /* ============ COMPTEURS ANIMÉS ============ */
@@ -3303,6 +3348,46 @@ goDiagStep(1);
       </a>
   </div>
 </div>
+<div class="avis-modal" id="avisModal">
+  <div class="avis-box">
+    <button class="avis-close" id="avisClose" aria-label="Fermer">&times;</button>
+
+    <div class="avis-step active" id="avisStepForm">
+      <div class="avis-header">
+        <h2>Recevez mon avis sous 24h</h2>
+        <p>Si vous souhaitez que je donne mon avis sous 24h sur votre positionnement secteur public, déposez quelques informations ci-dessous — je reviens vers vous personnellement.</p>
+      </div>
+
+      <div class="avis-packs-recap" id="avisPacksRecap"></div>
+
+      <form id="avisForm">
+        <div class="avis-form-grid">
+          <div class="booking-field"><label for="avNom">Nom</label><input type="text" id="avNom" required></div>
+          <div class="booking-field"><label for="avSociete">Société</label><input type="text" id="avSociete" required></div>
+          <div class="booking-field"><label for="avEmail">Email</label><input type="email" id="avEmail" required></div>
+          <div class="booking-field"><label for="avTel">Téléphone <span style="font-weight:400; text-transform:none; color:var(--gris-mid);">(facultatif)</span></label><input type="tel" id="avTel"></div>
+          <div class="booking-field"><label for="avSite">Site web</label><input type="url" id="avSite" placeholder="https://"></div>
+          <div class="booking-field"><label for="avLinkedin">LinkedIn</label><input type="url" id="avLinkedin" placeholder="https://linkedin.com/..."></div>
+          <div class="booking-field" style="grid-column:1 / -1;"><label for="avActivite">Votre activité</label><input type="text" id="avActivite" placeholder="En quelques mots, ce que fait votre entreprise"></div>
+          <div class="booking-field" style="grid-column:1 / -1;">
+            <label for="avCommentaire">Commentaire libre <span style="font-weight:400; text-transform:none; color:var(--gris-mid);">(facultatif)</span></label>
+            <textarea id="avCommentaire" rows="3" style="width:100%; padding:13px 15px; border-radius:10px; border:1.5px solid var(--gris-bordure); font-size:15px; font-family:inherit; resize:vertical;"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;">Envoyer ma demande →</button>
+      </form>
+    </div>
+
+    <div class="avis-step" id="avisStepThanks">
+      <div class="avis-thanks">
+        <div class="avis-thanks-icon">✅</div>
+        <h2>Demande bien reçue</h2>
+        <p id="avisThanksText">Merci ! Yoann revient vers vous sous 24h avec son avis.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="booking-modal" id="bookingModal">
   <div class="booking-box">
     <button class="booking-close" id="bookingClose" aria-label="Fermer">&times;</button>
@@ -3645,6 +3730,7 @@ goDiagStep(1);
   modal.addEventListener('click', e=>{ if(e.target === modal) closeModal(); });
   document.querySelector('.nav-cta').addEventListener('click', openModal);
   document.querySelector('.contact-float-cta').addEventListener('click', openModal);
+  document.querySelector('.price-final-cta-btn').addEventListener('click', openModal);
 
   const bookingAnswers = {};
   let currentStep = 1;
@@ -3882,6 +3968,47 @@ document.querySelectorAll('.price-detail-toggle').forEach(btn=>{
     btn.firstChild.textContent = isOpen ? 'Masquer le détail ' : 'Voir le détail ';
   });
 });
+
+(function(){
+  const modal = document.getElementById('avisModal');
+  function closeModal(){
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+  document.getElementById('avisClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target === modal) closeModal(); });
+
+  document.getElementById('avisForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    const nom = document.getElementById('avNom').value;
+    const societe = document.getElementById('avSociete').value;
+    const email = document.getElementById('avEmail').value;
+    const tel = document.getElementById('avTel').value;
+    const site = document.getElementById('avSite').value;
+    const linkedin = document.getElementById('avLinkedin').value;
+    const activite = document.getElementById('avActivite').value;
+    const commentaire = document.getElementById('avCommentaire').value;
+    const packsRecap = document.getElementById('avisPacksRecap').textContent.trim();
+
+    const payload = {
+      access_key: "4c430b41-d884-4a8e-b69e-f3ea4c4fb64c",
+      subject: `Demande d'avis sous 24h — ${nom} (${societe})`,
+      from_name: "Formulaire avis 24h — site GovSales",
+      Nom: nom, Société: societe, Email: email, "Téléphone": tel || 'Non renseigné',
+      "Site web": site || 'Non renseigné', "LinkedIn": linkedin || 'Non renseigné',
+      "Activité": activite || 'Non renseigné',
+      "Packs sélectionnés": packsRecap || 'Aucun',
+      "Commentaire": commentaire || 'Aucun'
+    };
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(payload)
+    }).catch(()=>{});
+
+    document.getElementById('avisThanksText').textContent = `Merci ${nom} ! Yoann revient vers vous sous 24h avec son avis.`;
+    document.querySelectorAll('#avisModal .avis-step').forEach(s=>s.classList.remove('active'));
+    document.getElementById('avisStepThanks').classList.add('active');
+  });
+})();
 </script>
 </body>
 </html>
