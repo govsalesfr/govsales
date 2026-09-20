@@ -1519,10 +1519,9 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
 .c-goal{display:grid;grid-template-columns:2.6em 1fr;gap:.9em;align-items:center;background:var(--soft);border-radius:.9em;padding:.85em 1.1em;font-size:.95em;line-height:1.4}
 .c-goal svg{width:2.1em;height:2.1em;fill:none;stroke:var(--orange);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .c-goal b{display:block;font-weight:700}
-.c-quote{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.3em;align-items:center;border-top:1px solid var(--hair);padding-top:1.1em}
-.c-ill{display:block;width:11.5em;height:auto;border-radius:.5em}
-.c-quote q{quotes:"« " " »";font-family:var(--hand);font-weight:500;font-size:1.65em;line-height:1.1;display:block}
-.c-quote q::after{content:"";display:block;width:2em;height:2.5px;border-radius:2px;background:var(--orange);margin-top:.7em}
+.c-quote{display:block; text-align:center; border-top:1px solid var(--hair); padding-top:1.1em}
+.c-quote q{quotes:"« " " »";font-family:var(--hand);font-weight:500;font-size:1.65em;line-height:1.15;display:block}
+.c-quote q::after{content:"";display:block;width:2em;height:2.5px;border-radius:2px;background:var(--orange);margin:.7em auto 0}
 .c-next{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1em;align-items:center;text-decoration:none;cursor:pointer;color:inherit;margin-top:auto;padding-top:1em}
 .c-next .go{width:3.3em;height:3.3em;border-radius:50%;background:var(--hair);display:grid;place-items:center;transition:background .25s,color .25s,transform .25s}
 .c-next:hover .go{background:var(--orange);color:#fff;transform:translateX(3px)}
@@ -1630,7 +1629,6 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
 
 </section>
 
-<!-- ============ PARCOURS ============ -->
 
 <!-- ============ IDEES RECUES ============ -->
 <section id="idees-recues" class="idees-section">
@@ -1648,6 +1646,176 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
     </div>
   </div>
 </section>
+
+
+<!-- ============ DIAGNOSTIC ============ -->
+<section id="diagnostic" class="section-pad">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="color:var(--rouge);">GovReady™</span>
+      <h2 class="h-lg" style="color:#fff;">L'indice de maturité<br><span style="color:var(--rouge);">Secteur Public</span></h2>
+      <p class="lede">Évaluez en quelques minutes la capacité de votre entreprise à développer son activité auprès des acteurs publics.</p>
+      <div class="diag-intro-dims">
+        <b>GovReady™ mesure 6 dimensions :</b>
+        <ol>
+          <li>Adéquation de l'offre</li>
+          <li>Crédibilité de l'entreprise</li>
+          <li>Capacité opérationnelle</li>
+          <li>Préparation aux marchés publics</li>
+          <li>Visibilité auprès des acheteurs</li>
+          <li>Organisation commerciale</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="diag-box reveal">
+      <div class="diag-progress" id="diagProgress"></div>
+
+      <div class="diag-step active" id="dcatContainer"></div>
+
+      <div class="diag-step" id="dstepFinal">
+        <div class="diag-final">
+          <div class="diag-result-label">Votre score GovReady™</div>
+          <div class="diag-score">
+            <svg viewBox="0 0 100 100" class="diag-score-ring">
+              <circle cx="50" cy="50" r="44" class="diag-score-bg"></circle>
+              <circle cx="50" cy="50" r="44" class="diag-score-fill" id="diagScoreFill"></circle>
+            </svg>
+            <div class="diag-score-num"><span id="diagScoreNum">0</span><small>/100</small></div>
+          </div>
+          <div class="diag-result-title-row">
+            <h3 id="diagResultTitle">—</h3>
+          </div>
+          <p id="diagResultDesc">—</p>
+
+          <div class="diag-radar-wrap">
+            <div class="diag-radar-label">Radar de maturité</div>
+            <svg viewBox="0 0 320 260" class="diag-radar" id="diagRadar"></svg>
+          </div>
+
+          <div class="diag-priorities" style="text-align:left; max-width:440px;">
+            <div class="diag-priorities-label">Opportunités estimées</div>
+            <p id="diagOpportunites" style="font-size:14px; color:rgba(255,255,255,.82); line-height:1.6; text-align:center;"></p>
+          </div>
+
+          <div class="diag-priorities">
+            <div class="diag-priorities-label">Recommandations automatiques</div>
+            <ul id="diagResultPriorities"></ul>
+          </div>
+
+          <div>
+            <button type="button" class="btn btn-primary" id="diagOpenContact">Réserver mon diagnostic stratégique →</button>
+          </div>
+          <div class="diag-back" id="diagRestart" style="display:block; margin-top:18px; cursor:pointer;">↺ Refaire le diagnostic</div>
+        </div>
+      </div>
+
+      <div class="diag-step" id="dstepContact">
+        <div class="diag-q" style="text-align:center;">Réservez votre diagnostic stratégique de 30 minutes avec Yoann Perez.</div>
+        <form id="diagContactForm">
+          <div class="diag-form-grid">
+            <div class="diag-field"><label for="dcPrenom">Prénom</label><input type="text" id="dcPrenom" required></div>
+            <div class="diag-field"><label for="dcNom">Nom</label><input type="text" id="dcNom" required></div>
+            <div class="diag-field"><label for="dcEntreprise">Entreprise</label><input type="text" id="dcEntreprise" required></div>
+            <div class="diag-field"><label for="dcTel">Téléphone <span style="font-weight:400; text-transform:none; color:rgba(255,255,255,.5);">(facultatif)</span></label><input type="tel" id="dcTel"></div>
+            <div class="diag-field" style="grid-column:1 / -1;"><label for="dcEmail">Email</label><input type="email" id="dcEmail" required></div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="background:#fff; color:var(--bleu-france); width:100%; justify-content:center; margin-top:8px;">Confirmer ma demande</button>
+        </form>
+        <div class="diag-back" id="diagBackToResult" style="display:block; margin-top:18px; cursor:pointer; text-align:center;">← Revenir à mon profil</div>
+      </div>
+
+      <div class="diag-step" id="dstepThanks">
+        <div class="diag-final">
+          <div class="diag-result-emoji">✅</div>
+          <h3>Demande bien reçue</h3>
+          <p>Merci ! Yoann vous recontacte sous 24h ouvrées pour fixer votre créneau de 30 minutes.</p>
+        </div>
+      </div>
+
+      <div class="diag-back" id="diagBack" style="display:none; cursor:pointer;">← Revenir à la catégorie précédente</div>
+    </div>
+  </div>
+</section>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="sh" x="-45%" y="-45%" width="190%" height="190%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#FF5B14" flood-opacity=".3"/></filter>
+    <linearGradient id="fadeG" gradientUnits="userSpaceOnUse" x1="-10" y1="0" x2="1010" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".07" stop-color="#fff" stop-opacity="1"/>
+      <stop offset=".9" stop-color="#fff" stop-opacity="1"/><stop offset=".995" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="fadeM" maskUnits="userSpaceOnUse" x="-10" y="-10" width="1020" height="780"><rect x="-10" y="-10" width="1020" height="780" fill="url(#fadeG)"/></mask>
+    <linearGradient id="ilSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9EDF3"/><stop offset="1" stop-color="#CDD5E1"/></linearGradient>
+    <linearGradient id="ilShaft" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E4E9F1"/><stop offset=".5" stop-color="#FAFBFD"/><stop offset="1" stop-color="#BFC7D6"/></linearGradient>
+    <linearGradient id="ilFlag" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset=".3" stop-color="#fff" stop-opacity=".12"/><stop offset=".6" stop-color="#000" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>
+  </defs>
+</svg>
+<div id="methode-wrap">
+<section class="method" id="methode" aria-labelledby="ttl">
+  <div class="stage">
+    <div class="map">
+      <div class="intro">
+        <p class="eyebrow">La méthode GovSales®</p>
+        <h1 id="ttl">Un itinéraire clair<br>vers vos succès publics.</h1>
+        <p class="lede">Le secteur public peut sembler complexe. Nous avons tracé la route. La méthode GovSales® vous guide, étape par étape, pour transformer les opportunités en croissance durable.</p>
+      </div>
+
+      <div class="dmap" id="dmap"></div>
+
+      <div class="mwrap" id="mmap"></div>
+
+      <div class="legend">
+        <div class="lg">
+          <svg viewBox="0 0 46 18" aria-hidden="true"><path d="M9 9h28" stroke="#FF5B14" stroke-width="8" stroke-linecap="round" fill="none"/><circle cx="9" cy="9" r="2.6" fill="var(--bg)"/></svg>
+          <b>La méthode GovSales®</b><span>Votre ligne directe vers la croissance publique.</span>
+        </div>
+        <div class="lg">
+          <svg viewBox="0 0 46 18" aria-hidden="true"><path d="M8 9h30" stroke="var(--net)" stroke-width="3" fill="none"/><circle cx="6" cy="9" r="4.4" fill="var(--bg)" stroke="var(--net)" stroke-width="3"/><circle cx="40" cy="9" r="4.4" fill="var(--bg)" stroke="var(--net)" stroke-width="3"/></svg>
+          <b>Les chemins possibles</b><span>De multiples opportunités, un seul bon itinéraire.</span>
+        </div>
+        <div class="lg">
+          <svg viewBox="0 0 46 18" aria-hidden="true"><path d="M4 9h26" stroke="var(--net)" stroke-width="3" stroke-linecap="round" fill="none"/><circle cx="37" cy="9" r="8" fill="var(--bg)" stroke="var(--net)" stroke-width="3"/><path d="M34 6l6 6M40 6l-6 6" stroke="var(--net)" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <b>Les embuscades</b><span>Critères imposés, délais courts, concurrents en place.</span>
+        </div>
+      </div>
+
+      <div class="note" aria-hidden="true">Le secteur public<br>est une opportunité.
+        <svg viewBox="0 0 200 22"><path d="M3 17C40 8 110 4 196 5" fill="none" stroke="#FF5B14" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+
+    <div class="card-col">
+      <aside class="card" id="card" aria-label="Détail de l’étape">
+        <div class="c-head">
+          <div class="c-ico sw" id="c-ico" aria-hidden="true"></div>
+          <div class="sw"><span class="c-count" id="c-count"></span><h2 class="c-title" id="c-title"></h2></div>
+          <div class="c-nav">
+            <button type="button" id="c-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button type="button" id="c-fwd" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+          <p class="c-tag sw" id="c-tag"></p>
+        </div>
+        <div class="c-body sw">
+          <p class="c-intro" id="c-intro"></p>
+          <ul class="c-list" id="c-list"></ul>
+          <div class="c-goal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 21.5h4"/></svg>
+            <p><b>Notre objectif :</b><span id="c-goal"></span></p>
+          </div>
+          <div class="c-quote">
+            <q id="c-quote"></q>
+          </div>
+        </div>
+        <a class="c-next sw" id="c-next" href="#methode"></a>
+        <div class="c-dots" id="c-dots" role="group" aria-label="Choisir une étape"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+</div>
+
 
 <!-- ============ CARTE DE FRANCE ============ -->
 <section id="carte" class="section-pad">
@@ -1748,6 +1916,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
 </section>
 
 
+
 <!-- ============ TÉMOIGNAGES ============ -->
 <section id="temoignages" class="section-pad" style="background:var(--gris-fond);">
   <div class="wrap">
@@ -1797,100 +1966,12 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
   </div>
 </section>
 
+
 <!-- ============ TARIFS ============ -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <filter id="sh" x="-45%" y="-45%" width="190%" height="190%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#FF5B14" flood-opacity=".3"/></filter>
-    <linearGradient id="fadeG" gradientUnits="userSpaceOnUse" x1="-10" y1="0" x2="1010" y2="0">
-      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".07" stop-color="#fff" stop-opacity="1"/>
-      <stop offset=".9" stop-color="#fff" stop-opacity="1"/><stop offset=".995" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <mask id="fadeM" maskUnits="userSpaceOnUse" x="-10" y="-10" width="1020" height="780"><rect x="-10" y="-10" width="1020" height="780" fill="url(#fadeG)"/></mask>
-    <linearGradient id="ilSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9EDF3"/><stop offset="1" stop-color="#CDD5E1"/></linearGradient>
-    <linearGradient id="ilShaft" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E4E9F1"/><stop offset=".5" stop-color="#FAFBFD"/><stop offset="1" stop-color="#BFC7D6"/></linearGradient>
-    <linearGradient id="ilFlag" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset=".3" stop-color="#fff" stop-opacity=".12"/><stop offset=".6" stop-color="#000" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>
-  </defs>
-</svg>
-<div id="methode-wrap">
-<section class="method" id="methode" aria-labelledby="ttl">
-  <div class="stage">
-    <div class="map">
-      <div class="intro">
-        <p class="eyebrow">La méthode GovSales®</p>
-        <h1 id="ttl">Un itinéraire clair<br>vers vos succès publics.</h1>
-        <p class="lede">Le secteur public peut sembler complexe. Nous avons tracé la route. La méthode GovSales® vous guide, étape par étape, pour transformer les opportunités en croissance durable.</p>
-      </div>
-
-      <div class="dmap" id="dmap"></div>
-
-      <div class="mwrap" id="mmap"></div>
-
-      <div class="legend">
-        <div class="lg">
-          <svg viewBox="0 0 46 18" aria-hidden="true"><path d="M9 9h28" stroke="#FF5B14" stroke-width="8" stroke-linecap="round" fill="none"/><circle cx="9" cy="9" r="2.6" fill="var(--bg)"/></svg>
-          <b>La méthode GovSales®</b><span>Votre ligne directe vers la croissance publique.</span>
-        </div>
-        <div class="lg">
-          <svg viewBox="0 0 46 18" aria-hidden="true"><path d="M8 9h30" stroke="var(--net)" stroke-width="3" fill="none"/><circle cx="6" cy="9" r="4.4" fill="var(--bg)" stroke="var(--net)" stroke-width="3"/><circle cx="40" cy="9" r="4.4" fill="var(--bg)" stroke="var(--net)" stroke-width="3"/></svg>
-          <b>Les chemins possibles</b><span>De multiples opportunités, un seul bon itinéraire.</span>
-        </div>
-        <div class="lg">
-          <svg viewBox="0 0 46 18" aria-hidden="true"><path d="M4 9h26" stroke="var(--net)" stroke-width="3" stroke-linecap="round" fill="none"/><circle cx="37" cy="9" r="8" fill="var(--bg)" stroke="var(--net)" stroke-width="3"/><path d="M34 6l6 6M40 6l-6 6" stroke="var(--net)" stroke-width="2.4" stroke-linecap="round"/></svg>
-          <b>Les embuscades</b><span>Critères imposés, délais courts, concurrents en place.</span>
-        </div>
-      </div>
-
-      <div class="note" aria-hidden="true">Le secteur public<br>est une opportunité.
-        <svg viewBox="0 0 200 22"><path d="M3 17C40 8 110 4 196 5" fill="none" stroke="#FF5B14" stroke-width="3" stroke-linecap="round"/></svg>
-      </div>
-    </div>
-
-    <div class="card-col">
-      <aside class="card" id="card" aria-label="Détail de l’étape">
-        <div class="c-head">
-          <div class="c-ico sw" id="c-ico" aria-hidden="true"></div>
-          <div class="sw"><span class="c-count" id="c-count"></span><h2 class="c-title" id="c-title"></h2></div>
-          <div class="c-nav">
-            <button type="button" id="c-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
-            <button type="button" id="c-fwd" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
-          </div>
-          <p class="c-tag sw" id="c-tag"></p>
-        </div>
-        <div class="c-body sw">
-          <p class="c-intro" id="c-intro"></p>
-          <ul class="c-list" id="c-list"></ul>
-          <div class="c-goal">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 21.5h4"/></svg>
-            <p><b>Notre objectif :</b><span id="c-goal"></span></p>
-          </div>
-          <div class="c-quote">
-            <svg class="c-ill" viewBox="0 0 204 112" role="img" aria-label="Façade d’un bâtiment public et drapeau français">
-              <rect width="204" height="112" fill="url(#ilSky)"/>
-              <rect x="0" y="0" width="152" height="21" fill="#B7C0D0"/><rect x="0" y="21" width="152" height="6" fill="#A3AEC1"/>
-              <g id="cols">
-                <g><rect x="4" y="27" width="36" height="7" fill="#DCE1EA"/><rect x="8" y="34" width="28" height="66" fill="url(#ilShaft)"/><path d="M15 34v66M22 34v66M29 34v66" stroke="#B4BDCC" stroke-width="1" opacity=".7"/><rect x="4" y="100" width="36" height="7" fill="#CBD3E0"/></g>
-                <g><rect x="50" y="27" width="36" height="7" fill="#DCE1EA"/><rect x="54" y="34" width="28" height="66" fill="url(#ilShaft)"/><path d="M61 34v66M68 34v66M75 34v66" stroke="#B4BDCC" stroke-width="1" opacity=".7"/><rect x="50" y="100" width="36" height="7" fill="#CBD3E0"/></g>
-                <g><rect x="96" y="27" width="36" height="7" fill="#DCE1EA"/><rect x="100" y="34" width="28" height="66" fill="url(#ilShaft)"/><path d="M107 34v66M114 34v66M121 34v66" stroke="#B4BDCC" stroke-width="1" opacity=".7"/><rect x="96" y="100" width="36" height="7" fill="#CBD3E0"/></g>
-              </g>
-              <rect x="0" y="107" width="152" height="5" fill="#A3AEC1"/>
-              <rect x="157" y="12" width="3" height="100" fill="#8792A8"/><circle cx="158.5" cy="11" r="3" fill="#C8A64A"/>
-              <g><rect x="160" y="16" width="14" height="38" fill="#1F3A93"/><rect x="174" y="16" width="14" height="38" fill="#F6F7F9"/><rect x="188" y="16" width="14" height="38" fill="#E63946"/><rect x="160" y="16" width="42" height="38" fill="url(#ilFlag)"/></g>
-            </svg>
-            <q id="c-quote"></q>
-          </div>
-        </div>
-        <a class="c-next sw" id="c-next" href="#methode"></a>
-        <div class="c-dots" id="c-dots" role="group" aria-label="Choisir une étape"></div>
-      </aside>
-    </div>
-  </div>
-</section>
-</div>
-
 <section id="tarifs" class="section-pad">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Notre méthode</span>
+      <span class="eyebrow">Une offre pour chaque étape de votre conquête du secteur public</span>
       <h2 class="h-lg">Un parcours complet pour faire du secteur public un <span style="color:var(--rouge);">moteur de croissance.</span></h2>
       <p class="lede">Chaque entreprise a un point de départ différent. Nos packs s'adaptent à vos enjeux pour vous accompagner, étape par étape, de la stratégie à la signature.</p>
     </div>
@@ -2029,7 +2110,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
 
 
     <div class="section-head reveal" style="margin-top:70px; max-width:none;">
-      <span class="eyebrow" style="color:var(--rouge);">Nos offres phares</span>
+      <span class="eyebrow" style="color:var(--rouge);">Les accompagnements GovSales®</span>
       <h2 class="h-lg" style="white-space:nowrap;">Des accompagnements pour <span style="color:var(--rouge);">aller plus loin</span></h2>
       <p class="lede" style="max-width:none; white-space:nowrap;">Des solutions clés en main ou sur mesure, pour accélérer votre développement sur le secteur public.</p>
     </div>
@@ -2136,6 +2217,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
   </div>
 </section>
 
+
 <!-- ============ MON HISTOIRE ============ -->
 <section id="pourquoi" class="section-pad">
   <div class="wrap hero-pourquoi" id="pourquoi">
@@ -2212,95 +2294,6 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
   </div>
 </section>
 
-<!-- ============ DIAGNOSTIC ============ -->
-<section id="diagnostic" class="section-pad">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow" style="color:var(--rouge);">GovReady™</span>
-      <h2 class="h-lg" style="color:#fff;">L'indice de maturité<br><span style="color:var(--rouge);">Secteur Public</span></h2>
-      <p class="lede">Évaluez en quelques minutes la capacité de votre entreprise à développer son activité auprès des acteurs publics.</p>
-      <div class="diag-intro-dims">
-        <b>GovReady™ mesure 6 dimensions :</b>
-        <ol>
-          <li>Adéquation de l'offre</li>
-          <li>Crédibilité de l'entreprise</li>
-          <li>Capacité opérationnelle</li>
-          <li>Préparation aux marchés publics</li>
-          <li>Visibilité auprès des acheteurs</li>
-          <li>Organisation commerciale</li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="diag-box reveal">
-      <div class="diag-progress" id="diagProgress"></div>
-
-      <div class="diag-step active" id="dcatContainer"></div>
-
-      <div class="diag-step" id="dstepFinal">
-        <div class="diag-final">
-          <div class="diag-result-label">Votre score GovReady™</div>
-          <div class="diag-score">
-            <svg viewBox="0 0 100 100" class="diag-score-ring">
-              <circle cx="50" cy="50" r="44" class="diag-score-bg"></circle>
-              <circle cx="50" cy="50" r="44" class="diag-score-fill" id="diagScoreFill"></circle>
-            </svg>
-            <div class="diag-score-num"><span id="diagScoreNum">0</span><small>/100</small></div>
-          </div>
-          <div class="diag-result-title-row">
-            <h3 id="diagResultTitle">—</h3>
-          </div>
-          <p id="diagResultDesc">—</p>
-
-          <div class="diag-radar-wrap">
-            <div class="diag-radar-label">Radar de maturité</div>
-            <svg viewBox="0 0 320 260" class="diag-radar" id="diagRadar"></svg>
-          </div>
-
-          <div class="diag-priorities" style="text-align:left; max-width:440px;">
-            <div class="diag-priorities-label">Opportunités estimées</div>
-            <p id="diagOpportunites" style="font-size:14px; color:rgba(255,255,255,.82); line-height:1.6; text-align:center;"></p>
-          </div>
-
-          <div class="diag-priorities">
-            <div class="diag-priorities-label">Recommandations automatiques</div>
-            <ul id="diagResultPriorities"></ul>
-          </div>
-
-          <div>
-            <button type="button" class="btn btn-primary" id="diagOpenContact">Réserver mon diagnostic stratégique →</button>
-          </div>
-          <div class="diag-back" id="diagRestart" style="display:block; margin-top:18px; cursor:pointer;">↺ Refaire le diagnostic</div>
-        </div>
-      </div>
-
-      <div class="diag-step" id="dstepContact">
-        <div class="diag-q" style="text-align:center;">Réservez votre diagnostic stratégique de 30 minutes avec Yoann Perez.</div>
-        <form id="diagContactForm">
-          <div class="diag-form-grid">
-            <div class="diag-field"><label for="dcPrenom">Prénom</label><input type="text" id="dcPrenom" required></div>
-            <div class="diag-field"><label for="dcNom">Nom</label><input type="text" id="dcNom" required></div>
-            <div class="diag-field"><label for="dcEntreprise">Entreprise</label><input type="text" id="dcEntreprise" required></div>
-            <div class="diag-field"><label for="dcTel">Téléphone <span style="font-weight:400; text-transform:none; color:rgba(255,255,255,.5);">(facultatif)</span></label><input type="tel" id="dcTel"></div>
-            <div class="diag-field" style="grid-column:1 / -1;"><label for="dcEmail">Email</label><input type="email" id="dcEmail" required></div>
-          </div>
-          <button type="submit" class="btn btn-primary" style="background:#fff; color:var(--bleu-france); width:100%; justify-content:center; margin-top:8px;">Confirmer ma demande</button>
-        </form>
-        <div class="diag-back" id="diagBackToResult" style="display:block; margin-top:18px; cursor:pointer; text-align:center;">← Revenir à mon profil</div>
-      </div>
-
-      <div class="diag-step" id="dstepThanks">
-        <div class="diag-final">
-          <div class="diag-result-emoji">✅</div>
-          <h3>Demande bien reçue</h3>
-          <p>Merci ! Yoann vous recontacte sous 24h ouvrées pour fixer votre créneau de 30 minutes.</p>
-        </div>
-      </div>
-
-      <div class="diag-back" id="diagBack" style="display:none; cursor:pointer;">← Revenir à la catégorie précédente</div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ BIBLIOTHEQUE ============ -->
 <section id="bibliotheque" class="section-pad">
@@ -2472,6 +2465,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
     <div class="lib-modal-body" id="libModalBody"></div>
   </div>
 </div>
+
 
 <!-- ============ FOOTER ============ -->
 <footer id="contact">
@@ -3168,7 +3162,7 @@ const catIcons = {
   "Juridique": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 8h4M15 8h4"/><path d="M3 8l2.5 5a2.5 2.5 0 0 0 5 0L8 8"/><path d="M13 8l2.5 5a2.5 2.5 0 0 0 5 0L18 8"/><path d="M6 21h12"/></svg>'
 };
 const featuredIdx = [0,1,2,3,12]; // déjà mis en avant dans les blocs vedette / mini-cartes
-const hiddenIdx = [13,14,15,16,17]; // masqués tant que "Voir plus d'articles" n'a pas été cliqué, quel que soit le filtre
+const hiddenIdx = [4,5,6,7,8,9,10,11,13,14,15,16,17]; // masqués tant que "Voir plus d'articles" n'a pas été cliqué, quel que soit le filtre
 document.getElementById('libFilters').innerHTML = cats.map((c,i)=>`<button class="filter-btn${i===0?' active':''}" data-cat="${c}">${catIcons[c]?`<span class="filter-icon">${catIcons[c]}</span>`:''}${c}</button>`).join('');
 let libExpanded = false;
 function renderLib(cat){
@@ -3576,7 +3570,7 @@ goDiagStep(1);
     <div class="avis-step active" id="avisStepForm">
       <div class="avis-header">
         <h2>Recevez mon avis sous 24h</h2>
-        <p>Si vous souhaitez que je donne mon avis sous 24h sur votre positionnement secteur public, déposez quelques informations ci-dessous — je reviens vers vous personnellement.</p>
+        <p>Si vous souhaitez que je donne mon avis sous 24h sur votre positionnement secteur public, déposez quelques informations ci-dessous, je reviens vers vous personnellement.</p>
       </div>
 
       <div class="avis-packs-recap" id="avisPacksRecap"></div>
