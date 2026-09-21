@@ -1015,14 +1015,17 @@ footer{background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 70%
 }
 .footer-cols{display:flex; gap:64px; flex-wrap:wrap; text-align:center;}
 .footer-col h5{font-size:22px; text-transform:uppercase; letter-spacing:.06em; color:#fff; font-weight:800; margin-bottom:10px;}
-.footer-col a{display:block; font-size:19px; font-weight:700; margin-bottom:11px; color:var(--rouge); transition:.2s;}
-.footer-col a:hover{color:var(--rouge-dark);}
+.footer-col a{display:block; font-size:19px; font-weight:700; margin-bottom:11px; color:#fff; transition:.2s;}
+.footer-col a:hover{color:var(--rouge);}
+.footer-col a.nav-cta{display:inline-block; font-size:13px; margin-bottom:0; margin-top:8px;}
+.footer-col a.nav-cta:hover{color:#fff;}
 .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:0; font-size:12.5px; color:rgba(255,255,255,.6); flex-wrap:wrap; gap:10px;}
 .footer-bottom a{color:var(--gris-mid); transition:.2s;}
 .footer-bottom a:hover{color:var(--rouge);}
 
 /* ================= SECTION HEAD ================= */
 .section-head{max-width:680px;}
+#carte .section-head{max-width:820px;}
 .contact-float{
   position:fixed; bottom:20px; right:20px; z-index:1000;
   opacity:0; transform:translateY(16px) scale(.8); pointer-events:none;
@@ -1155,7 +1158,7 @@ footer{background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 70%
 .quicknav-toggle{
   width:46px; height:46px; border-radius:50%; background:#101828; color:#fff; flex:none;
   display:flex; align-items:center; justify-content:center; box-shadow:0 14px 34px -14px rgba(16,24,40,.4);
-  order:-1; position:relative; transition:background .2s;
+  position:relative; transition:background .2s;
 }
 .quicknav-toggle:hover{background:var(--rouge);}
 .quicknav-toggle svg{width:19px; height:19px; position:absolute; transition:opacity .2s, transform .2s;}
@@ -1176,6 +1179,7 @@ footer{background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 70%
 .quicknav-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;}
 .quicknav-card{
   border:1px solid var(--gris-bordure); border-radius:14px; padding:14px 12px; transition:.2s var(--ease);
+  height:128px; display:flex; flex-direction:column; justify-content:flex-start;
 }
 .quicknav-card:hover{border-color:var(--rouge); box-shadow:0 12px 26px -14px rgba(16,24,40,.2); transform:translateY(-2px);}
 .quicknav-card-icon{width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; margin-bottom:9px;}
@@ -1663,7 +1667,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow" style="color:var(--rouge);">GovReady™</span>
-      <h2 class="h-lg" style="color:var(--gris-texte);">L'indice de maturité<br><span style="color:var(--rouge);">Secteur Public</span></h2>
+      <h2 class="h-lg" style="color:var(--gris-texte);">L'indice de maturité<br><span style="color:var(--rouge);">Secteur Public.</span></h2>
       <p class="lede">Évaluez en quelques minutes la capacité de votre entreprise à développer son activité auprès des acteurs publics.</p>
       <div class="diag-intro-dims">
         <b>GovReady™ mesure 6 dimensions :</b>
@@ -1768,7 +1772,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
     <div class="map">
       <div class="intro">
         <p class="eyebrow">La méthode GovSales®</p>
-        <h1 id="ttl">Un itinéraire clair<br>vers vos succès publics.</h1>
+        <h1 id="ttl">Un itinéraire <span style="color:var(--rouge);">clair</span><br>vers vos succès publics.</h1>
         <p class="lede">Le secteur public peut sembler complexe. Nous avons tracé la route. La méthode GovSales® vous guide, étape par étape, pour transformer les opportunités en croissance durable.</p>
       </div>
 
@@ -1832,7 +1836,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Cartographie</span>
-      <h2 class="h-lg">Où se trouvent <span style="color:var(--rouge);">vos prochaines opportunités</span> publiques ?</h2>
+      <h2 class="h-lg">Où se trouvent <span style="color:var(--rouge);">vos prochaines</span> opportunités publiques ?</h2>
       <p class="lede">Score d'opportunité, budgets, acheteurs clés et niveau de concurrence : la donnée que nous utilisons pour orienter nos clients, région par région.</p>
     </div>
 
@@ -1920,7 +1924,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Témoignages</span>
-      <h2 class="h-lg">Ils nous font <span style="color:var(--rouge);">confiance</span></h2>
+      <h2 class="h-lg">Ils nous font <span style="color:var(--rouge);">confiance.</span></h2>
       <p class="lede">Des dirigeants qui ont transformé leur approche du secteur public.</p>
     </div>
     <div class="testi-grid">
@@ -2109,7 +2113,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
 
     <div class="section-head reveal" style="margin-top:70px; max-width:none;">
       <span class="eyebrow" style="color:var(--rouge);">Les accompagnements GovSales®</span>
-      <h2 class="h-lg" style="white-space:nowrap;">Des accompagnements pour <span style="color:var(--rouge);">aller plus loin</span></h2>
+      <h2 class="h-lg" style="white-space:nowrap;">Des accompagnements pour <span style="color:var(--rouge);">aller plus loin.</span></h2>
       <p class="lede" style="max-width:none; white-space:nowrap;">Des solutions clés en main ou sur mesure, pour accélérer votre développement sur le secteur public.</p>
     </div>
 
@@ -2298,7 +2302,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
   <div class="wrap" style="position:relative;">
     <div class="section-head reveal">
       <span class="eyebrow" style="color:var(--bleu-france);">Ressources</span>
-      <h2 class="h-lg">Une bibliothèque <span style="color:var(--rouge);">vivante</span></h2>
+      <h2 class="h-lg">Une bibliothèque <span style="color:var(--rouge);">vivante.</span></h2>
       <p class="lede">Des lectures de quelques minutes, classées par thème, pour mieux comprendre le secteur public et passer à l'action.</p>
     </div>
     <div class="lib-doodle">
@@ -2475,6 +2479,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <h5>Contact</h5>
           <a href="mailto:relations@govsales.fr">relations@govsales.fr</a>
           <a href="tel:0661643944">06 61 64 39 44</a>
+          <a href="#diagnostic" class="nav-cta" style="display:inline-block; margin-top:8px;">Parlons de votre projet</a>
         </div>
       </div>
     </div>
@@ -3492,21 +3497,21 @@ goDiagStep(1);
           <span class="quicknav-card-icon quicknav-ic-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg></span>
           <b>Accueil</b><span>Vue d'ensemble</span>
         </a>
-        <a href="#chrono" class="quicknav-card">
+        <a href="#methode" class="quicknav-card">
           <span class="quicknav-card-icon quicknav-ic-target"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
-          <b>Approche</b><span>Notre méthode</span>
+          <b>Notre méthode</b><span>En 7 étapes</span>
         </a>
         <a href="#tarifs" class="quicknav-card">
           <span class="quicknav-card-icon quicknav-ic-packs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5,5 L9.5,5 A2.3,2.3 0 1 1 14.5,5 L19,5 L19,9.5 A2.3,2.3 0 1 1 19,14.5 L19,19 L14.5,19 A2.3,2.3 0 1 0 9.5,19 L5,19 L5,14.5 A2.3,2.3 0 1 0 5,9.5 Z"/></svg></span>
-          <b>Solutions</b><span>Les solutions</span>
-        </a>
-        <a href="#bibliotheque" class="quicknav-card">
-          <span class="quicknav-card-icon quicknav-ic-ressources"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
-          <b>Ressources</b><span>Guides, articles, cas clients</span>
+          <b>Nos accompagnements</b><span>Packs et offres</span>
         </a>
         <a href="#pourquoi" class="quicknav-card">
           <span class="quicknav-card-icon quicknav-ic-apropos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-          <b>À propos</b><span>Notre mission, notre histoire</span>
+          <b>L'histoire de GovSales</b><span>Notre histoire</span>
+        </a>
+        <a href="#bibliotheque" class="quicknav-card">
+          <span class="quicknav-card-icon quicknav-ic-ressources"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
+          <b>Bibliothèque vivante</b><span>Guides et ressources</span>
         </a>
         <a href="#contact" class="quicknav-card">
           <span class="quicknav-card-icon quicknav-ic-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
@@ -3519,30 +3524,30 @@ goDiagStep(1);
       <svg class="quicknav-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </a>
   </div>
-  <button class="quicknav-toggle" id="quicknavToggle" aria-label="Ouvrir le menu de raccourcis">
-    <svg class="quicknav-toggle-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>
-    <svg class="quicknav-toggle-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
   <div class="quicknav-rail">
+      <button class="quicknav-toggle" id="quicknavToggle" aria-label="Ouvrir le menu de raccourcis">
+        <svg class="quicknav-toggle-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>
+        <svg class="quicknav-toggle-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
       <a href="#hero" class="quicknav-rail-icon" aria-label="Accueil">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>
         <span>Accueil</span>
       </a>
-      <a href="#chrono" class="quicknav-rail-icon" aria-label="Approche">
+      <a href="#methode" class="quicknav-rail-icon" aria-label="Notre méthode">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
-        <span>Approche</span>
+        <span>Notre méthode</span>
       </a>
-      <a href="#tarifs" class="quicknav-rail-icon" aria-label="Solutions">
+      <a href="#tarifs" class="quicknav-rail-icon" aria-label="Nos accompagnements">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5,5 L9.5,5 A2.3,2.3 0 1 1 14.5,5 L19,5 L19,9.5 A2.3,2.3 0 1 1 19,14.5 L19,19 L14.5,19 A2.3,2.3 0 1 0 9.5,19 L5,19 L5,14.5 A2.3,2.3 0 1 0 5,9.5 Z"/></svg>
-        <span>Solutions</span>
+        <span>Nos accompagnements</span>
       </a>
-      <a href="#bibliotheque" class="quicknav-rail-icon" aria-label="Ressources">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
-        <span>Ressources</span>
-      </a>
-      <a href="#pourquoi" class="quicknav-rail-icon" aria-label="À propos">
+      <a href="#pourquoi" class="quicknav-rail-icon" aria-label="L'histoire de GovSales">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span>À propos</span>
+        <span>L'histoire de GovSales</span>
+      </a>
+      <a href="#bibliotheque" class="quicknav-rail-icon" aria-label="Bibliothèque vivante">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        <span>Bibliothèque vivante</span>
       </a>
       <a href="#contact" class="quicknav-rail-icon" aria-label="Contact">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -3938,7 +3943,7 @@ goDiagStep(1);
   }
   document.getElementById('bookingClose').addEventListener('click', closeModal);
   modal.addEventListener('click', e=>{ if(e.target === modal) closeModal(); });
-  document.querySelector('.nav-cta').addEventListener('click', openModal);
+  document.querySelectorAll('.nav-cta').forEach(el=>el.addEventListener('click', openModal));
   document.querySelector('.contact-float-cta').addEventListener('click', openModal);
   document.querySelector('.price-final-cta-btn').addEventListener('click', openModal);
 
