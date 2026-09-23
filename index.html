@@ -432,16 +432,15 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .pq-sign-name{font-size:13px; color:var(--gris-mid); line-height:1.4;}
 .pq-sign-name b{display:block; color:var(--gris-texte); font-size:14.5px; font-family:var(--font-display);}
 
-.pq-stats{display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-top:36px; padding-top:0;}
-.pq-stat{flex:1; display:flex; flex-direction:row; align-items:center; justify-content:center; text-align:left; gap:14px;}
-.pq-stat-icon{width:30px; height:30px; color:var(--rouge); flex:none;}
+.pq-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:28px 20px; margin-top:36px; padding-top:0;}
+.pq-stat{display:flex; flex-direction:row; align-items:flex-start; justify-content:flex-start; text-align:left; gap:14px;}
+.pq-stat-icon{width:30px; height:30px; color:var(--rouge); flex:none; margin-top:2px;}
 .pq-stat-text{display:flex; flex-direction:column; gap:4px;}
 .pq-stat-sep{width:1px; align-self:stretch; background:var(--gris-bordure); flex:none;}
-.pq-stat-number{font-family:var(--font-display); font-weight:800; font-size:clamp(26px,3.6vw,34px); color:var(--rouge); line-height:1;}
-.pq-stat-label{font-size:13.5px; font-weight:700; color:#2B2828; line-height:1.4; max-width:170px;}
+.pq-stat-number{font-family:var(--font-display); font-weight:800; font-size:clamp(24px,3vw,30px); color:var(--rouge); line-height:1;}
+.pq-stat-label{font-size:13px; font-weight:700; color:#2B2828; line-height:1.4;}
 @media (max-width:700px){
-  .pq-stats{flex-direction:column; gap:28px;}
-  .pq-stat-sep{display:none;}
+  .pq-stats{grid-template-columns:1fr; gap:22px;}
 }
 
 /* ================= PARCOURS ================= */
@@ -944,8 +943,9 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-card.featured-dark .price-list{border-top-color:rgba(255,255,255,.2); color:rgba(255,255,255,.92);}
 .price-card.featured-dark .price-list li::before{color:#ffb199;}
 .featured-badge{
-  position:absolute; top:22px; right:26px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); color:#fff;
+  align-self:center; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); color:#fff;
   font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:5px 12px; border-radius:100px;
+  margin-bottom:12px;
 }
 .featured-badge-light{background:#fde9e0; border:1px solid transparent; color:var(--rouge);}
 .price-tiers{display:flex; flex-direction:column; gap:8px; margin:14px 0 18px; font-size:13.5px;}
@@ -2283,7 +2283,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <li>Prospection</li>
           <li>Premiers rendez-vous</li>
         </ul>
-        <a href="#diagnostic" class="btn btn-primary" style="width:100%; justify-content:center;">Démarrer mon lancement →</a>
+        <a href="#diagnostic" class="btn btn-primary js-open-booking" style="width:100%; justify-content:center;">Démarrer mon lancement →</a>
       </div>
 
       <div class="price-card featured featured-dark">
@@ -2304,7 +2304,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <li>Structuration des process</li>
           <li>Développement stratégique</li>
         </ul>
-        <a href="#diagnostic" class="btn btn-primary" style="width:100%; justify-content:center;">Échanger avec un expert →</a>
+        <a href="#diagnostic" class="btn btn-primary js-open-booking" style="width:100%; justify-content:center;">Échanger avec un expert →</a>
       </div>
 
       <div class="price-card featured">
@@ -2318,7 +2318,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <li>Accompagnement ponctuel ou long terme</li>
           <li>Adapté à votre secteur et à votre maturité</li>
         </ul>
-        <a href="#diagnostic" class="btn" style="width:100%; justify-content:center; border:1.5px solid var(--gris-bordure); color:var(--gris-texte);">Nous parler de votre projet →</a>
+        <a href="#diagnostic" class="btn js-open-booking" style="width:100%; justify-content:center; border:1.5px solid var(--gris-bordure); color:var(--gris-texte);">Nous parler de votre projet →</a>
       </div>
     </div>
 
@@ -2428,7 +2428,6 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <div class="pq-stat-label">Acteurs publics accompagnés</div>
         </div>
       </div>
-      <div class="pq-stat-sep"></div>
       <div class="pq-stat">
         <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         <div class="pq-stat-text">
@@ -2436,12 +2435,32 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <div class="pq-stat-label">Au cœur du secteur public</div>
         </div>
       </div>
-      <div class="pq-stat-sep"></div>
       <div class="pq-stat">
         <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8 12 14.7l-3.3-3.3L4 16"/></svg>
         <div class="pq-stat-text">
           <div class="pq-stat-number"><span class="pq-stat-count" data-target="500" data-duration="2000" data-suffix=" M€">0</span></div>
           <div class="pq-stat-label">De marchés et projets observés</div>
+        </div>
+      </div>
+      <div class="pq-stat">
+        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="21" width="4" height="10" transform="rotate(180 6 21)"/><path d="M9 21V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v12"/><path d="M15 21V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v17"/></svg>
+        <div class="pq-stat-text">
+          <div class="pq-stat-number"><span class="pq-stat-count" data-target="7000" data-duration="1800" data-suffix="+">0</span></div>
+          <div class="pq-stat-label">Organisations publiques équipées grâce à des projets auxquels j'ai participé</div>
+        </div>
+      </div>
+      <div class="pq-stat">
+        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="pq-stat-text">
+          <div class="pq-stat-number"><span class="pq-stat-count" data-target="30" data-duration="1500" data-suffix="+ M">0</span></div>
+          <div class="pq-stat-label">D'usagers ont déjà utilisé une solution que j'ai accompagnée</div>
+        </div>
+      </div>
+      <div class="pq-stat">
+        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <div class="pq-stat-text">
+          <div class="pq-stat-number"><span class="pq-stat-count" data-target="30" data-duration="1200" data-suffix="+">0</span></div>
+          <div class="pq-stat-label">Nouvelles entreprises privées accompagnées chaque année dans leur stratégie d'accès au marché public</div>
         </div>
       </div>
     </div>
@@ -3510,7 +3529,7 @@ document.getElementById('libFilters').innerHTML = cats.map((c,i)=>`<button class
 let libExpanded = false;
 function renderLib(cat){
   const fullList = cat==="Tous" ? articles.filter((a,i)=>!featuredIdx.includes(i)) : articles.filter(a=>a.cat===cat);
-  const nonHidden = fullList.filter(a=> !hiddenIdx.includes(articles.indexOf(a)));
+  const nonHidden = cat==="Tous" ? fullList.filter(a=> !hiddenIdx.includes(articles.indexOf(a))) : fullList;
   const showMore = libExpanded ? false : (fullList.length > nonHidden.length || nonHidden.length > 6);
   const visible = libExpanded ? fullList : nonHidden.slice(0,6);
   document.getElementById('libGrid').innerHTML = visible.map((a,i)=>`
@@ -4315,7 +4334,7 @@ goDiagStep(1, true);
   }
   document.getElementById('bookingClose').addEventListener('click', closeModal);
   modal.addEventListener('click', e=>{ if(e.target === modal) closeModal(); });
-  document.querySelectorAll('.nav-cta').forEach(el=>el.addEventListener('click', openModal));
+  document.querySelectorAll('.nav-cta, .js-open-booking').forEach(el=>el.addEventListener('click', openModal));
   document.querySelector('.contact-float-cta').addEventListener('click', openModal);
   document.querySelector('.price-final-cta-btn').addEventListener('click', openModal);
 
