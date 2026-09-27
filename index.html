@@ -1136,6 +1136,14 @@ footer{background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 70%
 .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:0; font-size:12.5px; color:rgba(255,255,255,.6); flex-wrap:wrap; gap:10px;}
 .footer-bottom a{color:var(--gris-mid); transition:.2s;}
 .footer-bottom a:hover{color:var(--rouge);}
+.footer-social{display:flex; justify-content:center; margin-bottom:24px;}
+.footer-social a{
+  display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px;
+  border-radius:50%; border:1.5px solid rgba(255,255,255,.3); color:#fff; transition:.2s;
+}
+.footer-social a:hover{background:var(--rouge); border-color:var(--rouge); color:#fff;}
+.footer-social a:focus-visible{outline:2.5px solid var(--rouge); outline-offset:3px;}
+.footer-social svg{width:20px; height:20px;}
 
 /* ================= SECTION HEAD ================= */
 .section-head{max-width:680px;}
@@ -2758,6 +2766,11 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <a href="#diagnostic" class="nav-cta" style="display:inline-block; margin-top:8px;">Parlons de votre projet</a>
         </div>
       </div>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/yoann-perez-10b47a145/" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn de Yoann Perez">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.63H3.56V20.4h3.38V8.63zM5.25 3.6a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.45 20.4h-3.37v-5.7c0-1.36-.03-3.11-1.9-3.11-1.9 0-2.19 1.48-2.19 3.01v5.8H9.63V8.63h3.24v1.6h.05c.45-.86 1.56-1.77 3.21-1.77 3.44 0 4.07 2.26 4.07 5.2v6.74z"/></svg>
+      </a>
     </div>
     <div class="footer-bottom">
       <span>© 2026 GovSales™. Méthodologie, contenus et visuels protégés. Tous droits réservés.</span>
