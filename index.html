@@ -798,8 +798,12 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .lib-cta-label{font-size:12px; font-weight:700; letter-spacing:.03em; color:var(--rouge); display:block; margin-bottom:10px;}
 .lib-guide-card h3{color:#fff; font-family:var(--font-display); font-size:21px; line-height:1.3; margin-bottom:8px;}
 .lib-guide-card p{font-size:13.5px; color:rgba(255,255,255,.75); margin-bottom:18px;}
-.lib-guide-mockup{flex:none; width:270px;}
+.lib-guide-mockup{flex:none; width:320px;}
 .lib-guide-mockup img{width:100%; height:auto; border-radius:10px; box-shadow:0 24px 48px -12px rgba(0,0,0,.5); display:block;}
+@media (max-width:640px){
+  .lib-guide-card{flex-direction:column; align-items:stretch;}
+  .lib-guide-mockup{width:100%;}
+}
 .lib-case-card{
   background:#fff; border:1px solid var(--gris-bordure); border-radius:20px; padding:34px;
   display:flex; flex-direction:column; overflow:hidden;
@@ -2401,7 +2405,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       </div>
       <div class="pq-float-card pq-float-top">
         <div class="pq-float-accent"></div>
-        <div class="pq-float-top-num">15 ans</div>
+        <div class="pq-float-top-num">20 ans</div>
         <b>d'expérience</b>
         <span>au service du secteur public</span>
       </div>
@@ -2417,7 +2421,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       </div>
     </div>
       <div class="pq-text">
-        <p class="lead"><b>Depuis plus de quinze ans, j'évolue au cœur du secteur public.</b> J'ai accompagné des centaines de décideurs et d'équipes dans des mairies, départements, régions, préfectures, ambassades, consulats, hôpitaux, missions locales et bien d'autres organismes publics. Cette immersion m'a permis de travailler au quotidien avec des DSI, DGS, DGA, DRH, élus et agents, et de comprendre précisément leurs attentes, leurs contraintes et leur manière de prendre leurs décisions.</p>
+        <p class="lead"><b>Depuis plus de vingt ans, j'évolue au cœur du secteur public.</b> J'ai accompagné des centaines de décideurs et d'équipes dans des mairies, départements, régions, préfectures, ambassades, consulats, hôpitaux, missions locales et bien d'autres organismes publics. Cette immersion m'a permis de travailler au quotidien avec des DSI, DGS, DGA, DRH, élus et agents, et de comprendre précisément leurs attentes, leurs contraintes et leur manière de prendre leurs décisions.</p>
         <p>Durant cette période, j'ai également aidé des dizaines d'entreprises privées à réussir leur développement sur ce marché exigeant mais plein d'opportunités.</p>
         <p>Aujourd'hui, j'ai décidé de franchir une nouvelle étape en fondant <b>GovSales</b>.</p>
         <p>Ma mission est simple : <b>aider les entreprises privées à accéder au marché public</b>, un marché souvent perçu comme complexe, à en comprendre les codes et à développer durablement leur activité auprès des acteurs du service public.</p>
@@ -2439,7 +2443,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <div class="pq-stat">
         <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         <div class="pq-stat-text">
-          <div class="pq-stat-number"><span class="pq-stat-count" data-target="15" data-duration="1000" data-suffix=" ans">0</span></div>
+          <div class="pq-stat-number"><span class="pq-stat-count" data-target="20" data-duration="1000" data-suffix=" ans">0</span></div>
           <div class="pq-stat-label">Au cœur du secteur public</div>
         </div>
       </div>
