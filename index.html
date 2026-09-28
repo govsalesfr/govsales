@@ -941,9 +941,12 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-list li{padding-left:18px; position:relative;}
 .price-list li::before{content:"✔️"; position:absolute; left:0; top:0; font-size:9px; line-height:1.7;}
 
-.price-featured-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;}
+.price-featured-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px; align-items:start;}
 .price-featured-grid-3{grid-template-columns:1fr 1fr 1fr;}
+.price-featured-grid-4{grid-template-columns:1fr 1fr 1fr 1fr;}
+@media (max-width:1100px){ .price-featured-grid-4{grid-template-columns:1fr 1fr;} }
 @media (max-width:860px){ .price-featured-grid, .price-featured-grid-3{grid-template-columns:1fr;} }
+@media (max-width:640px){ .price-featured-grid-4{grid-template-columns:1fr;} }
 .price-card.featured{position:relative; overflow:hidden;}
 .price-card.featured-dark{
   background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 75%); color:#fff; border:none;
@@ -953,6 +956,8 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-card.featured-dark .price-sub{color:var(--rouge);}
 .price-card.featured-dark .price-list{border-top-color:rgba(255,255,255,.2); color:rgba(255,255,255,.92);}
 .price-card.featured-dark .price-list li::before{color:#ffb199;}
+.price-card.featured-dark .price-detail-toggle{color:#fff;}
+.price-card.featured-dark .price-detail-toggle:hover{color:var(--rouge);}
 .featured-badge{
   align-self:center; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); color:#fff;
   font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:5px 12px; border-radius:100px;
@@ -962,9 +967,15 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-tiers{display:flex; flex-direction:column; gap:8px; margin:14px 0 18px; font-size:13.5px;}
 .price-tier-row{display:flex; justify-content:space-between; gap:12px; background:rgba(255,255,255,.08); border-radius:10px; padding:9px 13px;}
 .featured-dark .price-tier-row{background:rgba(255,255,255,.08);}
-.price-featured-grid:not(.price-featured-grid-3) .price-tier-row,
+.price-featured-grid:not(.price-featured-grid-3):not(.price-featured-grid-4) .price-tier-row,
 .price-card.featured:not(.featured-dark) .price-tier-row{background:var(--gris-fond);}
 .price-tier-row b{font-weight:700;}
+.salon-tiers{display:flex; flex-direction:column; margin:16px 0 4px;}
+.salon-tier{padding:14px 0; border-top:1px solid var(--gris-bordure);}
+.salon-tier:first-child{padding-top:0; border-top:none;}
+.salon-tier-head{display:flex; flex-direction:column; align-items:center; text-align:center; gap:3px; margin-bottom:12px;}
+.salon-tier-head b{font-size:13.5px; line-height:1.3;}
+.salon-tier-price{font-size:12.5px; font-weight:700; color:var(--bleu-france);}
 .price-card .btn{margin-top:20px; align-self:flex-start;}
 .price-detail-link{display:block; margin-top:18px; font-size:13.5px; font-weight:700; color:var(--bleu-france); text-align:center; padding-top:16px; border-top:1px solid var(--gris-bordure);}
 .price-detail-link:hover{color:var(--rouge);}
@@ -2159,7 +2170,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <div class="price-icon">🚀</div>
           <h4>Pack<br>Intelligence Marché</h4>
           <div class="price-sub">Comprendre qui achète, quoi et quand.</div>
-          <div class="price-tag">2 490 € HT</div>
+          <div class="price-tag">Dès 2 490 €</div>
           </div>
           <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="price-list price-list-collapsed">
@@ -2180,7 +2191,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <div class="price-icon">🎯</div>
           <h4>Pack<br>Positionnement Public</h4>
           <div class="price-sub">Adapter son discours aux attentes des collectivités.</div>
-          <div class="price-tag">3 490 € HT</div>
+          <div class="price-tag">Dès 3 490 €</div>
           </div>
           <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="price-list price-list-collapsed">
@@ -2202,7 +2213,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <div class="price-icon">📣</div>
           <h4>Pack<br>Influence</h4>
           <div class="price-sub">Être identifié avant même la première prise de contact.</div>
-          <div class="price-tag">2 990 € HT</div>
+          <div class="price-tag">Dès 2 990 €</div>
           </div>
           <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="price-list price-list-collapsed">
@@ -2224,7 +2235,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <div class="price-icon">🤝</div>
           <h4>Pack<br>Réseau</h4>
           <div class="price-sub">Développer les bons partenariats et ouvrir les bonnes portes.</div>
-          <div class="price-tag">3 990 € HT</div>
+          <div class="price-tag">Dès 3 990 €</div>
           </div>
           <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="price-list price-list-collapsed">
@@ -2246,7 +2257,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <div class="price-icon">📑</div>
           <h4>Pack<br>Réponse aux Appels d'Offres</h4>
           <div class="price-sub">Transformer les opportunités en contrats.</div>
-          <div class="price-tag">Dès 2 990 € HT</div>
+          <div class="price-tag">Dès 2 990 €</div>
           </div>
           <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="price-list price-list-collapsed">
@@ -2267,7 +2278,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <div class="price-icon">📈</div>
           <h4>Pack<br>Pilotage Commercial</h4>
           <div class="price-sub">Mettre en place une organisation performante.</div>
-          <div class="price-tag">2 990 € HT</div>
+          <div class="price-tag">Dès 2 990 €</div>
           </div>
           <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="price-list price-list-collapsed">
@@ -2282,6 +2293,42 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       </div>
     </div>
 
+    <div class="pack-builder reveal">
+      <h3 class="pack-builder-title">Composez votre accompagnement</h3>
+      <p class="pack-builder-sub">Cochez les packs qui vous intéressent, le montant se calcule automatiquement.</p>
+      <div class="pack-builder-list">
+        <label class="pack-check">
+          <input type="checkbox" data-price="2490">
+          <span>Intelligence Marché</span>
+          <b>2 490 €</b>
+        </label>
+        <label class="pack-check">
+          <input type="checkbox" data-price="3490">
+          <span>Positionnement Public</span>
+          <b>3 490 €</b>
+        </label>
+        <label class="pack-check">
+          <input type="checkbox" data-price="2990">
+          <span>Influence</span>
+          <b>2 990 €</b>
+        </label>
+        <label class="pack-check">
+          <input type="checkbox" data-price="3990">
+          <span>Réseau</span>
+          <b>3 990 €</b>
+        </label>
+        <label class="pack-check">
+          <input type="checkbox" data-price="2990">
+          <span>Pilotage Commercial</span>
+          <b>2 990 €</b>
+        </label>
+      </div>
+      <div class="pack-builder-total">
+        <span>Accompagnement complet</span>
+        <b id="packBuilderTotal">—</b>
+      </div>
+      <a href="#diagnostic" class="btn btn-primary btn-disabled" id="packBuilderCta" style="width:100%; justify-content:center;">Recevoir une proposition détaillée</a>
+    </div>
 
     <div class="section-head reveal" style="margin-top:70px; max-width:none;">
       <span class="eyebrow" style="color:var(--rouge);">Les accompagnements GovSales®</span>
@@ -2294,9 +2341,10 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
         <span class="featured-badge featured-badge-light">Idéal pour démarrer</span>
         <div class="price-icon">⚡</div>
         <h4>Pack<br>Lancement Express</h4>
-        <div class="price-tag">7 990 € HT</div>
-        <div class="price-sub">Pour les PME qui veulent entrer rapidement sur le marché public — en 30 jours.</div>
-        <ul class="price-list">
+        <div class="price-sub">La solution clé en main pour démarrer sur le secteur public.</div>
+        <div class="price-tag">7 990 €</div>
+        <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="price-list price-list-collapsed">
           <li>Positionnement</li>
           <li>Ciblage</li>
           <li>Outils commerciaux</li>
@@ -2312,12 +2360,13 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
         <h4>Direction Commerciale Externalisée</h4>
         <div class="price-sub">1 à 4 jours par mois, à vos côtés durablement.</div>
         <div class="price-tiers">
-          <div class="price-tier-row"><span>1 jour / mois</span><b>2 500 € HT</b></div>
-          <div class="price-tier-row"><span>2 jours / mois</span><b>4 900 € HT</b></div>
-          <div class="price-tier-row"><span>3 jours / mois</span><b>7 200 € HT</b></div>
-          <div class="price-tier-row"><span>4 jours / mois</span><b>9 500 € HT</b></div>
+          <div class="price-tier-row"><span>1 jour / mois</span><b>2 500 €</b></div>
+          <div class="price-tier-row"><span>2 jours / mois</span><b>4 900 €</b></div>
+          <div class="price-tier-row"><span>3 jours / mois</span><b>7 200 €</b></div>
+          <div class="price-tier-row"><span>4 jours / mois</span><b>9 500 €</b></div>
         </div>
-        <ul class="price-list">
+        <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="price-list price-list-collapsed">
           <li>Comité commercial</li>
           <li>Coaching du dirigeant</li>
           <li>Recrutement</li>
@@ -2328,59 +2377,48 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       </div>
 
       <div class="price-card featured">
-        <span class="featured-badge featured-badge-light">À la carte</span>
-        <div class="price-icon">⚙️</div>
-        <h4>Accompagnement sur mesure</h4>
-        <div class="price-tag">Sur devis</div>
-        <div class="price-sub">Un besoin spécifique ? Nous construisons la solution adaptée à vos enjeux.</div>
-        <ul class="price-list">
-          <li>Combinaison de plusieurs packs</li>
-          <li>Accompagnement ponctuel ou long terme</li>
-          <li>Adapté à votre secteur et à votre maturité</li>
-        </ul>
-        <a href="#diagnostic" class="btn js-open-booking" style="width:100%; justify-content:center; border:1.5px solid var(--gris-bordure); color:var(--gris-texte);">Nous parler de votre projet →</a>
+        <span class="featured-badge featured-badge-light">Événementiel</span>
+        <div class="price-icon">🎪</div>
+        <h4>Pack<br>Salon Accompagnement</h4>
+        <div class="price-sub">Transformez vos rencontres en opportunités concrètes pour maximiser votre retour sur investissement salon.</div>
+        <div class="salon-tiers">
+          <div class="salon-tier">
+            <div class="salon-tier-head"><b>Salon Essentiel</b><span class="salon-tier-price">À partir de 1 490 €</span></div>
+            <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <ul class="price-list price-list-collapsed">
+              <li>Préparation du salon</li>
+              <li>Ciblage des interlocuteurs</li>
+              <li>Plan d'action</li>
+              <li>Débrief post-événement</li>
+            </ul>
+          </div>
+          <div class="salon-tier">
+            <div class="salon-tier-head"><b>Salon Accompagnement</b><span class="salon-tier-price">À partir de 2 990 €</span></div>
+            <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <ul class="price-list price-list-collapsed">
+              <li>Préparation</li>
+              <li>Présence sur le salon (1 journée)</li>
+              <li>Coaching terrain</li>
+              <li>Débrief</li>
+            </ul>
+          </div>
+          <div class="salon-tier">
+            <div class="salon-tier-head"><b>Salon Premium</b><span class="salon-tier-price">À partir de 4 990 €</span></div>
+            <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <ul class="price-list price-list-collapsed">
+              <li>Préparation</li>
+              <li>Présence</li>
+              <li>Suivi commercial 30 jours</li>
+              <li>Accompagnement des relances</li>
+              <li>Comité de pilotage</li>
+            </ul>
+          </div>
+        </div>
+        <a href="#diagnostic" class="btn js-open-booking" style="width:100%; justify-content:center; border:1.5px solid var(--gris-bordure); color:var(--gris-texte);">Préparer mon salon →</a>
       </div>
     </div>
 
-
-    <div class="pack-builder reveal">
-      <h3 class="pack-builder-title">Composez votre accompagnement</h3>
-      <p class="pack-builder-sub">Cochez les packs qui vous intéressent, le montant se calcule automatiquement.</p>
-      <div class="pack-builder-list">
-        <label class="pack-check">
-          <input type="checkbox" data-price="2490">
-          <span>Intelligence Marché</span>
-          <b>2 490 € HT</b>
-        </label>
-        <label class="pack-check">
-          <input type="checkbox" data-price="3490">
-          <span>Positionnement Public</span>
-          <b>3 490 € HT</b>
-        </label>
-        <label class="pack-check">
-          <input type="checkbox" data-price="2990">
-          <span>Influence</span>
-          <b>2 990 € HT</b>
-        </label>
-        <label class="pack-check">
-          <input type="checkbox" data-price="3990">
-          <span>Réseau</span>
-          <b>3 990 € HT</b>
-        </label>
-        <label class="pack-check">
-          <input type="checkbox" data-price="2990">
-          <span>Pilotage Commercial</span>
-          <b>2 990 € HT</b>
-        </label>
-      </div>
-      <div class="pack-builder-total">
-        <span>Accompagnement complet</span>
-        <b id="packBuilderTotal">—</b>
-      </div>
-      <a href="#diagnostic" class="btn btn-primary btn-disabled" id="packBuilderCta" style="width:100%; justify-content:center;">Recevoir une proposition détaillée</a>
-    </div>
-
-    <p class="price-note">Tarifs HT, hors frais annexes éventuels. Un diagnostic gratuit permet de définir le pack le plus adapté à votre situation.</p>
+    <p class="price-note">Tarifs hors frais annexes éventuels. Un diagnostic gratuit permet de définir le pack le plus adapté à votre situation.<br>TVA non applicable – article 293 B du CGI.</p>
     <div class="price-final-cta reveal">
       <div class="price-final-cta-text">
         <span class="price-final-cta-icon">💡</span>
@@ -3101,7 +3139,7 @@ document.getElementById('introEnterBtn').addEventListener('click', closeIntro);
   const cta = document.getElementById('packBuilderCta');
   if(!checks.length || !totalEl || !cta) return;
 
-  function fmt(n){ return n.toLocaleString('fr-FR') + ' € HT'; }
+  function fmt(n){ return n.toLocaleString('fr-FR') + ' €'; }
 
   function update(){
     let total = 0;
