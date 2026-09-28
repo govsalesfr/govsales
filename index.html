@@ -69,6 +69,7 @@ html{scroll-behavior:smooth;}
 }
 .a11y-toggle:hover{background:var(--rouge); transform:translateY(-2px);}
 .a11y-toggle svg{width:26px; height:26px;}
+@media (max-width:900px){ .a11y-toggle{display:none;} }
 .a11y-panel{
   position:fixed; bottom:82px; left:20px; z-index:1001; width:320px; max-width:calc(100vw - 40px);
   max-height:calc(100vh - 110px); overflow-y:auto; background:#fff; border-radius:18px;
