@@ -433,15 +433,48 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .pq-sign-name{font-size:13px; color:var(--gris-mid); line-height:1.4;}
 .pq-sign-name b{display:block; color:var(--gris-texte); font-size:14.5px; font-family:var(--font-display);}
 
-.pq-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:28px 20px; margin-top:36px; padding-top:0;}
-.pq-stat{display:flex; flex-direction:row; align-items:flex-start; justify-content:flex-start; text-align:left; gap:14px;}
-.pq-stat-icon{width:30px; height:30px; color:var(--rouge); flex:none; margin-top:2px;}
-.pq-stat-text{display:flex; flex-direction:column; gap:4px;}
-.pq-stat-sep{width:1px; align-self:stretch; background:var(--gris-bordure); flex:none;}
-.pq-stat-number{font-family:var(--font-display); font-weight:800; font-size:clamp(24px,3vw,30px); color:var(--rouge); line-height:1;}
-.pq-stat-label{font-size:13px; font-weight:700; color:#2B2828; line-height:1.4;}
-@media (max-width:700px){
-  .pq-stats{grid-template-columns:1fr; gap:22px;}
+.pq-info-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px;}
+@media (max-width:900px){ .pq-info-grid{grid-template-columns:1fr; gap:20px;} }
+
+.pq-info-card{border-radius:24px; padding:36px;}
+.pq-info-card-stats{background:linear-gradient(160deg,#fff4ed,#fffbf9 65%); border:1px solid #ffe2d1;}
+.pq-info-card-sectors{background:linear-gradient(160deg,#eef4fc,#f9fbfe 65%); border:1px solid #dae5f5;}
+
+.pq-info-accent{width:30px; height:3px; border-radius:2px; background:var(--rouge); margin-bottom:16px;}
+.pq-info-card h3{font-family:var(--font-display); font-weight:800; font-size:clamp(22px,2.6vw,28px); line-height:1.18; color:var(--gris-texte); margin-bottom:10px;}
+.pq-info-card h3 span{color:var(--rouge);}
+.pq-info-card>p{font-size:14.5px; line-height:1.55; color:var(--gris-mid); max-width:420px; margin-bottom:28px;}
+
+.pq-tile-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+@media (max-width:640px){ .pq-tile-grid{grid-template-columns:1fr;} }
+
+.pq-tile{background:#fff; border:1px solid rgba(16,24,40,.06); border-radius:16px; padding:20px 18px; box-shadow:0 1px 3px rgba(16,24,40,.04);}
+.pq-tile-icon-wrap{width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:16px; flex:none;}
+.pq-tile-icon{width:22px; height:22px;}
+
+.pq-stat-tile .pq-tile-icon-wrap{background:rgba(255,104,53,.12);}
+.pq-stat-tile .pq-tile-icon{color:var(--rouge);}
+.pq-stat-tile:nth-child(even) .pq-tile-icon-wrap{background:rgba(59,130,246,.13);}
+.pq-stat-tile:nth-child(even) .pq-tile-icon{color:#3b82f6;}
+.pq-stat-tile .pq-stat-number{font-family:var(--font-display); font-weight:800; font-size:clamp(22px,2.4vw,27px); color:var(--rouge); line-height:1; margin-bottom:8px;}
+.pq-stat-tile .pq-stat-label{font-size:12.5px; font-weight:600; color:var(--gris-texte); line-height:1.4;}
+.pq-stat-tile .pq-stat-sublabel{font-size:12px; font-weight:400; color:var(--gris-mid); line-height:1.4; margin-top:3px;}
+
+.pq-sector-tile b{display:block; font-size:13.5px; font-weight:700; color:var(--gris-texte); margin-bottom:5px; line-height:1.3;}
+.pq-sector-tile p{font-size:12.5px; line-height:1.45; color:var(--gris-mid); margin:0;}
+.pq-sector-tile.c-orange .pq-tile-icon-wrap{background:rgba(255,104,53,.14);} .pq-sector-tile.c-orange .pq-tile-icon{color:var(--rouge);}
+.pq-sector-tile.c-blue .pq-tile-icon-wrap{background:rgba(59,130,246,.14);} .pq-sector-tile.c-blue .pq-tile-icon{color:#3b82f6;}
+.pq-sector-tile.c-green .pq-tile-icon-wrap{background:rgba(22,163,74,.14);} .pq-sector-tile.c-green .pq-tile-icon{color:#16a34a;}
+.pq-sector-tile.c-amber .pq-tile-icon-wrap{background:rgba(217,119,6,.15);} .pq-sector-tile.c-amber .pq-tile-icon{color:#d97706;}
+.pq-sector-tile.c-pink .pq-tile-icon-wrap{background:rgba(219,39,119,.13);} .pq-sector-tile.c-pink .pq-tile-icon{color:#db2777;}
+.pq-sector-tile.c-purple .pq-tile-icon-wrap{background:rgba(124,58,237,.13);} .pq-sector-tile.c-purple .pq-tile-icon{color:#7c3aed;}
+.pq-sector-tile.c-teal .pq-tile-icon-wrap{background:rgba(13,148,136,.14);} .pq-sector-tile.c-teal .pq-tile-icon{color:#0d9488;}
+.pq-sector-tile-wide{grid-column:1/-1; display:flex; align-items:center; gap:18px;}
+.pq-sector-tile-wide .pq-tile-icon-wrap{margin-bottom:0;}
+.pq-sector-tile-wide b{margin-bottom:3px;}
+@media (max-width:480px){ .pq-sector-tile-wide{flex-direction:column; align-items:flex-start;} }
+@media (max-width:640px){
+  .pq-info-card{padding:26px 22px;}
 }
 
 /* ================= PARCOURS ================= */
@@ -2372,6 +2405,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <li>Recrutement</li>
           <li>Structuration des process</li>
           <li>Développement stratégique</li>
+          <li>Formation commerciale</li>
         </ul>
         <a href="#diagnostic" class="btn btn-primary js-open-booking" style="width:100%; justify-content:center;">Échanger avec un expert →</a>
       </div>
@@ -2478,47 +2512,98 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       </div>
     </div>
 
-    <div class="pq-stats reveal">
-      <div class="pq-stat">
-        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <div class="pq-stat-text">
-          <div class="pq-stat-number"><span class="pq-stat-count" data-target="2000" data-duration="1500" data-prefix="+">0</span></div>
-          <div class="pq-stat-label">Acteurs publics accompagnés</div>
+    <div class="pq-info-grid reveal">
+      <div class="pq-info-card pq-info-card-stats">
+        <div class="pq-info-accent"></div>
+        <h3>Chiffres <span>clés</span></h3>
+        <p>Une expérience terrain, des résultats concrets au service de votre développement.</p>
+        <div class="pq-tile-grid pq-stat-tiles">
+          <div class="pq-tile pq-stat-tile">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="pq-stat-number"><span class="pq-stat-count" data-target="2000" data-duration="1500" data-prefix="+">0</span></div>
+            <div class="pq-stat-label">Acteurs publics accompagnés</div>
+          </div>
+          <div class="pq-tile pq-stat-tile">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="pq-stat-number"><span class="pq-stat-count" data-target="20" data-duration="1000" data-suffix=" ans">0</span></div>
+            <div class="pq-stat-label">Au cœur du secteur public</div>
+          </div>
+          <div class="pq-tile pq-stat-tile">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8 12 14.7l-3.3-3.3L4 16"/></svg></div>
+            <div class="pq-stat-number"><span class="pq-stat-count" data-target="500" data-duration="2000" data-suffix=" M€">0</span></div>
+            <div class="pq-stat-label">De marchés et projets observés</div>
+          </div>
+          <div class="pq-tile pq-stat-tile">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            <div class="pq-stat-number"><span class="pq-stat-count" data-target="30" data-duration="1200" data-suffix="+">0</span></div>
+            <div class="pq-stat-label">Nouvelles entreprises privées accompagnées chaque année dans leur stratégie d'accès au marché public</div>
+          </div>
+          <div class="pq-tile pq-stat-tile">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="pq-stat-number"><span class="pq-stat-count" data-target="30" data-duration="1500" data-suffix="+ M">0</span></div>
+            <div class="pq-stat-label">D'usagers ont déjà utilisé une solution que j'ai accompagnée</div>
+          </div>
+          <div class="pq-tile pq-stat-tile">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="21" width="4" height="10" transform="rotate(180 6 21)"/><path d="M9 21V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v12"/><path d="M15 21V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v17"/></svg></div>
+            <div class="pq-stat-number"><span class="pq-stat-count" data-target="7000" data-duration="1800" data-suffix="+">0</span></div>
+            <div class="pq-stat-label">Organisations publiques équipées grâce à des projets auxquels j'ai participé</div>
+          </div>
+          <div class="pq-tile pq-stat-tile">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg></div>
+            <div class="pq-stat-number"><span class="pq-stat-count" data-target="80" data-duration="1200" data-suffix=" %">0</span></div>
+            <div class="pq-stat-label">Des missions réalisées sur recommandation.</div>
+          </div>
+          <div class="pq-tile pq-stat-tile">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h3M15 12h3M7 16h10"/></svg></div>
+            <div class="pq-stat-number"><span class="pq-stat-count" data-target="10000" data-duration="2000" data-suffix="+">0</span></div>
+            <div class="pq-stat-label">Contacts publics qualifiés</div>
+            <div class="pq-stat-sublabel">Dans les collectivités, et organismes publics.</div>
+          </div>
         </div>
       </div>
-      <div class="pq-stat">
-        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        <div class="pq-stat-text">
-          <div class="pq-stat-number"><span class="pq-stat-count" data-target="20" data-duration="1000" data-suffix=" ans">0</span></div>
-          <div class="pq-stat-label">Au cœur du secteur public</div>
-        </div>
-      </div>
-      <div class="pq-stat">
-        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8 12 14.7l-3.3-3.3L4 16"/></svg>
-        <div class="pq-stat-text">
-          <div class="pq-stat-number"><span class="pq-stat-count" data-target="500" data-duration="2000" data-suffix=" M€">0</span></div>
-          <div class="pq-stat-label">De marchés et projets observés</div>
-        </div>
-      </div>
-      <div class="pq-stat">
-        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="21" width="4" height="10" transform="rotate(180 6 21)"/><path d="M9 21V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v12"/><path d="M15 21V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v17"/></svg>
-        <div class="pq-stat-text">
-          <div class="pq-stat-number"><span class="pq-stat-count" data-target="7000" data-duration="1800" data-suffix="+">0</span></div>
-          <div class="pq-stat-label">Organisations publiques équipées grâce à des projets auxquels j'ai participé</div>
-        </div>
-      </div>
-      <div class="pq-stat">
-        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <div class="pq-stat-text">
-          <div class="pq-stat-number"><span class="pq-stat-count" data-target="30" data-duration="1500" data-suffix="+ M">0</span></div>
-          <div class="pq-stat-label">D'usagers ont déjà utilisé une solution que j'ai accompagnée</div>
-        </div>
-      </div>
-      <div class="pq-stat">
-        <svg class="pq-stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        <div class="pq-stat-text">
-          <div class="pq-stat-number"><span class="pq-stat-count" data-target="30" data-duration="1200" data-suffix="+">0</span></div>
-          <div class="pq-stat-label">Nouvelles entreprises privées accompagnées chaque année dans leur stratégie d'accès au marché public</div>
+
+      <div class="pq-info-card pq-info-card-sectors">
+        <div class="pq-info-accent"></div>
+        <h3>Les secteurs d'entreprises<br><span>que j'accompagne</span></h3>
+        <p>GovSales intervient auprès d'entreprises privées qui souhaitent développer leur activité auprès des collectivités, hôpitaux, administrations et organismes publics.</p>
+        <div class="pq-tile-grid pq-sector-tiles">
+          <div class="pq-tile pq-sector-tile c-orange">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <b>Éditeurs de logiciels &amp; SaaS</b>
+            <p>Solutions métiers, plateformes numériques.</p>
+          </div>
+          <div class="pq-tile pq-sector-tile c-blue">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <b>ESN &amp; acteurs du numérique</b>
+            <p>Transformation numérique, cybersécurité, infrastructure.</p>
+          </div>
+          <div class="pq-tile pq-sector-tile c-green">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg></div>
+            <b>Organismes de formation</b>
+            <p>Formation professionnelle et montée en compétences.</p>
+          </div>
+          <div class="pq-tile pq-sector-tile c-amber">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><line x1="9" y1="7" x2="9" y2="7.01"/><line x1="15" y1="7" x2="15" y2="7.01"/><line x1="9" y1="12" x2="9" y2="12.01"/><line x1="15" y1="12" x2="15" y2="12.01"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+            <b>Bureaux d'études &amp; ingénierie</b>
+            <p>Aménagement, environnement, transports, énergie.</p>
+          </div>
+          <div class="pq-tile pq-sector-tile c-pink">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+            <b>Cabinets de conseil</b>
+            <p>Accompagnement stratégique et opérationnel.</p>
+          </div>
+          <div class="pq-tile pq-sector-tile c-purple">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+            <b>Entreprises de services</b>
+            <p>Services externalisés et expertise métier.</p>
+          </div>
+          <div class="pq-tile pq-sector-tile pq-sector-tile-wide c-teal">
+            <div class="pq-tile-icon-wrap"><svg class="pq-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+            <div>
+              <b>Entreprises innovantes</b>
+              <p>Startups, deeptech, IA, solutions de rupture et technologies émergentes.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -3175,7 +3260,7 @@ document.getElementById('introEnterBtn').addEventListener('click', closeIntro);
 
 /* ============ COMPTEURS ANIMÉS ============ */
 (function initPqStats(){
-  const wrap = document.querySelector('.pq-stats');
+  const wrap = document.querySelector('.pq-stat-tiles');
   if(!wrap) return;
   const counters = Array.from(wrap.querySelectorAll('.pq-stat-count'));
 
