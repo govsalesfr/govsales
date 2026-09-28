@@ -1016,7 +1016,7 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .price-detail-link:hover{color:var(--rouge);}
 .price-note{font-size:12.5px; color:var(--gris-mid); margin-top:20px; text-align:center;}
 
-.price-track-wrap{display:flex; align-items:stretch; gap:0; margin:24px 0 20px;}
+.price-track-wrap{display:flex; align-items:flex-start; gap:0; margin:24px 0 20px;}
 .price-track{display:flex; flex-direction:column; align-items:center; gap:8px; flex:1; min-width:0;}
 .price-track-num{
   width:38px; height:38px; border-radius:50%; background:#1e3a8a; color:#fff; flex:none;
@@ -2388,6 +2388,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <li>Outils commerciaux</li>
           <li>Prospection</li>
           <li>Premiers rendez-vous</li>
+          <li>Formation commerciale</li>
         </ul>
         <a href="#diagnostic" class="btn btn-primary js-open-booking" style="width:100%; justify-content:center;">Démarrer mon lancement →</a>
       </div>
@@ -2435,18 +2436,16 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             <div class="salon-tier-head"><b>Salon Accompagnement</b><span class="salon-tier-price">À partir de 2 990 €</span></div>
             <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
             <ul class="price-list price-list-collapsed">
-              <li>Préparation</li>
+              <li><b>Salon Essentiel inclus</b></li>
               <li>Présence sur le salon (1 journée)</li>
               <li>Coaching terrain</li>
-              <li>Débrief</li>
             </ul>
           </div>
           <div class="salon-tier">
             <div class="salon-tier-head"><b>Salon Premium</b><span class="salon-tier-price">À partir de 4 990 €</span></div>
             <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
             <ul class="price-list price-list-collapsed">
-              <li>Préparation</li>
-              <li>Présence</li>
+              <li><b>Salon Accompagnement inclus</b></li>
               <li>Suivi commercial 30 jours</li>
               <li>Accompagnement des relances</li>
               <li>Comité de pilotage</li>
