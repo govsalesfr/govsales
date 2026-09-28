@@ -1199,6 +1199,34 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .diag-priorities{max-width:400px; margin:0 auto 26px; text-align:left;}
 .diag-priorities-label{font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:10px; text-align:center;}
 
+.diag-pack-reco{max-width:440px; margin:0 auto 26px;}
+.diag-pack-card{
+  display:flex; align-items:center; gap:14px; text-align:left; text-decoration:none;
+  background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.22); border-radius:16px;
+  padding:16px 18px; transition:.22s var(--ease);
+}
+.diag-pack-card:hover{background:#fff; border-color:#fff; transform:translateY(-3px); box-shadow:0 16px 34px -16px rgba(0,0,0,.4);}
+.diag-pack-icon{width:42px; height:42px; border-radius:12px; background:rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; font-size:20px; flex:none; transition:.22s var(--ease);}
+.diag-pack-card:hover .diag-pack-icon{background:var(--gris-fond);}
+.diag-pack-info{flex:1; min-width:0;}
+.diag-pack-info b{display:block; font-family:var(--font-display); font-weight:700; font-size:14.5px; color:#fff; line-height:1.3; margin-bottom:3px; transition:.22s var(--ease);}
+.diag-pack-card:hover .diag-pack-info b{color:var(--gris-texte);}
+.diag-pack-info span{display:block; font-size:12px; color:rgba(255,255,255,.65); line-height:1.4; transition:.22s var(--ease);}
+.diag-pack-card:hover .diag-pack-info span{color:var(--gris-mid);}
+.diag-pack-price{font-family:var(--font-display); font-weight:800; font-size:13px; color:var(--rouge); flex:none; white-space:nowrap;}
+.diag-pack-arrow{width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.12); color:#fff; display:flex; align-items:center; justify-content:center; flex:none; transition:.22s var(--ease);}
+.diag-pack-arrow svg{width:13px; height:13px;}
+.diag-pack-card:hover .diag-pack-arrow{background:var(--rouge); color:#fff;}
+@media (max-width:480px){
+  .diag-pack-card{flex-wrap:wrap;}
+  .diag-pack-price{margin-left:56px;}
+}
+@keyframes packHighlightPulse{
+  0%, 100%{box-shadow:0 0 0 0 rgba(255,104,53,0);}
+  25%{box-shadow:0 0 0 7px rgba(255,104,53,.35);}
+}
+.pack-highlight{animation:packHighlightPulse 1s ease-in-out 2;}
+
 .diag-intro-dims{margin-top:22px; background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 70%); border-radius:14px; padding:18px 22px; max-width:640px;}
 .diag-intro-dims b{display:block; color:#fff; font-family:var(--font-display); font-size:14.5px; margin-bottom:10px;}
 .diag-intro-dims ol{margin:0; padding-left:20px; display:grid; grid-template-columns:1fr 1fr; gap:6px 20px;}
@@ -2021,6 +2049,19 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             <ul id="diagResultPriorities"></ul>
           </div>
 
+          <div class="diag-pack-reco">
+            <div class="diag-priorities-label" id="diagPackRecoLabel">Le pack fait pour vous</div>
+            <a href="#tarifs" class="diag-pack-card" id="diagPackCard">
+              <div class="diag-pack-icon" id="diagPackIcon">🚀</div>
+              <div class="diag-pack-info">
+                <b id="diagPackName">Pack Intelligence Marché</b>
+                <span id="diagPackBlurb">Comprendre qui achète, quoi et quand.</span>
+              </div>
+              <div class="diag-pack-price" id="diagPackPrice">Dès 2 490 €</div>
+              <div class="diag-pack-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            </a>
+          </div>
+
           <div>
             <button type="button" class="btn btn-primary" id="diagOpenContact">Réserver mon diagnostic stratégique →</button>
           </div>
@@ -2318,7 +2359,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <div class="price-track">
         <div class="price-track-num price-track-num-light">1</div>
         <span class="price-track-label">Je découvre<br>le marché public</span>
-        <div class="price-card">
+        <div class="price-card" id="packMarche">
           <div class="price-card-top">
           <div class="price-icon">🚀</div>
           <h4>Pack<br>Intelligence Marché</h4>
@@ -2339,7 +2380,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <div class="price-track">
         <div class="price-track-num price-track-num-light">2</div>
         <span class="price-track-label">Je deviens<br>crédible</span>
-        <div class="price-card">
+        <div class="price-card" id="packPositionnement">
           <div class="price-card-top">
           <div class="price-icon">🎯</div>
           <h4>Pack<br>Positionnement Public</h4>
@@ -2361,7 +2402,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <div class="price-track">
         <div class="price-track-num">3</div>
         <span class="price-track-label">Je gagne<br>en visibilité</span>
-        <div class="price-card">
+        <div class="price-card" id="packInfluence">
           <div class="price-card-top">
           <div class="price-icon">📣</div>
           <h4>Pack<br>Influence</h4>
@@ -2383,7 +2424,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <div class="price-track">
         <div class="price-track-num">4</div>
         <span class="price-track-label">J'accède<br>aux décideurs</span>
-        <div class="price-card">
+        <div class="price-card" id="packReseau">
           <div class="price-card-top">
           <div class="price-icon">🤝</div>
           <h4>Pack<br>Réseau</h4>
@@ -2405,7 +2446,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <div class="price-track">
         <div class="price-track-num price-track-num-final">5</div>
         <span class="price-track-label">Je remporte<br>des marchés</span>
-        <div class="price-card">
+        <div class="price-card" id="packAO">
           <div class="price-card-top">
           <div class="price-icon">📑</div>
           <h4>Pack<br>Réponse aux Appels d'Offres</h4>
@@ -2426,7 +2467,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <div class="price-track">
         <div class="price-track-num price-track-num-final">6</div>
         <span class="price-track-label">Je structure<br>ma croissance</span>
-        <div class="price-card">
+        <div class="price-card" id="packPilotage">
           <div class="price-card-top">
           <div class="price-icon">📈</div>
           <h4>Pack<br>Pilotage Commercial</h4>
@@ -2490,7 +2531,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
     </div>
 
     <div class="price-featured-grid price-featured-grid-3 reveal">
-      <div class="price-card featured">
+      <div class="price-card featured" id="packLancement">
         <span class="featured-badge featured-badge-light">Idéal pour démarrer</span>
         <div class="price-icon">⚡</div>
         <h4>Pack<br>Lancement Express</h4>
@@ -2508,7 +2549,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
         <a href="#diagnostic" class="btn btn-primary js-open-booking" style="width:100%; justify-content:center;">Démarrer mon lancement →</a>
       </div>
 
-      <div class="price-card featured featured-dark">
+      <div class="price-card featured featured-dark" id="packDCE">
         <span class="featured-badge">Offre premium</span>
         <div class="price-icon">🧠</div>
         <h4>Direction Commerciale Externalisée</h4>
@@ -4311,6 +4352,60 @@ const govReadyRecos = {
   organisation:"Structurez votre organisation commerciale : CRM, responsable dédié, objectifs secteur public."
 };
 
+// Correspondance entre les résultats du diagnostic et les packs de la grille tarifaire (#tarifs)
+const govReadyPacks = {
+  marche:        {cardId:'packMarche',         icon:'🚀', name:'Pack Intelligence Marché',          blurb:'Comprendre qui achète, quoi et quand.',                        price:'Dès 2 490 €'},
+  positionnement:{cardId:'packPositionnement',  icon:'🎯', name:'Pack Positionnement Public',        blurb:'Adapter son discours aux attentes des collectivités.',        price:'Dès 3 490 €'},
+  influence:     {cardId:'packInfluence',       icon:'📣', name:'Pack Influence',                    blurb:'Être identifié avant même la première prise de contact.',     price:'Dès 2 990 €'},
+  reseau:        {cardId:'packReseau',          icon:'🤝', name:'Pack Réseau',                       blurb:'Développer les bons partenariats et ouvrir les bonnes portes.', price:'Dès 3 990 €'},
+  ao:            {cardId:'packAO',              icon:'📑', name:"Pack Réponse aux Appels d'Offres",  blurb:'Transformer les opportunités en contrats.',                   price:'Dès 2 990 €'},
+  pilotage:      {cardId:'packPilotage',        icon:'📈', name:'Pack Pilotage Commercial',          blurb:'Mettre en place une organisation performante.',               price:'Dès 2 990 €'},
+  lancement:     {cardId:'packLancement',       icon:'⚡', name:'Pack Lancement Express',            blurb:'La solution clé en main pour démarrer sur le secteur public.', price:'7 990 €'},
+  dce:           {cardId:'packDCE',             icon:'🧠', name:'Direction Commerciale Externalisée', blurb:'1 à 4 jours par mois, à vos côtés durablement.',             price:'Dès 2 500 €/mois'}
+};
+// Catégorie la plus faible → pack le plus pertinent pour la combler
+const govReadyCategoryPack = {
+  offre:'marche', credibilite:'positionnement', operationnelle:'lancement',
+  marches:'ao', visibilite:'influence', organisation:'pilotage'
+};
+// Au-delà d'un certain niveau, la catégorie la plus faible devient un signal faible :
+// on recommande alors l'étape logique suivante plutôt qu'un simple pack correctif.
+const govReadyTierPackOverride = {
+  "Prêt à démarrer":'reseau',
+  "Public Ready":'dce'
+};
+function renderPackReco(sortedCats, tier){
+  const packId = govReadyTierPackOverride[tier.title] || govReadyCategoryPack[sortedCats[0].key];
+  const pack = govReadyPacks[packId];
+  if(!pack) return;
+  document.getElementById('diagPackIcon').textContent = pack.icon;
+  document.getElementById('diagPackName').textContent = pack.name;
+  document.getElementById('diagPackBlurb').textContent = pack.blurb;
+  document.getElementById('diagPackPrice').textContent = pack.price;
+  const card = document.getElementById('diagPackCard');
+  card.href = '#' + pack.cardId;
+  card.dataset.targetId = pack.cardId;
+  document.getElementById('diagPackRecoLabel').textContent =
+    diagScoreTotal < 40 ? "Si vous décidez de vous lancer, commencez ici" :
+    tier.title === 'Public Ready' ? "Pour passer à l'échelle" :
+    tier.title === 'Prêt à démarrer' ? "La suite logique" :
+    "Le pack fait pour vous";
+}
+document.getElementById('diagPackCard').addEventListener('click', e=>{
+  e.preventDefault();
+  const targetId = e.currentTarget.dataset.targetId;
+  const target = document.getElementById(targetId);
+  if(!target) return;
+  target.scrollIntoView({behavior:'smooth', block:'center'});
+  const openBtn = target.querySelector('.price-detail-toggle');
+  setTimeout(()=>{
+    if(openBtn && !openBtn.classList.contains('open')) openBtn.click();
+    target.classList.remove('pack-highlight');
+    void target.offsetWidth;
+    target.classList.add('pack-highlight');
+  }, 450);
+});
+
 let diagStep = 1; // 1..5 = catégories, 'final', 'contact', 'thanks'
 const diagAnswers = {}; // { "0-0": {p:5,t:'Oui'}, "0-1_1": {p:5,t:'CGV'} (cases à cocher) ... }
 let diagScoreTotal = 0;
@@ -4441,6 +4536,7 @@ function computeDiagResult(){
 
   const sorted = [...catScores].sort((a,b)=>a.pct-b.pct).slice(0,2);
   document.getElementById('diagResultPriorities').innerHTML = sorted.map((c,i)=>`<li><b>✓</b>Priorité n°${i+1} : ${govReadyRecos[c.key]}</li>`).join('');
+  renderPackReco(sorted, tier);
 
   const scoreNum = document.getElementById('diagScoreNum');
   const scoreFill = document.getElementById('diagScoreFill');
