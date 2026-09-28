@@ -1323,6 +1323,7 @@ footer{background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 70%
 }
 .quicknav-rail-icon:hover span{opacity:1; transform:translateY(-50%) translateX(4px);}
 .quicknav-rail-icon:hover{background:var(--gris-fond); color:var(--rouge);}
+.quicknav-rail-icon.active{background:rgba(255,104,53,.12); color:var(--rouge);}
 .quicknav-rail-cta{background:var(--rouge); color:#fff;}
 .quicknav-rail-cta:hover{background:var(--rouge-dark); color:#fff;}
 
@@ -4490,6 +4491,43 @@ goDiagStep(1, true);
   nav.querySelectorAll('.quicknav-card, .quicknav-cta-row').forEach(el=>{
     el.addEventListener('click', ()=> nav.classList.remove('open'));
   });
+})();
+
+/* ============ QUICKNAV : SURBRILLANCE SELON LA SECTION VISIBLE ============ */
+(function(){
+  const railIcons = Array.from(document.querySelectorAll('.quicknav-rail-icon:not(.quicknav-rail-cta)'));
+  if(!railIcons.length) return;
+  const targets = [];
+  railIcons.forEach(icon=>{
+    const href = icon.getAttribute('href') || '';
+    if(href.charAt(0) !== '#') return;
+    const sec = document.getElementById(href.slice(1));
+    if(sec) targets.push({ sec, icon });
+  });
+  if(!targets.length) return;
+
+  let ticking = false;
+  function update(){
+    ticking = false;
+    const nearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 4);
+    let current;
+    if(nearBottom){
+      current = targets[targets.length - 1];
+    } else {
+      const line = window.innerHeight * 0.35;
+      current = targets[0];
+      for(const t of targets){
+        if(t.sec.getBoundingClientRect().top <= line) current = t;
+      }
+    }
+    railIcons.forEach(icon=> icon.classList.toggle('active', icon === current.icon));
+  }
+  function onScroll(){
+    if(!ticking){ ticking = true; requestAnimationFrame(update); }
+  }
+  addEventListener('scroll', onScroll, { passive:true });
+  addEventListener('resize', onScroll);
+  update();
 })();
 
 (function(){
