@@ -1,4 +1,4 @@
-x<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -149,6 +149,35 @@ body.a11y-focus .lib-doodle-arrow, body.a11y-focus .lib-doodle-text{
 }
 body.a11y-focus *{ animation:none !important; }
 body.a11y-focus{ background:#fff; }
+/* Mode sombre : inversion (fonctionne sur tout le site sans devoir retoucher
+   chaque composant à la main). Appliquée section par section — jamais sur
+   body/html directement — car un filter crée un nouveau repère de positionnement
+   pour ses descendants en position fixed ; sur body, cela aurait cassé le menu
+   collant, le panneau d'accessibilité, le quicknav, etc. Les éléments en
+   position fixed (header, quicknav, panneau a11y, modales...) sont donc listés
+   ici individuellement pour recevoir le même traitement sans casser leur
+   ancrage à l'écran. Les photos et images de fond sont ré-inversées pour
+   garder leurs couleurs naturelles au lieu de virer en négatif. */
+body.a11y-dark{ background:#0a0a0a; }
+body.a11y-dark section,
+body.a11y-dark footer,
+body.a11y-dark header,
+body.a11y-dark .a11y-toggle,
+body.a11y-dark .a11y-panel,
+body.a11y-dark #quicknav,
+body.a11y-dark .contact-float,
+body.a11y-dark .lib-modal,
+body.a11y-dark .avis-modal,
+body.a11y-dark .booking-modal{
+  filter:invert(1) hue-rotate(180deg);
+}
+body.a11y-dark img,
+body.a11y-dark .diag-block,
+body.a11y-dark .retex-banner-caf,
+body.a11y-dark .retex-banner-mairie,
+body.a11y-dark .retex-banner-occitanie{
+  filter:invert(1) hue-rotate(180deg);
+}
 body{
   font-family:var(--font-body);
   color:var(--gris-texte);
@@ -644,8 +673,6 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
 .rc-stat-text{min-width:0;}
 .rc-tags span{display:inline-flex; align-items:center; gap:5px;}
 .rc-tags span svg{width:12px; height:12px; flex:none; color:var(--rouge); opacity:.85;}
-.rc-explore-btn{width:100%; justify-content:center; margin-top:2px; text-align:center; font-size:13.5px; padding:13px 20px; gap:6px;}
-.rc-explore-btn svg{width:16px; height:16px; flex:none;}
 
 .carte-features{
   display:grid; grid-template-columns:repeat(5,1fr); gap:22px; margin-top:56px; padding-top:44px; border-top:1px solid var(--gris-bordure);
@@ -2048,6 +2075,11 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <span class="a11y-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg></span>
       <span class="a11y-option-text"><b>Aide à la concentration</b><span>Réduit les distractions visuelles</span></span>
     </button>
+
+    <button class="a11y-option" id="a11yBtnDark" data-mode="dark" aria-pressed="false">
+      <span class="a11y-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg></span>
+      <span class="a11y-option-text"><b>Mode sombre</b><span>Inverse les couleurs pour réduire la luminosité</span></span>
+    </button>
   </div>
 
   <button id="a11yReset" class="a11y-reset">Réinitialiser tous les réglages</button>
@@ -2311,10 +2343,6 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
         <h2 class="h-lg">Où se trouvent <span style="color:var(--rouge);">vos prochaines</span> opportunités publiques ?</h2>
         <p class="lede">Score d'opportunité, budgets, acheteurs clés et niveau de concurrence : la donnée que nous utilisons pour orienter nos clients, région par région.</p>
       </div>
-      <div class="carte-vision-box">
-        <div class="carte-vision-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
-        <div><b>Une vision claire pour décider où aller.</b><span>Des données fiables. Des opportunités concrètes. Une stratégie territoriale actionnable.</span></div>
-      </div>
     </div>
 
     <div class="map-layout reveal">
@@ -2358,7 +2386,6 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
         <div class="rc-block"><h5>Principaux acheteurs</h5><div class="rc-tags" id="rcAcheteurs"></div></div>
         <div class="rc-block"><h5>Secteurs qui recrutent</h5><div class="rc-tags" id="rcSecteurs"></div></div>
         <div class="rc-block"><h5>Projet majeur en cours</h5><p id="rcProjet" style="font-size:13.5px; color:var(--gris-mid); line-height:1.5;">—</p></div>
-        <a href="#diagBlock" class="btn btn-primary rc-explore-btn" id="rcExploreBtn">Explorer les opportunités en <span id="rcExploreLabel"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
     </div>
 
@@ -3589,7 +3616,7 @@ function releaseFocus(){
 
 /* ============ MODULE ACCESSIBILITÉ ============ */
 (function(){
-  const MODES = ['colorblind','dyslexia','zoom','photosensitive','motor','focus'];
+  const MODES = ['colorblind','dyslexia','zoom','photosensitive','motor','focus','dark'];
   const toggle = document.getElementById('a11yToggle');
   const panel = document.getElementById('a11yPanel');
   const closeBtn = document.getElementById('a11yClose');
@@ -4149,8 +4176,6 @@ function showRegion(r){
   document.getElementById('rcAcheteurs').innerHTML = r.acheteurs.map(a=>`<span>${a}</span>`).join('');
   document.getElementById('rcSecteurs').innerHTML = r.secteurs.map(a=>`<span>${sectorIconSvg(a)}${a}</span>`).join('');
   document.getElementById('rcProjet').textContent = r.projet;
-  document.getElementById('rcExploreLabel').textContent = r.name;
-  document.getElementById('rcExploreBtn').dataset.regionId = r.id;
 
   const circumference = 175.9;
   const fillEl = document.getElementById('rcScoreFill');
@@ -4187,13 +4212,6 @@ svg.querySelectorAll('.region-marker').forEach(group=>{
   group.addEventListener('click', ()=> selectRegionById(group.dataset.id));
 });
 selectRegionById('idf');
-document.getElementById('rcExploreBtn').addEventListener('click', e=>{
-  e.preventDefault();
-  const id = e.currentTarget.dataset.regionId;
-  const sel = document.getElementById('diagRegion');
-  if(sel && id) sel.value = id;
-  document.getElementById('diagBlock').scrollIntoView({behavior:'smooth', block:'start'});
-});
 
 /* ============ FILTRES SECTEURS + TOP 5 ============ */
 const secteurLabels = {
