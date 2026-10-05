@@ -1635,9 +1635,17 @@ footer{background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 70%
 .quicknav-cta-arrow{width:16px; height:16px; color:var(--gris-mid); flex:none;}
 
 @media (max-width:900px){
-  .quicknav{transform:none; margin-top:-23px;}
+  .quicknav{
+    top:auto; left:50%; bottom:calc(18px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); margin-top:0;
+  }
   .quicknav-rail{background:none; border:none; box-shadow:none; padding:0;}
   .quicknav-rail-icon{display:none;}
+  .quicknav-toggle{
+    width:auto; height:auto; border-radius:100px; padding:15px 32px;
+  }
+  .quicknav-toggle svg{display:none;}
+  .quicknav-toggle::after{content:"Menu"; font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.02em; white-space:nowrap;}
+  .quicknav.open .quicknav-toggle::after{content:"Fermer";}
   .quicknav-panel{
     position:fixed; left:16px; right:16px; top:50%; width:auto; max-width:340px; margin:0 auto;
     transform:translateY(-50%) translateX(-10px) scale(.97);
