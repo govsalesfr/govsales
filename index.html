@@ -1636,12 +1636,14 @@ footer{background:linear-gradient(160deg,var(--bleu-france),var(--bleu-deep) 70%
 
 @media (max-width:900px){
   .quicknav{
-    top:auto; left:50%; bottom:calc(18px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); margin-top:0;
+    top:auto; left:0; right:0; bottom:calc(18px + env(safe-area-inset-bottom,0px)); transform:none; margin-top:0;
+    justify-content:center;
   }
   .quicknav-rail{background:none; border:none; box-shadow:none; padding:0;}
   .quicknav-rail-icon{display:none;}
   .quicknav-toggle{
     width:auto; height:auto; border-radius:100px; padding:15px 32px;
+    border:1.5px solid #fff;
   }
   .quicknav-toggle svg{display:none;}
   .quicknav-toggle::after{content:"Menu"; font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:.02em; white-space:nowrap;}
