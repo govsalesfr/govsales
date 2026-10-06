@@ -1265,6 +1265,60 @@ h1,h2,h3,h4{font-family:var(--font-display); letter-spacing:-.022em; color:var(-
   .price-track{flex:0 0 100%;}
 }
 
+.pack-select{display:grid; grid-template-columns:minmax(0,420px) 1fr; gap:28px; align-items:start; margin:24px 0 20px;}
+.pack-select-list{display:flex; flex-direction:column; gap:10px;}
+.pack-need{
+  display:flex; align-items:flex-start; gap:14px; width:100%; text-align:left; background:#fff;
+  border:1.5px solid var(--gris-bordure); border-left:4px solid transparent; border-radius:14px; padding:16px 16px 16px 14px;
+  cursor:pointer; transition:.25s var(--ease); font-family:inherit;
+}
+.pack-need:hover{border-color:var(--rouge); box-shadow:0 10px 28px -16px rgba(16,24,40,.16);}
+.pack-need.active{border-color:var(--rouge); border-left-color:var(--rouge); background:#fff7f4;}
+.pack-need-icon{
+  flex:none; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:18px;
+}
+.pack-need-body{flex:1; display:flex; flex-direction:column; gap:3px; min-width:0;}
+.pack-need-title{font-family:var(--font-display); font-weight:700; font-size:14.5px; color:var(--gris-texte); line-height:1.35;}
+.pack-need-desc{font-size:12.5px; color:var(--gris-mid); line-height:1.4;}
+.pack-need-tag{font-size:10.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--rouge); margin-top:2px;}
+.pack-need-chevron{flex:none; width:16px; height:16px; color:var(--gris-mid); margin-top:10px; transition:.25s var(--ease);}
+.pack-need.active .pack-need-chevron{color:var(--rouge); transform:translateX(2px);}
+
+.pack-select-detail{position:relative; min-width:0;}
+.pack-detail{display:none; background:#fff; border:1px solid var(--gris-bordure); border-radius:20px; padding:32px;}
+.pack-detail.active{display:block; animation:packDetailIn .35s var(--ease);}
+@keyframes packDetailIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+.pack-detail-top{display:flex; align-items:flex-start; gap:16px; margin-bottom:20px;}
+.pack-detail-icon{flex:none; width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px;}
+.pack-detail-headline{flex:1; min-width:0;}
+.pack-detail-eyebrow{display:block; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--rouge); margin-bottom:4px;}
+.pack-detail-headline h3{font-family:var(--font-display); font-size:21px; font-weight:800; color:var(--gris-texte); margin-bottom:5px; line-height:1.25;}
+.pack-detail-headline p{font-size:13.5px; color:var(--gris-mid); line-height:1.45;}
+.pack-detail-price{flex:none; text-align:right;}
+.pack-detail-price span{display:block; font-size:11.5px; color:var(--gris-mid);}
+.pack-detail-price b{display:block; font-family:var(--font-display); font-size:21px; color:var(--bleu-france); white-space:nowrap;}
+.pack-detail-divider{height:1px; background:var(--gris-bordure); margin-bottom:20px;}
+.pack-detail-subhead{font-size:13.5px; font-weight:700; color:var(--gris-texte); margin-bottom:12px;}
+.pack-detail-list{list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:26px;}
+.pack-detail-list li{display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--gris-texte); line-height:1.4;}
+.pack-detail-list li::before{content:"✔️"; flex:none; font-size:11px; line-height:1.5;}
+.pack-detail-ctas{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px;}
+.pack-detail-ctas .btn{flex:1; justify-content:center; min-width:180px; white-space:nowrap; text-align:center;}
+.pack-detail-callout{display:flex; align-items:flex-start; gap:12px; background:#eff6ff; border-radius:14px; padding:16px 18px;}
+.pack-detail-callout-icon{font-size:18px; flex:none;}
+.pack-detail-callout b{display:block; font-size:13.5px; color:var(--gris-texte); margin-bottom:3px;}
+.pack-detail-callout span{font-size:12.5px; color:var(--gris-mid); line-height:1.45;}
+.pack-ic-orange{background:#fde9e0; color:var(--rouge);}
+.pack-ic-blue{background:#dbeafe; color:#2563eb;}
+.pack-ic-green{background:#dcfce7; color:#16a34a;}
+.pack-ic-amber{background:#fef3c7; color:#b45309;}
+.pack-ic-pink{background:#fce7f3; color:#db2777;}
+.pack-ic-purple{background:#ede9fe; color:#7c3aed;}
+@media (max-width:860px){
+  .pack-select{grid-template-columns:1fr;}
+}
+
 .price-final-cta{
   margin-top:56px; background:var(--bleu-france); border-radius:20px; padding:26px 30px;
   display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
@@ -2543,40 +2597,105 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
       <p class="lede">Chaque entreprise a un point de départ différent. Nos packs s'adaptent à vos enjeux pour vous accompagner, étape par étape, de la stratégie à la signature.</p>
     </div>
 
-    <div class="price-track-wrap reveal">
-      <div class="price-track">
-        <div class="price-track-num price-track-num-light">1</div>
-        <span class="price-track-label">Je découvre<br>le marché public</span>
-        <div class="price-card" id="packMarche">
-          <div class="price-card-top">
-          <div class="price-icon">🚀</div>
-          <h4>Pack<br>Intelligence Marché</h4>
-          <div class="price-sub">Comprendre qui achète, quoi et quand.</div>
-          <div class="price-tag">Dès 2 490 €</div>
+    <div class="pack-select reveal" id="packSelect">
+      <div class="pack-select-list" role="tablist" aria-label="Choisissez votre besoin">
+        <button type="button" class="pack-need" data-pack="packMarche" role="tab" aria-selected="false" id="packNeed-packMarche" aria-controls="packDetail-packMarche">
+          <span class="pack-need-icon pack-ic-orange">🚀</span>
+          <span class="pack-need-body">
+            <span class="pack-need-title">Comprendre qui achète, quoi et quand.</span>
+            <span class="pack-need-desc">Je découvre le marché public</span>
+            <span class="pack-need-tag">Pack Intelligence Marché</span>
+          </span>
+          <svg class="pack-need-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button type="button" class="pack-need" data-pack="packPositionnement" role="tab" aria-selected="false" id="packNeed-packPositionnement" aria-controls="packDetail-packPositionnement">
+          <span class="pack-need-icon pack-ic-blue">🎯</span>
+          <span class="pack-need-body">
+            <span class="pack-need-title">Adapter son discours aux attentes des collectivités.</span>
+            <span class="pack-need-desc">Je deviens crédible</span>
+            <span class="pack-need-tag">Pack Positionnement Public</span>
+          </span>
+          <svg class="pack-need-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button type="button" class="pack-need" data-pack="packInfluence" role="tab" aria-selected="false" id="packNeed-packInfluence" aria-controls="packDetail-packInfluence">
+          <span class="pack-need-icon pack-ic-green">📣</span>
+          <span class="pack-need-body">
+            <span class="pack-need-title">Être identifié avant même la première prise de contact.</span>
+            <span class="pack-need-desc">Je gagne en visibilité</span>
+            <span class="pack-need-tag">Pack Influence</span>
+          </span>
+          <svg class="pack-need-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button type="button" class="pack-need" data-pack="packReseau" role="tab" aria-selected="false" id="packNeed-packReseau" aria-controls="packDetail-packReseau">
+          <span class="pack-need-icon pack-ic-amber">🤝</span>
+          <span class="pack-need-body">
+            <span class="pack-need-title">Développer les bons partenariats et ouvrir les bonnes portes.</span>
+            <span class="pack-need-desc">J'accède aux décideurs</span>
+            <span class="pack-need-tag">Pack Réseau</span>
+          </span>
+          <svg class="pack-need-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button type="button" class="pack-need" data-pack="packAO" role="tab" aria-selected="false" id="packNeed-packAO" aria-controls="packDetail-packAO">
+          <span class="pack-need-icon pack-ic-pink">📑</span>
+          <span class="pack-need-body">
+            <span class="pack-need-title">Transformer les opportunités en contrats.</span>
+            <span class="pack-need-desc">Je remporte des marchés</span>
+            <span class="pack-need-tag">Pack Réponse aux Appels d'Offres</span>
+          </span>
+          <svg class="pack-need-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button type="button" class="pack-need" data-pack="packPilotage" role="tab" aria-selected="false" id="packNeed-packPilotage" aria-controls="packDetail-packPilotage">
+          <span class="pack-need-icon pack-ic-purple">📈</span>
+          <span class="pack-need-body">
+            <span class="pack-need-title">Mettre en place une organisation performante.</span>
+            <span class="pack-need-desc">Je structure ma croissance</span>
+            <span class="pack-need-tag">Pack Pilotage Commercial</span>
+          </span>
+          <svg class="pack-need-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="pack-select-detail">
+        <div class="pack-detail" id="packDetail-packMarche" role="tabpanel" aria-labelledby="packNeed-packMarche">
+          <div class="pack-detail-top">
+            <div class="pack-detail-icon pack-ic-orange">🚀</div>
+            <div class="pack-detail-headline">
+              <span class="pack-detail-eyebrow">Pack</span>
+              <h3>Intelligence Marché</h3>
+              <p>Comprendre qui achète, quoi et quand.</p>
+            </div>
+            <div class="pack-detail-price"><span>Dès</span><b>2 490 €</b></div>
           </div>
-          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <ul class="price-list price-list-collapsed">
+          <div class="pack-detail-divider"></div>
+          <h4 class="pack-detail-subhead">Ce que vous obtenez</h4>
+          <ul class="pack-detail-list">
             <li>Cartographie des acheteurs publics</li>
             <li>Identification des projets à venir</li>
             <li>Veille appels d'offres</li>
             <li>Analyse de la concurrence</li>
             <li>Priorisation des comptes</li>
           </ul>
-        </div>
-      </div>
-      <div class="price-track-arrow">→</div>
-      <div class="price-track">
-        <div class="price-track-num price-track-num-light">2</div>
-        <span class="price-track-label">Je deviens<br>crédible</span>
-        <div class="price-card" id="packPositionnement">
-          <div class="price-card-top">
-          <div class="price-icon">🎯</div>
-          <h4>Pack<br>Positionnement Public</h4>
-          <div class="price-sub">Adapter son discours aux attentes des collectivités.</div>
-          <div class="price-tag">Dès 3 490 €</div>
+          <div class="pack-detail-ctas">
+            <a href="#" class="btn btn-primary pack-detail-cta-primary" data-pack-name="Intelligence Marché" data-pack-price="2 490 €">Recevoir une proposition</a>
+            <a href="#" class="btn btn-ghost js-open-booking">Échanger avec Yoann</a>
           </div>
-          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <ul class="price-list price-list-collapsed">
+          <div class="pack-detail-callout">
+            <span class="pack-detail-callout-icon">💡</span>
+            <div><b>Un accompagnement 100% personnalisé</b><span>Chaque accompagnement est adapté à votre contexte, à vos enjeux et à votre niveau de maturité sur le secteur public. Après un premier échange, nous définissons ensemble le périmètre d’intervention et vous recevrez une proposition personnalisée.</span></div>
+          </div>
+        </div>
+        <div class="pack-detail" id="packDetail-packPositionnement" role="tabpanel" aria-labelledby="packNeed-packPositionnement">
+          <div class="pack-detail-top">
+            <div class="pack-detail-icon pack-ic-blue">🎯</div>
+            <div class="pack-detail-headline">
+              <span class="pack-detail-eyebrow">Pack</span>
+              <h3>Positionnement Public</h3>
+              <p>Adapter son discours aux attentes des collectivités.</p>
+            </div>
+            <div class="pack-detail-price"><span>Dès</span><b>3 490 €</b></div>
+          </div>
+          <div class="pack-detail-divider"></div>
+          <h4 class="pack-detail-subhead">Ce que vous obtenez</h4>
+          <ul class="pack-detail-list">
             <li>Proposition de valeur adaptée au public</li>
             <li>Argumentaire spécifique</li>
             <li>Cas clients</li>
@@ -2584,21 +2703,28 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             <li>Présentations commerciales</li>
             <li>Références et preuves sociales</li>
           </ul>
-        </div>
-      </div>
-      <div class="price-track-arrow">→</div>
-      <div class="price-track">
-        <div class="price-track-num">3</div>
-        <span class="price-track-label">Je gagne<br>en visibilité</span>
-        <div class="price-card" id="packInfluence">
-          <div class="price-card-top">
-          <div class="price-icon">📣</div>
-          <h4>Pack<br>Influence</h4>
-          <div class="price-sub">Être identifié avant même la première prise de contact.</div>
-          <div class="price-tag">Dès 2 990 €</div>
+          <div class="pack-detail-ctas">
+            <a href="#" class="btn btn-primary pack-detail-cta-primary" data-pack-name="Positionnement Public" data-pack-price="3 490 €">Recevoir une proposition</a>
+            <a href="#" class="btn btn-ghost js-open-booking">Échanger avec Yoann</a>
           </div>
-          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <ul class="price-list price-list-collapsed">
+          <div class="pack-detail-callout">
+            <span class="pack-detail-callout-icon">💡</span>
+            <div><b>Un accompagnement 100% personnalisé</b><span>Chaque accompagnement est adapté à votre contexte, à vos enjeux et à votre niveau de maturité sur le secteur public. Après un premier échange, nous définissons ensemble le périmètre d’intervention et vous recevrez une proposition personnalisée.</span></div>
+          </div>
+        </div>
+        <div class="pack-detail" id="packDetail-packInfluence" role="tabpanel" aria-labelledby="packNeed-packInfluence">
+          <div class="pack-detail-top">
+            <div class="pack-detail-icon pack-ic-green">📣</div>
+            <div class="pack-detail-headline">
+              <span class="pack-detail-eyebrow">Pack</span>
+              <h3>Influence</h3>
+              <p>Être identifié avant même la première prise de contact.</p>
+            </div>
+            <div class="pack-detail-price"><span>Dès</span><b>2 990 €</b></div>
+          </div>
+          <div class="pack-detail-divider"></div>
+          <h4 class="pack-detail-subhead">Ce que vous obtenez</h4>
+          <ul class="pack-detail-list">
             <li>LinkedIn</li>
             <li>Relations presse</li>
             <li>Webinaires</li>
@@ -2606,21 +2732,28 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             <li>Témoignages clients</li>
             <li>Participation aux salons</li>
           </ul>
-        </div>
-      </div>
-      <div class="price-track-arrow">→</div>
-      <div class="price-track">
-        <div class="price-track-num">4</div>
-        <span class="price-track-label">J'accède<br>aux décideurs</span>
-        <div class="price-card" id="packReseau">
-          <div class="price-card-top">
-          <div class="price-icon">🤝</div>
-          <h4>Pack<br>Réseau</h4>
-          <div class="price-sub">Développer les bons partenariats et ouvrir les bonnes portes.</div>
-          <div class="price-tag">Dès 3 990 €</div>
+          <div class="pack-detail-ctas">
+            <a href="#" class="btn btn-primary pack-detail-cta-primary" data-pack-name="Influence" data-pack-price="2 990 €">Recevoir une proposition</a>
+            <a href="#" class="btn btn-ghost js-open-booking">Échanger avec Yoann</a>
           </div>
-          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <ul class="price-list price-list-collapsed">
+          <div class="pack-detail-callout">
+            <span class="pack-detail-callout-icon">💡</span>
+            <div><b>Un accompagnement 100% personnalisé</b><span>Chaque accompagnement est adapté à votre contexte, à vos enjeux et à votre niveau de maturité sur le secteur public. Après un premier échange, nous définissons ensemble le périmètre d’intervention et vous recevrez une proposition personnalisée.</span></div>
+          </div>
+        </div>
+        <div class="pack-detail" id="packDetail-packReseau" role="tabpanel" aria-labelledby="packNeed-packReseau">
+          <div class="pack-detail-top">
+            <div class="pack-detail-icon pack-ic-amber">🤝</div>
+            <div class="pack-detail-headline">
+              <span class="pack-detail-eyebrow">Pack</span>
+              <h3>Réseau</h3>
+              <p>Développer les bons partenariats et ouvrir les bonnes portes.</p>
+            </div>
+            <div class="pack-detail-price"><span>Dès</span><b>3 990 €</b></div>
+          </div>
+          <div class="pack-detail-divider"></div>
+          <h4 class="pack-detail-subhead">Ce que vous obtenez</h4>
+          <ul class="pack-detail-list">
             <li>Mise en relation</li>
             <li>Intégrateurs</li>
             <li>Éditeurs</li>
@@ -2628,42 +2761,56 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             <li>Sous-traitance / co-traitance</li>
             <li>Recherche de partenaires locaux</li>
           </ul>
-        </div>
-      </div>
-      <div class="price-track-arrow price-track-arrow-final">→</div>
-      <div class="price-track">
-        <div class="price-track-num price-track-num-final">5</div>
-        <span class="price-track-label">Je remporte<br>des marchés</span>
-        <div class="price-card" id="packAO">
-          <div class="price-card-top">
-          <div class="price-icon">📑</div>
-          <h4>Pack<br>Réponse aux Appels d'Offres</h4>
-          <div class="price-sub">Transformer les opportunités en contrats.</div>
-          <div class="price-tag">Dès 2 990 €</div>
+          <div class="pack-detail-ctas">
+            <a href="#" class="btn btn-primary pack-detail-cta-primary" data-pack-name="Réseau" data-pack-price="3 990 €">Recevoir une proposition</a>
+            <a href="#" class="btn btn-ghost js-open-booking">Échanger avec Yoann</a>
           </div>
-          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <ul class="price-list price-list-collapsed">
+          <div class="pack-detail-callout">
+            <span class="pack-detail-callout-icon">💡</span>
+            <div><b>Un accompagnement 100% personnalisé</b><span>Chaque accompagnement est adapté à votre contexte, à vos enjeux et à votre niveau de maturité sur le secteur public. Après un premier échange, nous définissons ensemble le périmètre d’intervention et vous recevrez une proposition personnalisée.</span></div>
+          </div>
+        </div>
+        <div class="pack-detail" id="packDetail-packAO" role="tabpanel" aria-labelledby="packNeed-packAO">
+          <div class="pack-detail-top">
+            <div class="pack-detail-icon pack-ic-pink">📑</div>
+            <div class="pack-detail-headline">
+              <span class="pack-detail-eyebrow">Pack</span>
+              <h3>Réponse aux Appels d'Offres</h3>
+              <p>Transformer les opportunités en contrats.</p>
+            </div>
+            <div class="pack-detail-price"><span>Dès</span><b>2 990 €</b></div>
+          </div>
+          <div class="pack-detail-divider"></div>
+          <h4 class="pack-detail-subhead">Ce que vous obtenez</h4>
+          <ul class="pack-detail-list">
             <li>Go / No Go</li>
             <li>Relecture</li>
             <li>Optimisation mémoire technique</li>
             <li>Valorisation de l'innovation</li>
             <li>Soutenance</li>
           </ul>
-        </div>
-      </div>
-      <div class="price-track-arrow price-track-arrow-final">→</div>
-      <div class="price-track">
-        <div class="price-track-num price-track-num-final">6</div>
-        <span class="price-track-label">Je structure<br>ma croissance</span>
-        <div class="price-card" id="packPilotage">
-          <div class="price-card-top">
-          <div class="price-icon">📈</div>
-          <h4>Pack<br>Pilotage Commercial</h4>
-          <div class="price-sub">Mettre en place une organisation performante.</div>
-          <div class="price-tag">Dès 2 990 €</div>
+          <div class="pack-detail-ctas">
+            <a href="#" class="btn btn-primary pack-detail-cta-primary" data-pack-name="Réponse aux Appels d'Offres" data-pack-price="2 990 €">Recevoir une proposition</a>
+            <a href="#" class="btn btn-ghost js-open-booking">Échanger avec Yoann</a>
           </div>
-          <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <ul class="price-list price-list-collapsed">
+          <div class="pack-detail-callout">
+            <span class="pack-detail-callout-icon">💡</span>
+            <div><b>Un accompagnement 100% personnalisé</b><span>Chaque accompagnement est adapté à votre contexte, à vos enjeux et à votre niveau de maturité sur le secteur public. Après un premier échange, nous définissons ensemble le périmètre d’intervention et vous recevrez une proposition personnalisée.</span></div>
+          </div>
+        </div>
+        <div class="pack-detail" id="packDetail-packPilotage" role="tabpanel" aria-labelledby="packNeed-packPilotage">
+          <div class="pack-detail-top">
+            <div class="pack-detail-icon pack-ic-purple">📈</div>
+            <div class="pack-detail-headline">
+              <span class="pack-detail-eyebrow">Pack</span>
+              <h3>Pilotage Commercial</h3>
+              <p>Mettre en place une organisation performante.</p>
+            </div>
+            <div class="pack-detail-price"><span>Dès</span><b>2 990 €</b></div>
+          </div>
+          <div class="pack-detail-divider"></div>
+          <h4 class="pack-detail-subhead">Ce que vous obtenez</h4>
+          <ul class="pack-detail-list">
             <li>KPI</li>
             <li>CRM</li>
             <li>Pipeline</li>
@@ -2671,48 +2818,19 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             <li>Reporting</li>
             <li>Plan d'action</li>
           </ul>
+          <div class="pack-detail-ctas">
+            <a href="#" class="btn btn-primary pack-detail-cta-primary" data-pack-name="Pilotage Commercial" data-pack-price="2 990 €">Recevoir une proposition</a>
+            <a href="#" class="btn btn-ghost js-open-booking">Échanger avec Yoann</a>
+          </div>
+          <div class="pack-detail-callout">
+            <span class="pack-detail-callout-icon">💡</span>
+            <div><b>Un accompagnement 100% personnalisé</b><span>Chaque accompagnement est adapté à votre contexte, à vos enjeux et à votre niveau de maturité sur le secteur public. Après un premier échange, nous définissons ensemble le périmètre d’intervention et vous recevrez une proposition personnalisée.</span></div>
+          </div>
         </div>
       </div>
     </div>
 
     <p class="price-note" style="font-size:16px;">Chaque accompagnement GovSales est personnalisé.<br>À l'issue du diagnostic, vous recevez une proposition commerciale détaillant précisément les actions, livrables, étapes et modalités d'accompagnement.</p>
-
-    <div class="pack-builder reveal">
-      <h3 class="pack-builder-title">Composez votre accompagnement</h3>
-      <p class="pack-builder-sub">Cochez les packs qui vous intéressent, le montant se calcule automatiquement.</p>
-      <div class="pack-builder-list">
-        <label class="pack-check">
-          <input type="checkbox" data-price="2490">
-          <span>Intelligence Marché</span>
-          <b>2 490 €</b>
-        </label>
-        <label class="pack-check">
-          <input type="checkbox" data-price="3490">
-          <span>Positionnement Public</span>
-          <b>3 490 €</b>
-        </label>
-        <label class="pack-check">
-          <input type="checkbox" data-price="2990">
-          <span>Influence</span>
-          <b>2 990 €</b>
-        </label>
-        <label class="pack-check">
-          <input type="checkbox" data-price="3990">
-          <span>Réseau</span>
-          <b>3 990 €</b>
-        </label>
-        <label class="pack-check">
-          <input type="checkbox" data-price="2990">
-          <span>Pilotage Commercial</span>
-          <b>2 990 €</b>
-        </label>
-      </div>
-      <div class="pack-builder-total">
-        <span>Accompagnement complet</span>
-        <b id="packBuilderTotal">—</b>
-      </div>
-      <a href="#diagnostic" class="btn btn-primary btn-disabled" id="packBuilderCta" style="width:100%; justify-content:center;">Recevoir une proposition détaillée</a>
-    </div>
 
     <div class="section-head reveal" style="margin-top:70px; max-width:none;">
       <span class="eyebrow" style="color:var(--rouge);">Les accompagnements GovSales®</span>
@@ -2726,7 +2844,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
         <div class="price-icon">⚡</div>
         <h4>Pack<br>Lancement Express</h4>
         <div class="price-sub">La solution clé en main pour démarrer sur le secteur public.</div>
-        <div class="price-tag">7 990 €</div>
+        <div class="price-tag">Dès 7 990 €</div>
         <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="price-list price-list-collapsed">
           <li>Positionnement</li>
@@ -2736,7 +2854,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <li>Premiers rendez-vous</li>
           <li>Formation commerciale</li>
         </ul>
-        <a href="#diagnostic" class="btn btn-primary js-open-booking" style="width:100%; justify-content:center;">Démarrer mon lancement →</a>
+        <a href="#diagnostic" class="btn btn-primary js-open-booking" data-origin="Pack Lancement Express — « Démarrer mon lancement »" style="width:100%; justify-content:center;">Démarrer mon lancement →</a>
       </div>
 
       <div class="price-card featured featured-dark" id="packDCE">
@@ -2745,10 +2863,10 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
         <h4>Direction Commerciale Externalisée</h4>
         <div class="price-sub">1 à 4 jours par mois, à vos côtés durablement.</div>
         <div class="price-tiers">
-          <div class="price-tier-row"><span>1 jour / mois</span><b>2 500 €</b></div>
-          <div class="price-tier-row"><span>2 jours / mois</span><b>4 900 €</b></div>
-          <div class="price-tier-row"><span>3 jours / mois</span><b>7 200 €</b></div>
-          <div class="price-tier-row"><span>4 jours / mois</span><b>9 500 €</b></div>
+          <div class="price-tier-row"><span>1 jour / mois</span><b>Dès 2 500 €</b></div>
+          <div class="price-tier-row"><span>2 jours / mois</span><b>Dès 4 900 €</b></div>
+          <div class="price-tier-row"><span>3 jours / mois</span><b>Dès 7 200 €</b></div>
+          <div class="price-tier-row"><span>4 jours / mois</span><b>Dès 9 500 €</b></div>
         </div>
         <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="price-list price-list-collapsed">
@@ -2759,7 +2877,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
           <li>Développement stratégique</li>
           <li>Formation commerciale</li>
         </ul>
-        <a href="#diagnostic" class="btn btn-primary js-open-booking" style="width:100%; justify-content:center;">Échanger avec un expert →</a>
+        <a href="#diagnostic" class="btn btn-primary js-open-booking" data-origin="Direction Commerciale Externalisée — « Échanger avec un expert »" style="width:100%; justify-content:center;">Échanger avec un expert →</a>
       </div>
 
       <div class="price-card featured">
@@ -2769,7 +2887,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
         <div class="price-sub">Transformez vos rencontres en opportunités concrètes pour maximiser votre retour sur investissement salon.</div>
         <div class="salon-tiers">
           <div class="salon-tier">
-            <div class="salon-tier-head"><b>Salon Essentiel</b><span class="salon-tier-price">À partir de 1 490 €</span></div>
+            <div class="salon-tier-head"><b>Salon Essentiel</b><span class="salon-tier-price">Dès 1 490 €</span></div>
             <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
             <ul class="price-list price-list-collapsed">
               <li>Préparation du salon</li>
@@ -2779,7 +2897,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             </ul>
           </div>
           <div class="salon-tier">
-            <div class="salon-tier-head"><b>Salon Accompagnement</b><span class="salon-tier-price">À partir de 2 990 €</span></div>
+            <div class="salon-tier-head"><b>Salon Accompagnement</b><span class="salon-tier-price">Dès 2 990 €</span></div>
             <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
             <ul class="price-list price-list-collapsed">
               <li><b>Salon Essentiel inclus</b></li>
@@ -2788,7 +2906,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             </ul>
           </div>
           <div class="salon-tier">
-            <div class="salon-tier-head"><b>Salon Premium</b><span class="salon-tier-price">À partir de 4 990 €</span></div>
+            <div class="salon-tier-head"><b>Salon Premium</b><span class="salon-tier-price">Dès 4 990 €</span></div>
             <button type="button" class="price-detail-toggle">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
             <ul class="price-list price-list-collapsed">
               <li><b>Salon Accompagnement inclus</b></li>
@@ -2798,7 +2916,7 @@ h1{text-wrap:balance;font-size:clamp(30px,5.2vh,54px);line-height:1.04;letter-sp
             </ul>
           </div>
         </div>
-        <a href="#diagnostic" class="btn js-open-booking" style="width:100%; justify-content:center; border:1.5px solid var(--gris-bordure); color:var(--gris-texte);">Préparer mon salon →</a>
+        <a href="#diagnostic" class="btn js-open-booking" data-origin="Pack Salon Accompagnement — « Préparer mon salon »" style="width:100%; justify-content:center; border:1.5px solid var(--gris-bordure); color:var(--gris-texte);">Préparer mon salon →</a>
       </div>
     </div>
 
@@ -4358,6 +4476,59 @@ document.getElementById('introEnterBtn').addEventListener('click', closeIntro);
       document.getElementById('avisModal').classList.remove('show');
       document.body.style.overflow = 'auto';
       releaseFocus();
+    });
+  });
+})();
+
+/* ============ ORIGINE DE LA DEMANDE DE RDV ============ */
+window.gsOrigin = '';
+document.addEventListener('click', e=>{
+  const o = e.target.closest('[data-origin]');
+  if(o){ window.gsOrigin = o.dataset.origin; return; }
+  const pd = e.target.closest('.pack-detail .js-open-booking');
+  if(pd){
+    const h = pd.closest('.pack-detail').querySelector('h3');
+    window.gsOrigin = 'Pack ' + (h ? h.textContent.trim() : '') + ' — « Échanger avec Yoann »';
+    return;
+  }
+  if(e.target.closest('.nav-cta, .js-open-booking, .contact-float-cta, .price-final-cta-btn')) window.gsOrigin = '';
+});
+
+/* ============ SÉLECTEUR DE BESOINS (PACKS) ============ */
+(function initPackSelector(){
+  const needs = document.querySelectorAll('.pack-need');
+  if(!needs.length) return;
+
+  needs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.pack;
+      needs.forEach(b=>{
+        const active = b === btn;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      document.querySelectorAll('.pack-detail').forEach(panel=>{
+        panel.classList.toggle('active', panel.id === 'packDetail-' + id);
+      });
+      if(window.matchMedia('(max-width:860px)').matches){
+        const panel = document.getElementById('packDetail-' + id);
+        if(panel) panel.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.pack-detail-cta-primary').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      const recapEl = document.getElementById('avisPacksRecap');
+      recapEl.innerHTML = `<b>Pack sélectionné :</b> ${btn.dataset.packName} — <b>${btn.dataset.packPrice}</b>`;
+      document.getElementById('avisModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+      trapFocus(document.querySelector('#avisModal .avis-box'), ()=>{
+        document.getElementById('avisModal').classList.remove('show');
+        document.body.style.overflow = 'auto';
+        releaseFocus();
+      });
     });
   });
 })();
@@ -5972,11 +6143,12 @@ goDiagStep(1, true);
 
     const payload = {
       access_key: "4c430b41-d884-4a8e-b69e-f3ea4c4fb64c",
-      subject: `Nouvelle réservation GovSales — ${prenom} ${nom} (${entreprise})`,
+      subject: `Nouvelle réservation GovSales — ${prenom} ${nom} (${entreprise})${window.gsOrigin ? ' — ' + window.gsOrigin : ''}`,
       from_name: "Formulaire de réservation — site GovSales",
       Prénom: prenom, Nom: nom, Entreprise: entreprise, Email: email, "Téléphone": tel || 'Non renseigné',
       "Format": bookingAnswers.format, "Horizon": bookingAnswers.horizon,
       "Objectif": Array.isArray(bookingAnswers.objectif) ? bookingAnswers.objectif.join(', ') : bookingAnswers.objectif, "Taille entreprise": bookingAnswers.taille,
+      "Offre / bouton d'origine": window.gsOrigin || 'Bouton général du site (non lié à une offre)',
       "Créneau demandé": `${dateLabel} à ${selectedSlot}`
     };
     fetch('https://api.web3forms.com/submit', {
@@ -6087,7 +6259,7 @@ document.querySelectorAll('.price-featured-grid .price-card').forEach(card=>{
 
     const payload = {
       access_key: "4c430b41-d884-4a8e-b69e-f3ea4c4fb64c",
-      subject: `Demande d'avis sous 24h — ${contact} (${raisonSociale})`,
+      subject: `Demande d'avis sous 24h — ${contact} (${raisonSociale})${packsRecap ? ' — ' + packsRecap : ''}`,
       from_name: "Formulaire demande de devis — site GovSales",
       "Raison sociale": raisonSociale, "Nom et prénom du contact": contact, "Fonction": fonction,
       "Adresse du siège social": adresse, "SIRET": siret, "TVA intracommunautaire": tva || 'Non renseigné',
@@ -6095,7 +6267,7 @@ document.querySelectorAll('.price-featured-grid .price-card').forEach(card=>{
       Email: email,
       "Site web": site || 'Non renseigné', "LinkedIn": linkedin || 'Non renseigné',
       "Activité": activite || 'Non renseigné',
-      "Packs sélectionnés": packsRecap || 'Aucun',
+      "Pack demandé (bouton « Recevoir une proposition »)": packsRecap || 'Aucun',
       "Commentaire": commentaire || 'Aucun'
     };
     fetch('https://api.web3forms.com/submit', {
